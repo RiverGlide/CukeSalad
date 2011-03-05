@@ -11,7 +11,7 @@ class Calculator
   end
 end  
 
-class CalculatingPerson
+class CalculatingIndividual
   def switch_on_the_calculator
       @calculator = Calculator.new
   end
@@ -26,7 +26,7 @@ class CalculatingPerson
 end
 
 When /^I (?:was able to|attempt to)? ([^"]*)$/ do |something|
-  @person = @person || CalculatingPerson.new
+  @person = @person || CalculatingIndividual.new
   @person.send(something.downcase.gsub(" ","_").to_sym)
 end
 
