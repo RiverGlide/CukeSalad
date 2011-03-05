@@ -1,5 +1,5 @@
 Feature: A Place To Start
-	As Harry (the guy in a hurry)
+	As Harry, a calculating individual
 	I want to know when my calculator is on
 	So that I know when I can start calculating
 
