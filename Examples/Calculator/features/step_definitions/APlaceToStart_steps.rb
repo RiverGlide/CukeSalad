@@ -20,25 +20,20 @@ class CalculatingPerson
     @calculator.enter value
   end  
   
-  def see
+  def see_it_display
     @calculator.display
   end
 end
 
-Given /^I was able to ([^"]*)$/ do |something|
-  @calc = CalculatingPerson.new
-  @calc.send(something.downcase.gsub(" ","_").to_sym)
+When /^I (?:was able to|attempt to)? ([^"]*)$/ do |something|
+  @person = @person || CalculatingPerson.new
+  @person.send(something.downcase.gsub(" ","_").to_sym)
 end
 
-When /^I attempt to ([^"]*)$/ do |something|
-  @calc = CalculatingPerson.new
-  @calc.send(something.downcase.gsub(" ","_").to_sym)
+When /^I attempt to ([^"]*) "([^"]*)"$/ do |something, with_information|
+  @person.send(something.downcase.to_sym, with_information.to_i)
 end
 
-When /^I attempt to ([^"]*) "([^"]*)"$/ do |something,with_information|
-  @calc.send(something.downcase.to_sym, with_information.to_i)
-end
-
-Then /^I should see it display "([^"]*)"$/ do |value|
-  @calc.see.should == value.to_i
+Then /^I should ([^"]*) "([^"]*)"$/ do |something, expect_value|
+  @person.send(something.downcase.gsub(" ","_").to_sym).should == expect_value.to_i
 end
