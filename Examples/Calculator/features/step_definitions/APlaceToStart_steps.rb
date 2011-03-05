@@ -9,21 +9,36 @@ class Calculator
   def enter value
     @display = value
   end
-  
 end  
 
+class CalculatingPerson
+  def switch_on_the_calculator
+      @calculator = Calculator.new
+  end
+
+  def enter value
+    @calculator.enter value
+  end  
+  
+  def see
+    @calculator.display
+  end
+end
+
 Given /^I was able to ([^"]*)$/ do |something|
-  @calculator = Calculator.new
+  @calc = CalculatingPerson.new
+  @calc.send(something.downcase.gsub(" ","_").to_sym)
 end
 
 When /^I attempt to ([^"]*)$/ do |something|
-  @calculator = Calculator.new
+  @calc = CalculatingPerson.new
+  @calc.send(something.downcase.gsub(" ","_").to_sym)
 end
 
 When /^I attempt to ([^"]*) "([^"]*)"$/ do |something,with_information|
-  @calculator.send(something.downcase.to_sym, with_information.to_i)
+  @calc.send(something.downcase.to_sym, with_information.to_i)
 end
 
-Then /^I should see it display "([^"]*)"$/ do |arg1|
-  @calculator.display.should == arg1.to_i
+Then /^I should see it display "([^"]*)"$/ do |value|
+  @calc.see.should == value.to_i
 end
