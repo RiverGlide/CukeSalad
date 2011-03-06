@@ -23,13 +23,9 @@ class CalculatingIndividual
       @calculator = Calculator.new
   end
 
-  def enter value
-    @calculator.enter value
-  end
-  
   def add_the_numbers from_list
     from_list.each do |value|
-      @calculator.enter value.to_i
+      @calculator.enter value.to_f
       @calculator.plus
     end
   end
@@ -48,15 +44,15 @@ def arguments_from this_information
 end
 
 When /^I (?:attempt to|was able to)? ([^']*)$/ do |something|
-  @person = @person ||= CalculatingIndividual.new
-  @person.send(something.downcase.gsub(" ","_").to_sym)
+  @actor = @actor ||= CalculatingIndividual.new
+  @actor.send method_for( something )
 end
 
 When /^I attempt to ([^']*) '(.*)'$/ do |something, with_information|
-  @person = @person ||= CalculatingIndividual.new
-  @person.send method_for(something), arguments_from (with_information)
+  @actor = @actor ||= CalculatingIndividual.new
+  @actor.send method_for (something), arguments_from (with_information)
 end
 
 Then /^I should ([^']*) '([^']*)'$/ do |something, expect_value|
-  @person.send(method_for(something)).should == expect_value.to_i
+  @actor.send(method_for(something)).to_s.should == expect_value
 end
