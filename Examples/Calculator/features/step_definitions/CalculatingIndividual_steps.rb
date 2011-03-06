@@ -4,11 +4,18 @@ class Calculator
   
   def initialize
     @display = 0
+    @result = 0
   end
   
   def enter value
     @display = value
   end
+  
+  def plus
+    @result = @result + @display
+    @display = @result
+  end
+  
 end  
 
 class CalculatingIndividual
@@ -18,22 +25,38 @@ class CalculatingIndividual
 
   def enter value
     @calculator.enter value
-  end  
+  end
   
-  def see_it_display
+  def add_the_numbers from_list
+    from_list.each do |value|
+      @calculator.enter value.to_i
+      @calculator.plus
+    end
+  end
+  
+  def get_the_answer
     @calculator.display
   end
 end
 
-When /^I (?:was able to|attempt to)? ([^"]*)$/ do |something|
-  @person = @person || CalculatingIndividual.new
+def method_for something
+  something.downcase.gsub(" ","_").to_sym 
+end
+
+def arguments_from this_information
+  this_information.gsub("'","").gsub("and","").split(" ")
+end
+
+When /^I (?:attempt to|was able to)? ([^']*)$/ do |something|
+  @person = @person ||= CalculatingIndividual.new
   @person.send(something.downcase.gsub(" ","_").to_sym)
 end
 
-When /^I attempt to ([^"]*) "([^"]*)"$/ do |something, with_information|
-  @person.send something.downcase.to_sym, with_information.to_i
+When /^I attempt to ([^']*) '(.*)'$/ do |something, with_information|
+  @person = @person ||= CalculatingIndividual.new
+  @person.send method_for(something), arguments_from (with_information)
 end
 
-Then /^I should ([^"]*) "([^"]*)"$/ do |something, expect_value|
-  @person.send(something.downcase.gsub(" ","_").to_sym).should == expect_value.to_i
+Then /^I should ([^']*) '([^']*)'$/ do |something, expect_value|
+  @person.send(method_for(something)).should == expect_value.to_i
 end
