@@ -43,16 +43,16 @@ def arguments_from this_information
   this_information.gsub("'","").gsub("and","").split(" ")
 end
 
-When /^I (?:attempt to|was able to)? ([^']*)$/ do |something|
+When /^I (?:attempt to|was able to)? ([^']*)$/ do |task|
   @actor = @actor ||= CalculatingIndividual.new
-  @actor.send method_for( something )
+  @actor.send method_for( task )
 end
 
-When /^I attempt to ([^']*) '(.*)'$/ do |something, with_information|
+When /^I attempt to ([^']*) '(.*)'$/ do |task, with_information|
   @actor = @actor ||= CalculatingIndividual.new
-  @actor.send method_for (something), arguments_from (with_information)
+  @actor.send method_for (task), arguments_from (with_information)
 end
 
-Then /^I should ([^']*) '([^']*)'$/ do |something, expect_value|
-  @actor.send(method_for(something)).to_s.should == expect_value
+Then /^I should ([^']*) '([^']*)'$/ do |task, expect_value|
+  @actor.send( method_for (task)).to_s.should == expect_value
 end
