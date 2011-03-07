@@ -65,21 +65,26 @@ class GetTheAnswer
   end
 end
 
+
+def class_for this_thing
+  Kernel.const_get( class_name_from this_thing) # need a better solution - like ActiveSupport constantize
+end
+
+def class_name_from this_sentence
+  class_name = ""
+  this_sentence.downcase.split(" ").each do |word|
+    class_name = class_name + word.capitalize
+  end
+  class_name
+end
+
 class SubjectMatterExpert
   
   def how_do_i_perform this_task, with_information =nil
-    task_for( this_task ).new arguments_from( with_information )
+    class_for( this_task ).new arguments_from( with_information )
   end
   alias :how_do_i_answer :how_do_i_perform
-  
-  def task_for something
-    class_name = ""
-    something.downcase.split(" ").each do |word|
-      class_name = class_name + word.capitalize
-    end
-    Kernel.const_get class_name # need a better solution - like ActiveSupport constantize
-  end
-  
+    
   def method_for something
     something.downcase.gsub(" ","_").to_sym 
   end
@@ -94,7 +99,7 @@ Before do
 end
 
 Given /^I have a (\w+)$/ do |thing|
-  @actor = Actor.new(Kernel.const_get thing)
+  @actor = Actor.new(class_for thing)
 end
 
 When /^I (?:attempt to|was able to)? ([^']*)$/ do |this_task|
