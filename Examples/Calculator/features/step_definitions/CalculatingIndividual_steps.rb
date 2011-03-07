@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'rspec/expectations'
+
 class Calculator
   
   attr_reader :display
@@ -18,23 +21,6 @@ class Calculator
   
 end  
 
-class CalculatingIndividual
-  def switch_on_the_calculator
-      @calculator = Calculator.new
-  end
-
-  def add_the_numbers from_list
-    from_list.each do |value|
-      @calculator.enter value.to_f
-      @calculator.plus
-    end
-  end
-  
-  def get_the_answer
-    @calculator.display
-  end
-end
-
 class Actor
   
   def initialize role
@@ -42,60 +28,84 @@ class Actor
   end
   
   def perform task
-    if task.information != nil
-      @role.send task.name, task.information
-    else
-      @role.send task.name
-    end
+    task.perform_as @role
   end
   alias :answer :perform
 end
 
-class Task
-  attr_reader :name, :information
+class SwitchOnTheCalculator 
+  include RSpec::Matchers
   
-  def initialize name, information = nil
-    @name=name
-    @information = information
+  def initialize with_nothing
+  end
+  
+  def perform_as calculator
+      calculator.should_not be_nil
   end
 end
+
+class AddTheNumbers
+  def initialize from_list
+    @from_list = from_list
+  end
+  
+  def perform_as calculator
+    @from_list.each do |value|
+      calculator.enter value.to_f
+      calculator.plus
+    end
+  end
+end
+
+class GetTheAnswer 
+  def initialize with_nothing
+  end
+  def perform_as calculator
+    calculator.display
+  end
+end
+
 
 class SubjectMatterExpert
   
   def how_do_i_perform this_task, with_information =nil
-    if with_information != nil
-      Task.new method_for( this_task ), arguments_from( with_information )
-    else
-      Task.new method_for( this_task )
-    end
+    task_for( this_task ).new arguments_from( with_information )
   end
   alias :how_do_i_answer :how_do_i_perform
+  
+  def task_for something
+    class_name = ""
+    something.downcase.split(" ").each do |word|
+      class_name = class_name + word.capitalize
+    end
+    Kernel.const_get class_name # need a better solution - like ActiveSupport constantize
+  end
   
   def method_for something
     something.downcase.gsub(" ","_").to_sym 
   end
   
   def arguments_from this_information
-    this_information.gsub("'","").gsub("and","").split(" ")
+    this_information.gsub("'","").gsub("and","").split(" ") unless this_information == nil
   end
 end
 
 When /^I (?:attempt to|was able to)? ([^']*)$/ do |this_task|
-  @actor = @actor ||= Actor.new(CalculatingIndividual)
+  @actor = @actor ||= Actor.new(Calculator)
   @sme = @sme ||= SubjectMatterExpert.new
   task = @sme.how_do_i_perform this_task
   @actor.perform task
 end
 
 When /^I attempt to ([^']*) '(.*)'$/ do |this_task, with_information|
-  @actor = @actor ||= Actor.new(CalculatingIndividual)
+  @actor = @actor ||= Actor.new(Calculator)
   @sme = @sme ||= SubjectMatterExpert.new
   task = @sme.how_do_i_perform this_task, with_information
   @actor.perform task
 end
 
 Then /^I should ([^']*) '([^']*)'$/ do |this_question, expect_value|
-  @actor = @actor ||= Actor.new(CalculatingIndividual)
+  @actor = @actor ||= Actor.new(Calculator)
   @sme = @sme ||= SubjectMatterExpert.new
   question = @sme.how_do_i_answer this_question
   @actor.answer( question ).to_s.should == expect_value
