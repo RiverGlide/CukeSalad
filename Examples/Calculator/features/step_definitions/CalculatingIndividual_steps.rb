@@ -103,7 +103,7 @@ When /^I (?:attempt to|was able to)? ([^']*)$/ do |this_task|
   @actor.perform task
 end
 
-When /^I attempt to ([^']*) '(.*)'$/ do |this_task, with_information|
+When /^I (?:attempt to|was able to)? ([^']*) '(.*)'$/ do |this_task, with_information|
   task = @sme.how_do_i_perform this_task, with_information
   @actor.perform task
 end
