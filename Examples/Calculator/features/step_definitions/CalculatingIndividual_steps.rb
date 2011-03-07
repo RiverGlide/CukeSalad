@@ -35,24 +35,39 @@ class CalculatingIndividual
   end
 end
 
-def method_for something
-  something.downcase.gsub(" ","_").to_sym 
-end
-
-def arguments_from this_information
-  this_information.gsub("'","").gsub("and","").split(" ")
+class Actor
+  
+  def initialize role
+    @role = role.new
+  end
+  
+  def perform task, with_information = nil
+    if with_information.nil?
+      @role.send method_for( task )
+    else
+      @role.send method_for( task ) , arguments_from( with_information )
+    end
+  end
+  
+  def method_for something
+    something.downcase.gsub(" ","_").to_sym 
+  end
+  
+  def arguments_from this_information
+    this_information.gsub("'","").gsub("and","").split(" ")
+  end
 end
 
 When /^I (?:attempt to|was able to)? ([^']*)$/ do |task|
-  @actor = @actor ||= CalculatingIndividual.new
-  @actor.send method_for( task )
+  @actor = @actor ||= Actor.new(CalculatingIndividual)
+  @actor.perform task
 end
 
 When /^I attempt to ([^']*) '(.*)'$/ do |task, with_information|
-  @actor = @actor ||= CalculatingIndividual.new
-  @actor.send method_for (task), arguments_from (with_information)
+  @actor = @actor ||= Actor.new(CalculatingIndividual)
+  @actor.perform task, with_information
 end
 
-Then /^I should ([^']*) '([^']*)'$/ do |task, expect_value|
-  @actor.send( method_for (task)).to_s.should == expect_value
+Then /^I should ([^']*) '([^']*)'$/ do |question, expect_value|
+  @actor.perform( question ).to_s.should == expect_value
 end
