@@ -4,6 +4,7 @@ Feature: Addition
 	So that I don't have the delay of my slow mental arithmetic
 	
 Background:
+	Given I have a Calculator
 	Given I was able to switch on the calculator
 
 Scenario: Find the sum of two positive whole numbers

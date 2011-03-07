@@ -24,11 +24,11 @@ end
 class Actor
   
   def initialize role
-    @role = role.new
+    @character = role.new
   end
   
   def perform task
-    task.perform_as @role
+    task.perform_as @character
   end
   alias :answer :perform
 end
@@ -90,22 +90,23 @@ class SubjectMatterExpert
   end
 end
 
+Given /^I have a (\w+)$/ do |thing|
+  @actor = Actor.new(Kernel.const_get thing)
+end
+
 When /^I (?:attempt to|was able to)? ([^']*)$/ do |this_task|
-  @actor = @actor ||= Actor.new(Calculator)
   @sme = @sme ||= SubjectMatterExpert.new
   task = @sme.how_do_i_perform this_task
   @actor.perform task
 end
 
 When /^I attempt to ([^']*) '(.*)'$/ do |this_task, with_information|
-  @actor = @actor ||= Actor.new(Calculator)
   @sme = @sme ||= SubjectMatterExpert.new
   task = @sme.how_do_i_perform this_task, with_information
   @actor.perform task
 end
 
 Then /^I should ([^']*) '([^']*)'$/ do |this_question, expect_value|
-  @actor = @actor ||= Actor.new(Calculator)
   @sme = @sme ||= SubjectMatterExpert.new
   question = @sme.how_do_i_answer this_question
   @actor.answer( question ).to_s.should == expect_value
