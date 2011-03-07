@@ -6,4 +6,5 @@ _Friction-free ATDD/BDD_
 
     gem install bundler
     gem update --system
+    git clone https://github.com/RiverGlide/CukeNarrative
     bundle install
