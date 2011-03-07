@@ -90,24 +90,25 @@ class SubjectMatterExpert
   end
 end
 
+Before do
+    @sme = @sme ||= SubjectMatterExpert.new
+end
+
 Given /^I have a (\w+)$/ do |thing|
   @actor = Actor.new(Kernel.const_get thing)
 end
 
 When /^I (?:attempt to|was able to)? ([^']*)$/ do |this_task|
-  @sme = @sme ||= SubjectMatterExpert.new
   task = @sme.how_do_i_perform this_task
   @actor.perform task
 end
 
 When /^I attempt to ([^']*) '(.*)'$/ do |this_task, with_information|
-  @sme = @sme ||= SubjectMatterExpert.new
   task = @sme.how_do_i_perform this_task, with_information
   @actor.perform task
 end
 
 Then /^I should ([^']*) '([^']*)'$/ do |this_question, expect_value|
-  @sme = @sme ||= SubjectMatterExpert.new
   question = @sme.how_do_i_answer this_question
   @actor.answer( question ).to_s.should == expect_value
 end
