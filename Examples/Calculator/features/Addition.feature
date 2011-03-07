@@ -5,7 +5,7 @@ Feature: Addition
 	
 Background:
 	Given I have a Calculator
-	Given I was able to switch on the calculator
+	  And I was able to switch on the calculator
 
 Scenario: Find the sum of two positive whole numbers
 	When I attempt to add the numbers '10' and '5'
