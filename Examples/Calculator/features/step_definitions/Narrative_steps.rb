@@ -48,8 +48,8 @@ Before do
     @sme = @sme ||= SubjectMatterExpert.new
 end
 
-Given /^I am a ([a-zA-Z ]+)$/ do |thing|
-  @actor = Actor.new(Librarian.new.class_for thing)
+Given /^I am a ([a-zA-Z ]+)$/ do |role|
+  @actor = Actor.new(Librarian.new.class_for role)
 end
 
 When /^I (?:attempt to|was able to)? ([^']*)$/ do |this_task|
