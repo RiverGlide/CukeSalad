@@ -1,8 +1,7 @@
 $:.unshift(File.dirname(__FILE__) + '/../../lib')
-require 'calculator'
+$:.unshift(File.dirname(__FILE__) + '/../tasks')
 
-require 'rubygems'
-require 'rspec/expectations'
+require 'calculator'
 
 class Actor
   
@@ -14,30 +13,6 @@ class Actor
     task.perform_as @character
   end
   alias :answer :perform
-end
-
-class SwitchOnTheCalculator 
-  include RSpec::Matchers
-  
-  def initialize with_nothing
-  end
-  
-  def perform_as calculator
-      calculator.should_not be_nil
-  end
-end
-
-class AddTheNumbers
-  def initialize from_list
-    @from_list = from_list
-  end
-  
-  def perform_as calculator
-    @from_list.each do |value|
-      calculator.enter value.to_f
-      calculator.plus
-    end
-  end
 end
 
 class GetTheAnswer 
