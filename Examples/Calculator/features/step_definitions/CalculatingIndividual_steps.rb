@@ -1,25 +1,8 @@
+$:.unshift(File.dirname(__FILE__) + '/../../lib')
+require 'calculator'
+
 require 'rubygems'
 require 'rspec/expectations'
-
-class Calculator
-  
-  attr_reader :display
-  
-  def initialize
-    @display = 0
-    @result = 0
-  end
-  
-  def enter value
-    @display = value
-  end
-  
-  def plus
-    @result = @result + @display
-    @display = @result
-  end
-  
-end  
 
 class Actor
   
@@ -67,7 +50,7 @@ end
 
 class Librarian
   def class_for this_thing
-    Kernel.const_get( class_name_from this_thing) # need a better solution - like ActiveSupport constantize
+    Kernel.const_get( class_name_from this_thing) # need a better solution? Maybe ActiveSupport constantize
   end
 
   def class_name_from this_sentence
