@@ -65,7 +65,6 @@ class GetTheAnswer
   end
 end
 
-
 class SubjectMatterExpert
   
   def how_do_i_perform this_task, with_information =nil
