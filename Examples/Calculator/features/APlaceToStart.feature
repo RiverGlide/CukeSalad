@@ -5,7 +5,5 @@ Feature: A Place To Start
 
 Background:
 	Given I have a Calculator
-
-Scenario: Start with Zero
 	When I attempt to switch on the calculator
 	Then I should get the answer '0'
