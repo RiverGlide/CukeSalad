@@ -4,6 +4,6 @@ Feature: A Place To Start
 	So that I know when I can start calculating
 
 Background:
-	Given I have a Calculator
+	Given I am a Calculating Individual
 	When I attempt to switch on the calculator
 	Then I should get the answer '0'

@@ -1,4 +1,7 @@
-class Calculator
+class CalculatingIndividual
+  # This class represents the type of user of your application
+  # This example also contains the implementation
+  #  but obviously, this wouldn't normally be the case.
   
   attr_reader :display
   

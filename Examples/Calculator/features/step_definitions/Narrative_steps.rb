@@ -1,10 +1,9 @@
 $:.unshift(File.dirname(__FILE__) + '/../../lib')
 $:.unshift(File.dirname(__FILE__) + '/../tasks')
 
-require 'calculator'
+require 'calculating_individual' #TODO: remove the need for require so that the Narrative_steps can come from a gem
 
 class Actor
-  
   def initialize role
     @character = role.new
   end
@@ -15,17 +14,9 @@ class Actor
   alias :answer :perform
 end
 
-class GetTheAnswer 
-  def initialize with_nothing
-  end
-  def perform_as calculator
-    calculator.display
-  end
-end
-
 class Librarian
   def class_for this_thing
-    Kernel.const_get( class_name_from this_thing) # need a better solution? Maybe ActiveSupport constantize
+    Kernel.const_get( class_name_from this_thing) ##TODO: Do we need a better solution? Maybe ActiveSupport constantize
   end
 
   def class_name_from this_sentence
@@ -39,7 +30,7 @@ end
 
 class SubjectMatterExpert
   
-  def how_do_i_perform this_task, with_information =nil
+  def how_do_i_perform this_task, with_information =nil #TODO: must get rid of nil
     Librarian.new.class_for( this_task ).new arguments_from( with_information )
   end
   alias :how_do_i_answer :how_do_i_perform
@@ -57,7 +48,7 @@ Before do
     @sme = @sme ||= SubjectMatterExpert.new
 end
 
-Given /^I have a (\w+)$/ do |thing|
+Given /^I am a ([a-zA-Z ]+)$/ do |thing|
   @actor = Actor.new(Librarian.new.class_for thing)
 end
 
