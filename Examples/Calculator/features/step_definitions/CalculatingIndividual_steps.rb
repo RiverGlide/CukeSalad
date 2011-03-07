@@ -48,6 +48,7 @@ class Actor
       @role.send method_for( task ) , arguments_from( with_information )
     end
   end
+  alias :answer :perform
   
   def method_for something
     something.downcase.gsub(" ","_").to_sym 
@@ -69,5 +70,5 @@ When /^I attempt to ([^']*) '(.*)'$/ do |task, with_information|
 end
 
 Then /^I should ([^']*) '([^']*)'$/ do |question, expect_value|
-  @actor.perform( question ).to_s.should == expect_value
+  @actor.answer( question ).to_s.should == expect_value
 end
