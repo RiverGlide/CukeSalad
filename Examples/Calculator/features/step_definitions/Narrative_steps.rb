@@ -31,7 +31,12 @@ end
 class SubjectMatterExpert
   
   def how_do_i_perform this_task, with_information =nil #TODO: must get rid of nil
-    Librarian.new.class_for( this_task ).new arguments_from( with_information )
+    task = Librarian.new.class_for( this_task )
+    if with_information == nil
+      task.new
+    else
+      task.new arguments_from( with_information )
+    end
   end
   alias :how_do_i_answer :how_do_i_perform
     
