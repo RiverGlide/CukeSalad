@@ -4,10 +4,11 @@ Feature: Addition
 	So that I don't have the delay of my slow mental arithmetic
 	
 Scenario Outline: Find the sum of two numbers
-	Given I am a Calculating Individual
-	  And I was able to switch on the calculator
-	When I attempt to add the numbers '<first_number>' and '<second_number>'
-	Then I should get the answer '<result>'
+  Given I am a Calculating Individual
+  And I was able to switch on the calculator
+  When I attempt to add: the numbers '<first_number>' and '<second_number>'
+  Then I should get the answer '<result>'
+
 	
 Examples:
 |first_number|second_number|result|

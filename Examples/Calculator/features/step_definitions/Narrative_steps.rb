@@ -2,6 +2,7 @@ $:.unshift(File.dirname(__FILE__) + '/../../lib')
 $:.unshift(File.dirname(__FILE__) + '/../tasks')
 
 require 'calculating_individual' #TODO: remove the need for require so that the Narrative_steps can come from a gem
+require 'ostruct'
 
 class Actor
   def initialize role
@@ -16,7 +17,11 @@ end
 
 class Librarian
   def class_for this_thing
-    Kernel.const_get( class_name_from this_thing) ##TODO: Do we need a better solution? Maybe ActiveSupport constantize
+    begin
+      Kernel.const_get( class_name_from this_thing) ##TODO: Do we need a better solution? Maybe ActiveSupport constantize
+    rescue NameError => exception
+      raise "The Librarian couldn't find the '#{class_name_from this_thing}' task.\nMaybe you need to create it."  # TODO: Create a LibarianApology class? Or re-raise and rescue in SME?
+    end
   end
 
   def class_name_from this_sentence
@@ -30,12 +35,12 @@ end
 
 class SubjectMatterExpert
   
-  def how_do_i_perform this_task, with_information =nil #TODO: must get rid of nil
+  def how_do_i_perform this_task, these_details =nil #TODO: must get rid of nil
     task = Librarian.new.class_for( this_task )
-    if with_information == nil
+    if these_details == nil
       task.new
     else
-      task.new arguments_from( with_information )
+      task.new with_arguments_from( these_details )
     end
   end
   alias :how_do_i_answer :how_do_i_perform
@@ -44,8 +49,9 @@ class SubjectMatterExpert
     something.downcase.gsub(" ","_").to_sym 
   end
   
-  def arguments_from this_information
-    this_information.gsub("'","").gsub("and","").split(" ") unless this_information == nil
+  def with_arguments_from details
+    argument_pattern = /('[^']+')/
+    OpenStruct.new Hash[*details.split(argument_pattern).collect { |e| e.gsub('\'', '').strip.gsub(' ', '_') }]
   end
 end
 
@@ -62,8 +68,8 @@ When /^I (?:attempt to|was able to)? ([^']*)$/ do |this_task|
   @actor.perform task
 end
 
-When /^I (?:attempt to|was able to)? ([^']*) '(.*)'$/ do |this_task, with_information|
-  task = @sme.how_do_i_perform this_task, with_information
+When /^I (?:attempt to|was able to)? ([A-Z a-z_-]*): (.*)$/ do |this_task, with_these_details|
+  task = @sme.how_do_i_perform this_task, with_these_details
   @actor.perform task
 end
 
