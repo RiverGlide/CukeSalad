@@ -11,29 +11,24 @@ end
 class MoreThanOneWord
 end
 
-describe "Something" do
+describe Researcher do
 
   before :each do
     @researcher = Researcher.new
   end
 
-  it "finds a class for a thing" do
-    the_thing_we_found = @researcher.class_for "Something"
+  it "gives you directives (i.e. a class) for Something" do
+    the_thing_we_found = @researcher.get_directives_for "Something"
     the_thing_we_found.should == Something  
   end
 
-  it "finds a class for another" do
-    the_thing_we_found = @researcher.class_for "Another"
-    the_thing_we_found.should == Another
-  end
-
-  it "finds a class with more than one word" do
-    the_thing_we_found = @researcher.class_for "more than one word"
+  it "finds directives (i.e. a class) for something described with more than one word" do
+    the_thing_we_found = @researcher.get_directives_for "more than one word"
     the_thing_we_found.should == MoreThanOneWord
   end
 
-  it "complains when it encounters a name error" do
-    lambda { @researcher.class_for "something that isnt there" }.should raise_error RuntimeError, "I couldn't find the class 'SomethingThatIsntThere'.\nMaybe you need to create it."
+  it "apologises when it can't find what you asked for" do
+    lambda { @researcher.get_directives_for "something that isnt there" }.should raise_error RuntimeError, "I can't find a class called 'SomethingThatIsntThere'.\nMaybe you need to create it."
   end
 
 end

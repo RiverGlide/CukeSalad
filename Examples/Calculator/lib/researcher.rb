@@ -1,13 +1,17 @@
 class Researcher
-  def class_for something
+  def get_directives_for something
     begin 
-      Kernel.const_get( class_name_from something )
+      find_directives_for something
     rescue NameError
-      raise "I couldn't find the class '#{class_name_from something}'.\nMaybe you need to create it."
+      raise "I can't find a class called '#{class_name_from something}'.\nMaybe you need to create it."
     end
   end
 
- def class_name_from this_sentence
+  def find_directives_for something
+    Kernel.const_get( class_name_from something )
+  end
+
+  def class_name_from this_sentence
     joined_together capitalised( words_from this_sentence )
   end
   

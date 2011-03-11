@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'rspec/expectations'
 
-class SwitchOnTheCalculator 
+class SwitchOnTheCalculator
   include RSpec::Matchers
   
   def perform_as calculating_individual
