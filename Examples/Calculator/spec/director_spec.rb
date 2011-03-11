@@ -7,16 +7,22 @@ Bundler.setup
 class SomeTaskOrRole
 end
 
+class SomeTaskThatNeedsInformation
+  attr_reader :information
+  def initialize information
+    @information = information
+  end
+end
+
 class Director
 
   def initialize researcher=Researcher.new
     @researcher = researcher
   end
 
-  def how_do_i_perform this_thing
-    @researcher.get_directives_for( this_thing ).new
+  def how_do_i_perform this_thing, *with_details
+    @researcher.get_directives_for( this_thing ).new *with_details
   end
-  alias :how_do_i_answer :how_do_i_perform
 end
 
 
@@ -32,13 +38,16 @@ describe Director do
     director.how_do_i_perform( something ).should be_instance_of directives
   end
 
-  it "tells you how to get the answer to a question" do
+  it "tells you how to do something with additional information" do
     researcher = double("researcher")
     something = "description of the task or role"
-    directives = SomeTaskOrRole
+    with_details = "detail1 \"detail one\" detail2 \"detail 2\""
+    directives = SomeTaskThatNeedsInformation
     director = Director.new researcher
     researcher.should_receive( :get_directives_for ).with( something ).and_return( directives )
 
-    director.how_do_i_answer( something ).should be_instance_of directives
+    task = director.how_do_i_perform( something, with_details )
+    task.should be_instance_of directives
+    task.information.should == with_details
   end
 end
