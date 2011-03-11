@@ -24,7 +24,7 @@ class Find
   end
   
   def Find.joined_together words
-    words.inject :+
+    words.join
   end
 
   def Find.words_from sentence
