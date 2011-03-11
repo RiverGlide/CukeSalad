@@ -1,5 +1,11 @@
+$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 require 'task_with_specifics'
-class Add < TaskWithSpecifics
+
+class Add
+  
+  def initialize specifics
+    @specifics = specifics
+  end
 
   def perform_as calculating_individual
     calculating_individual.enter @specifics.the_numbers.to_f
