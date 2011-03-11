@@ -11,11 +11,20 @@ class TaskWithSpecifics
   end
 
   def specifics_from details
-    specifics_pattern = /('[^']+')/
     details.collect do | detail |
-      OpenStruct.new Hash[*detail.split( specifics_pattern ).collect { |e| e.gsub('\'', '').strip }]
+      OpenStruct.new Hash[*content_of( alternating_name_value_pairs_from( detail )) ]
     end
   end
+
+  def content_of values
+    values.collect { |e| e.gsub('\'', '').strip }
+  end
+
+  def alternating_name_value_pairs_from detail
+    specifics_pattern = /('[^']+')/
+    detail.split( specifics_pattern)
+  end
+
 end
 
 class MyTask < TaskWithSpecifics
