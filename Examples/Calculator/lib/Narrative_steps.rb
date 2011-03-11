@@ -1,5 +1,5 @@
 require 'ostruct'
-require 'expert'
+require 'researcher'
 
 class Actor
   def initialize role_description
@@ -15,7 +15,7 @@ class Actor
 end
 
 class Director
-  include Expert  
+  include Researcher 
   def how_do_i_perform this_something, *these_details 
     something = class_for( this_something )
     if details_required_for?(something) 

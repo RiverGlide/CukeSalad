@@ -1,4 +1,4 @@
-module Expert
+module Researcher
   def class_for something
     begin 
       Kernel.const_get( class_name_from something )

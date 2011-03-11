@@ -1,7 +1,7 @@
 $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 require 'rubygems'
 require 'bundler'
-require 'expert'
+require 'researcher'
 Bundler.setup
 
 class Something
@@ -12,7 +12,7 @@ class MoreThanOneWord
 end
 
 class Someone
-  include Expert
+  include Researcher
 end
   
 describe "Something" do
