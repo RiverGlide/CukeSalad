@@ -15,9 +15,10 @@ class Actor
 end
 
 class Director
-  include Researcher 
+
   def how_do_i_perform this_something, *these_details 
-    something = class_for( this_something )
+    researcher = Researcher.new
+    something = researcher.class_for( this_something )
     if details_required_for?(something) 
       something.new(*with_arguments_from(these_details))
     else
