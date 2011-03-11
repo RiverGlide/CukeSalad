@@ -1,7 +1,7 @@
 require 'ostruct'
 require 'researcher'
 
-class Actor
+class OldActor
   def initialize role
     @director = Director.new
     @character = @director.how_do_i_perform role
@@ -44,7 +44,7 @@ Before do
 end
 
 Given /^I am a ([a-zA-Z ]+)$/ do |role|
-  @actor = Actor.new(role)
+  @actor = OldActor.new(role)
 end
 
 When /^I (?:attempt to|was able to)? ([^']*)$/ do |this_task|
