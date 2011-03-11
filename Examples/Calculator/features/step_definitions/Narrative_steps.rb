@@ -35,23 +35,29 @@ end
 
 class SubjectMatterExpert
   
-  def how_do_i_perform this_task, these_details =nil #TODO: must get rid of nil
+  def how_do_i_perform this_task, *these_details 
     task = Librarian.new.class_for( this_task )
-    if these_details == nil
-      task.new
+    if task_requires_details?(task) 
+      task.new(*with_arguments_from(these_details))
     else
-      task.new with_arguments_from( these_details )
+      task.new 
     end
   end
   alias :how_do_i_answer :how_do_i_perform
     
+  def task_requires_details? task
+    task.instance_method(:initialize).arity > 0 
+  end
+
   def method_for something
     something.downcase.gsub(" ","_").to_sym 
   end
   
   def with_arguments_from details
     argument_pattern = /('[^']+')/
-    OpenStruct.new Hash[*details.split(argument_pattern).collect { |e| e.gsub('\'', '').strip.gsub(' ', '_') }]
+    details.collect do |detail|
+      OpenStruct.new Hash[*detail.split(argument_pattern).collect { |e| e.gsub('\'', '').strip.gsub(' ', '_') }]
+    end
   end
 end
 
