@@ -1,8 +1,5 @@
-$:.unshift(File.dirname(__FILE__) + '/../../lib')
-$:.unshift(File.dirname(__FILE__) + '/../tasks')
-
-require 'calculating_individual' #TODO: remove the need for require so that the Narrative_steps can come from a gem
 require 'ostruct'
+require 'librarian'
 
 class Actor
   def initialize role
@@ -15,28 +12,10 @@ class Actor
   alias :answer :perform
 end
 
-class Librarian
-  def class_for this_thing
-    begin
-      Kernel.const_get( class_name_from this_thing) ##TODO: Do we need a better solution? Maybe ActiveSupport constantize
-    rescue NameError => exception
-      raise "The Librarian couldn't find the '#{class_name_from this_thing}' task.\nMaybe you need to create it."  # TODO: Create a LibarianApology class? Or re-raise and rescue in SME?
-    end
-  end
-
-  def class_name_from this_sentence
-    class_name = ""
-    this_sentence.downcase.split(" ").each do |word|
-      class_name = class_name + word.capitalize
-    end
-    class_name
-  end
-end
-
 class SubjectMatterExpert
-  
+  include Librarian  
   def how_do_i_perform this_task, *these_details 
-    task = Librarian.new.class_for( this_task )
+    task = class_for( this_task )
     if task_requires_details?(task) 
       task.new(*with_arguments_from(these_details))
     else
@@ -49,10 +28,6 @@ class SubjectMatterExpert
     task.instance_method(:initialize).arity > 0 
   end
 
-  def method_for something
-    something.downcase.gsub(" ","_").to_sym 
-  end
-  
   def with_arguments_from details
     argument_pattern = /('[^']+')/
     details.collect do |detail|
@@ -66,7 +41,7 @@ Before do
 end
 
 Given /^I am a ([a-zA-Z ]+)$/ do |role|
-  @actor = Actor.new(Librarian.new.class_for role)
+  @actor = Actor.new(@sme.class_for role)
 end
 
 When /^I (?:attempt to|was able to)? ([^']*)$/ do |this_task|
