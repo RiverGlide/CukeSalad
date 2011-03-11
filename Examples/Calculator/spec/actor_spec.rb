@@ -14,8 +14,8 @@ class Actor
     @character = @director.how_do_i_perform role
   end
   
-  def perform task_description
-    task = @director.how_do_i_perform task_description
+  def perform task_description, *with_these_details
+    task = @director.how_do_i_perform task_description, *with_these_details
     task.perform_as @character
   end
   alias :answer :perform
@@ -61,6 +61,22 @@ describe Actor do
     question.should_receive( :perform_as ).with( role ).and_return( the_answer )
 
     actor.answer( some_question ).should == the_answer
+  end
+
+  it "can perform a task that requires certain details" do
+    director = double("director")
+    role_description = "description of the role"
+    role = double( role_description )
+    director.should_receive( :how_do_i_perform ).with( role_description ).and_return( role )
+    actor = Actor.new role_description, director
+    
+    task_description = "some description of a task"
+    details = "info it needs \"the info\"" 
+    task = double( task_description )
+    director.should_receive( :how_do_i_perform ).with( task_description, details ).and_return( task )
+    task.should_receive( :perform_as ).with( role )
+
+    actor.perform task_description, details
   end
 
 end
