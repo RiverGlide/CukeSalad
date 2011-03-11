@@ -1,9 +1,9 @@
-module Librarian
+module Expert
   def class_for something
     begin 
       Kernel.const_get( class_name_from something )
     rescue NameError
-      raise "The Librarian couldn't find the class '#{class_name_from something}'.\nMaybe you need to create it."
+      raise "I couldn't find the class '#{class_name_from something}'.\nMaybe you need to create it."
     end
   end
 

@@ -1,9 +1,9 @@
 require 'ostruct'
-require 'librarian'
+require 'expert'
 
 class Actor
   def initialize role_description
-    @sme = SubjectMatterExpert.new
+    @sme = Director.new
     @character = @sme.how_do_i_perform role_description
   end
   
@@ -14,8 +14,8 @@ class Actor
   alias :answer :perform
 end
 
-class SubjectMatterExpert
-  include Librarian  
+class Director
+  include Expert  
   def how_do_i_perform this_something, *these_details 
     something = class_for( this_something )
     if details_required_for?(something) 
@@ -39,7 +39,7 @@ class SubjectMatterExpert
 end
 
 Before do
-    @sme = @sme ||= SubjectMatterExpert.new
+    @sme = @sme ||= Director.new
 end
 
 Given /^I am a ([a-zA-Z ]+)$/ do |role|
