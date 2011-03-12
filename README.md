@@ -19,7 +19,7 @@ Inside the root of that project:
     mkdir roles
     mkdir tasks
 
-In features/step_definitions create a new feature file, something like this:
+In features/step_definitions create a new step file, say calculator_steps.rb, which looks something like this:
 
     $:.unshift(File.dirname(__FILE__) + '/../roles')
     $:.unshift(File.dirname(__FILE__) + '/../tasks')
@@ -76,7 +76,7 @@ features/roles/calculating_individual.rb
       @display = 0
     end
   
-In your features/step_definition file add the line:
+In your features/step_definitions/calculator_steps file add the line:
 
     require 'calculating_individual'
 
