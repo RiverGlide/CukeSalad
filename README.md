@@ -27,6 +27,8 @@ In features/step_definitions create a new step file, say calculator_steps.rb, wh
 
     require 'cuke_salad'
 
+## Write Features
+
 In features, create your first feature spec
 
     Feature: A Place To Start
@@ -48,6 +50,8 @@ Let's take a second to understand this scenario:
 
 To get this working, you don't need to write any steps. Just explain how to do the task...
 
+## Create Tasks
+
 features/tasks/switch_on_the_calculator.rb
 
       require 'rubygems'
@@ -60,6 +64,8 @@ features/tasks/switch_on_the_calculator.rb
         calculating_individual.should_not be_nil
       end
     end
+
+## Create Roles
 
 And explain how the calculating individual works:
 
@@ -81,6 +87,8 @@ In your features/step_definitions/calculator_steps file add the line:
     require 'calculating_individual'
 
 Then run cucumber.
+
+## Wash, rinse, repeat
 
 Let's try another scenario...
 
@@ -133,5 +141,5 @@ And then modify your calculating_individual.rb to be able to receive those calls
       end
     end
 
-Notice - no need to write the step_definitions... just express the roles and the tasks in clear, concise and easy to read classes.
+There's no need to write `step_definitions`... simply express the _roles_ and the _tasks_ in clear, concise and easy to read classes.
 
