@@ -16,8 +16,8 @@ Inside the root of that project:
 
     mkdir features
     mkdir features/step_definitions
-    mkdir roles
-    mkdir tasks
+    mkdir features/roles
+    mkdir features/tasks
 
 In features/step_definitions create a new step file, say calculator_steps.rb, which looks something like this:
 
