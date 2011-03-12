@@ -145,16 +145,16 @@ There's no need to write `step_definitions`... simply express the _roles_ and th
 
 Our finished Calculator example's directory structure looks like this...
 
-    └── Calculator
+    └── Calculator/
       ├── cucumber.yml
-      └── features
+      └── features/
         ├── A_PlaceToStart.feature
         ├── Addition.feature
-        ├── roles
+        ├── roles/
         │   └── calculating_individual.rb
         ├── step_definitions
         │   └── calculator_steps.rb
-        └── tasks
+        └── tasks/
             ├── add.rb
             ├── get_the_answer.rb
             └── switch_on_the_calculator.rb
