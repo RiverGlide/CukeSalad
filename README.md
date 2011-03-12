@@ -1,6 +1,6 @@
-# Cuke Narratives
+# Cuke Salad 
 
-_Friction-free ATDD/BDD_
+_Cucumber, washed and ready to eat for Friction-free ATDD/BDD_
 
 ## Install
 
