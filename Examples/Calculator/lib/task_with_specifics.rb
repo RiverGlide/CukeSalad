@@ -5,7 +5,7 @@ require 'ostruct'
 Bundler.setup
 
 class TaskWithSpecifics
-  def initialize details
+  def initialize *details
     @specifics = *with_specifics_from( details )
   end
 

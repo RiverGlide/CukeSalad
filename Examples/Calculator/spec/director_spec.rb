@@ -27,9 +27,10 @@ describe Director do
   end
 
   it "tells you how to do something with additional information" do
+    pending "Figure out tasks with specifics first"
     researcher = double("researcher")
     something = "description of the task or role"
-    with_details = "detail1 \"detail one\" detail2 \"detail 2\""
+    with_details = "detail1 'detail one' detail2 'detail 2'"
     directives = SomeTaskThatNeedsInformation
     director = Director.new researcher
     researcher.should_receive( :get_directives_for ).with( something ).and_return( directives )
