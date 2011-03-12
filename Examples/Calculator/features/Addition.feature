@@ -6,7 +6,7 @@ Feature: Addition
 Scenario Outline: Find the sum of two numbers
   Given I am a Calculating Individual
   And I was able to switch on the calculator
-  When I attempt to add: the numbers '<first_number>' and '<second_number>'
+  When I attempt to add: the number '<first_number>' to the number '<second_number>'
   Then I should get the answer '<result>'
 
 	

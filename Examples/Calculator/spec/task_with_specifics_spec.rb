@@ -5,25 +5,33 @@ require 'task_with_specifics'
 Bundler.setup
 
 class MyTask < TaskWithSpecifics
-  attr_reader :specifics
+  attr_reader :value_of
 end
 
 describe TaskWithSpecifics do
 
   it "has an item of specific information" do
     task = MyTask.new "specific 'information'"
-    task.specifics.specific.should == "information"
+    task.value_of.specific.should == "information"
   end
 
   it "has items of specific information" do
     task = MyTask.new "first 'item' second 'another'"
-    task.specifics.first.should == "item"
-    task.specifics.second.should == "another"
+    task.value_of.first.should == "item"
+    task.value_of.second.should == "another"
   end
 
-  it "should cope with names having more than one word" do
+  it "copes with names having more than one word" do
     task = MyTask.new "first thing 'item' second thing 'another'"
-    task.specifics.first_thing.should == "item"
-    task.specifics.second_thing.should == "another"
+    task.value_of.first_thing.should == "item"
+    task.value_of.second_thing.should == "another"
   end
+  
+  it "should cope with values having more than one word" do
+    pending "Underscores should not be added to values with more than one word"
+    task = MyTask.new "first thing 'item' second thing 'another thing'"
+    task.value_of.first_thing.should == "item"
+    task.value_of.second_thing.should == "another thing"
+  end
+  
 end

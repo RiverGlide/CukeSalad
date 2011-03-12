@@ -27,7 +27,6 @@ describe Director do
   end
 
   it "tells you how to do something with additional information" do
-    pending "Figure out tasks with specifics first"
     researcher = double("researcher")
     something = "description of the task or role"
     with_details = "detail1 'detail one' detail2 'detail 2'"
@@ -37,6 +36,5 @@ describe Director do
 
     task = director.how_do_i_perform( something, with_details )
     task.should be_instance_of directives
-    task.information.should == with_details
   end
 end
