@@ -6,7 +6,11 @@ Bundler.setup
 
 class TaskWithSpecifics
   def initialize detail
-    @value_of = with_specifics_from( detail )
+    @info = with_specifics_from( detail )
+  end
+  
+  def value_of(symbol)
+    @info.send symbol
   end
 
   def with_specifics_from detail
