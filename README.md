@@ -76,6 +76,10 @@ features/roles/calculating_individual.rb
       @display = 0
     end
   
+In your features/step_definition file add the line:
+
+    require 'calculating_individual'
+
 Then run cucumber.
 
 Let's try another scenario...
