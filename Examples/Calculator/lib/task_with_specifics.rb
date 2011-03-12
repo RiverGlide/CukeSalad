@@ -29,7 +29,7 @@ class TaskWithSpecifics
   end
 
   def remove_surrounding_quotes_from item 
-        item.gsub(/^'|'$/, '')
+    item.gsub(/^'|'$/, '')
   end
 
   def is_a_name? item
