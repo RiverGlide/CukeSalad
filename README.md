@@ -143,3 +143,18 @@ And then modify your calculating_individual.rb to be able to receive those calls
 
 There's no need to write `step_definitions`... simply express the _roles_ and the _tasks_ in clear, concise and easy to read classes.
 
+Our finished Calculator example's directory structure looks like this...
+
+    └── Calculator
+      ├── cucumber.yml
+      └── features
+        ├── A_PlaceToStart.feature
+        ├── Addition.feature
+        ├── roles
+        │   └── calculating_individual.rb
+        ├── step_definitions
+        │   └── calculator_steps.rb
+        └── tasks
+            ├── add.rb
+            ├── get_the_answer.rb
+            └── switch_on_the_calculator.rb
