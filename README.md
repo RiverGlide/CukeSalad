@@ -19,17 +19,18 @@ Inside the root of that project:
     mkdir features/roles
     mkdir features/tasks
 
-In features/step_definitions create a new step file, say calculator_steps.rb, which looks something like this:
+In idiomatic Cucumber style, we use `support/env.rb` to require _CukeSalad_ and
+define the location of our project's _roles_ and _tasks_:
 
-    $:.unshift(File.dirname(__FILE__) + '/../roles')
-    $:.unshift(File.dirname(__FILE__) + '/../tasks')
-    $:.unshift(File.dirname(__FILE__) + '/../../../../lib') #where to find CukeSalad
+    $:.unshift(File.dirname(__FILE__) + '/../features/roles')
+    $:.unshift(File.dirname(__FILE__) + '/../features/tasks')
+    $:.unshift(File.dirname(__FILE__) + '/../../../lib') #where to find CukeSalad
 
     require 'cuke_salad'
 
 ## Write Features
 
-In features, create your first feature spec
+In features, create your first feature file:
 
     Feature: A Place To Start
     As Harry, a calculating individual
@@ -48,11 +49,13 @@ Let's take a second to understand this scenario:
       When  I attempt to <do some task>
       Then  I should <ask some question> '<expected answer>'
 
-To get this working, you don't need to write any steps. Just explain how to do the task...
+To get this working, you don't need to write any steps. 
+Just explain how to do the task using a class...
 
 ## Create Tasks
 
-features/tasks/switch_on_the_calculator.rb
+Explaining how to do a _task_ is easy: 
+Create a new file, `features/tasks/switch_on_the_calculator.rb`
 
       require 'rubygems'
       require 'rspec/expectations'
@@ -65,11 +68,13 @@ features/tasks/switch_on_the_calculator.rb
       end
     end
 
+Now we've explained the task, we need to define the role that performs it. In
+this example, we need to explain how the `CalculatingIndividual` role works...
+
 ## Create Roles
 
-And explain how the calculating individual works:
-
-features/roles/calculating_individual.rb
+We explain a role by creating a new file 
+called `features/roles/calculating_individual.rb`
 
     class CalculatingIndividual
     # This class represents the type of user of your application
@@ -82,11 +87,14 @@ features/roles/calculating_individual.rb
       @display = 0
     end
   
-In your features/step_definitions/calculator_steps file add the line:
+The right place to require our `CalculatingIndividual` is in a step definitions
+file, as it's specific to our example. Let's do that now by creating the
+`features/step_definitions/calculator_steps.rb` file and adding the line:
 
     require 'calculating_individual'
 
-Then run cucumber.
+Then run `cucumber Examples/Calculator`. 
+We now have our first passing Feature, without writing a single step definition!
 
 ## Wash, rinse, repeat
 
@@ -98,7 +106,8 @@ Let's try another scenario...
       When I attempt to add: the number '10.0' to the number '10.0'
       Then I should get the answer '20.0'
 
-Notice that we've reused "switch on the calculator'. The new "When" step has a slightly different layout. Let's examine that for a second...
+Notice that we've reused "switch on the calculator'. 
+The new _When_ step has a slightly different layout. Let's examine that for a second...
 
     When I attempt to <do something>: <name> '<value>' <name> '<value>'
 
@@ -141,7 +150,9 @@ And then modify your calculating_individual.rb to be able to receive those calls
       end
     end
 
-There's no need to write `step_definitions`... simply express the _roles_ and the _tasks_ in clear, concise and easy to read classes.
+There's no need to write `step_definitions`... 
+Simply express the _roles_ and the _tasks_ in clear, 
+concise and easy to read classes.
 
 Our finished Calculator example's directory structure looks like this...
 
@@ -154,6 +165,8 @@ Our finished Calculator example's directory structure looks like this...
         │   └── calculating_individual.rb
         ├── step_definitions
         │   └── calculator_steps.rb
+        └── support/
+        │   ├── env.rb
         └── tasks/
             ├── add.rb
             ├── get_the_answer.rb
