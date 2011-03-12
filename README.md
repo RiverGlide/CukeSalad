@@ -57,9 +57,6 @@ Just explain how to do the task using a class...
 Explaining how to do a _task_ is easy: 
 Create a new file, `features/tasks/switch_on_the_calculator.rb`
 
-      require 'rubygems'
-      require 'rspec/expectations'
-
       class SwitchOnTheCalculator
       include RSpec::Matchers
   
@@ -68,12 +65,12 @@ Create a new file, `features/tasks/switch_on_the_calculator.rb`
       end
     end
 
-Now we've explained the task, we need to define the role that performs it. In
-this example, we need to explain how the `CalculatingIndividual` role works...
+Now we've explained the _task_, we need to define the _role_ that performs it. In
+this example, we need to explain how the `CalculatingIndividual` _role_ works...
 
 ## Create Roles
 
-We explain a role by creating a new file 
+We explain a _role_ by creating a new file 
 called `features/roles/calculating_individual.rb`
 
     class CalculatingIndividual
@@ -87,13 +84,16 @@ called `features/roles/calculating_individual.rb`
       @display = 0
     end
   
-The right place to require our `CalculatingIndividual` is in a step definitions
-file, as it's specific to our example. Let's do that now by creating the
+Let's require our `CalculatingIndividual` in a step definitions
+file; because it's specific to our domain. 
+
+We do that by creating the
 `features/step_definitions/calculator_steps.rb` file and adding the line:
 
     require 'calculating_individual'
 
 Then run `cucumber Examples/Calculator`. 
+
 We now have our first passing Feature, without writing a single step definition!
 
 ## Wash, rinse, repeat
@@ -113,9 +113,6 @@ The new _When_ step has a slightly different layout. Let's examine that for a se
 
 So, we need an action called add.rb:
 
-    $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
-    require 'task_with_specifics'
-
     class Add < TaskWithSpecifics
 
       def perform_as calculating_individual
@@ -126,7 +123,7 @@ So, we need an action called add.rb:
       end
     end
 
-And then modify your calculating_individual.rb to be able to receive those calls...
+And then modify our `calculating_individual.rb` to receive those calls...
 
     class CalculatingIndividual
     # This class represents the type of user of your application
@@ -152,7 +149,7 @@ And then modify your calculating_individual.rb to be able to receive those calls
 
 There's no need to write `step_definitions`... 
 Simply express the _roles_ and the _tasks_ in clear, 
-concise and easy to read classes.
+concise, easy to read classes.
 
 Our finished Calculator example's directory structure looks like this...
 
@@ -166,7 +163,7 @@ Our finished Calculator example's directory structure looks like this...
         ├── step_definitions
         │   └── calculator_steps.rb
         └── support/
-        │   ├── env.rb
+        │   └── env.rb
         └── tasks/
             ├── add.rb
             ├── get_the_answer.rb

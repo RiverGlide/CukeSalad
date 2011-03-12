@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'rspec/expectations'
 
 class SwitchOnTheCalculator

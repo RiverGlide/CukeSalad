@@ -2,6 +2,7 @@ $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 require 'rubygems'
 require 'bundler'
 require 'actor'
+require 'task_with_specifics'
 Bundler.setup
 
 Given /^I am a ([a-zA-Z ]+)$/ do |role|

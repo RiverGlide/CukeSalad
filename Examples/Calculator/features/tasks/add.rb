@@ -1,6 +1,3 @@
-$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
-require 'task_with_specifics'
-
 class Add < TaskWithSpecifics
 
   def perform_as calculating_individual
