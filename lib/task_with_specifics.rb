@@ -1,23 +1,21 @@
-require 'ostruct'
-
 class TaskWithSpecifics
   def initialize details
     @info = with_specifics_from( details )
   end
   
   def value_of(symbol)
-    @info.send symbol
+    @info[symbol]
   end
 
   def with_specifics_from details
-    OpenStruct.new Hash[*name_value_pairs_from(names_and_values_in(details))]
+    Hash[*name_value_pairs_from(names_and_values_in(details))]
   end
 
   def name_value_pairs_from names_and_values
     names_and_values.collect { |e|
       item = e.strip
       if is_a_name? item
-        replace_spaces_with_underscores_in(item)
+        replace_spaces_with_underscores_in(item).to_sym
       elsif is_a_value? item 
         remove_surrounding_quotes_from(item)
       end
