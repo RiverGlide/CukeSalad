@@ -15,5 +15,10 @@ class Calculator
     @result = @result + @display
     @display = @result
   end
-end
 
+  def equals
+    # All our examples require us to do so far is addition
+    # Another user-story for subtraction will cause this method to change
+    plus
+  end
+end

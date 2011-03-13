@@ -1,6 +1,7 @@
 class GetTheAnswer
 
-  def perform_as calculating_individual
-    calculating_individual.what_can_you_see
+  def perform_as the_user
+    the_user.presses :equals
+    the_user.can_see
   end
 end
