@@ -15,6 +15,7 @@ Of course, you still have to write some code - but only the code that expresses:
 * the roles and the actions they can perform 
 * the tasks and the actions involved in completing that task
 
+## Goals->Tasks->Actions
 The terms *"actions"* and *"tasks"* above come from Task Analysis, as used in User Centred Design (UCD) of Human Computer Interfaces (HCI) a.k.a. User Experience (UX):
 
 * *Goal:* What we’re trying to achieve which has one or more…
@@ -24,7 +25,7 @@ The terms *"actions"* and *"tasks"* above come from Task Analysis, as used in Us
 More information about Goals, Tasks and Actions can be found here:
 http://antonymarcano.com/blog/2011/03/goals-tasks-action/
 
-Enjoy!!
+Let's see how this works with a simple example...
 
 ## Install
 
