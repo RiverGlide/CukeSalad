@@ -12,8 +12,8 @@ You got it... no step-definitions, therefore no regular expressions, no scrollin
 
 Of course, you still have to write some code - but only the code that expresses:
 
-* the actions the users can perform and 
-* the actions the users will perform to complete each task
+* the roles and the actions they can perform 
+* the tasks and the actions involved in completing that task
 
 The terms *"actions"* and *"tasks"* above come from Task Analysis, as used in User Centred Design (UCD) of Human Computer Interfaces (HCI) a.k.a. User Experience (UX):
 
