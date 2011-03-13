@@ -25,7 +25,7 @@ describe Researcher do
   end
 
   it "apologises when it can't find what you asked for" do
-    lambda { @researcher.get_directives_for "something that isnt there" }.should raise_error RuntimeError, "I can't find a class called 'SomethingThatIsntThere'.\nMaybe you need to create it."
+    lambda { @researcher.get_directives_for "something that isnt there" }.should raise_error NameError
   end
 
 end

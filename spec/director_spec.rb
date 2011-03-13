@@ -36,6 +36,5 @@ describe Director do
     director = Director.new
 
     lambda { director.how_do_i_perform( "some task or role", "with 'extra information'" ) }.should raise_error TooMuchInformationComplaint
-
   end
 end

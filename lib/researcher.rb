@@ -3,7 +3,7 @@ class Researcher
     begin 
       find_directives_for something
     rescue NameError
-      raise "I can't find a class called '#{class_name_from something}'.\nMaybe you need to create it."
+      raise NameError, "I can't find a class called '#{class_name_from something}'.\nMaybe you need to create it."
     end
   end
 
