@@ -155,8 +155,6 @@ Our finished Calculator directory structure looks like this...
         ├── Addition.feature
         ├── roles/
         │   └── calculating_individual.rb
-        ├── step_definitions
-        │   └── calculator_steps.rb
         └── support/
         │   └── env.rb
         └── tasks/
