@@ -10,10 +10,10 @@ CukeSalad allows you to focus on the task at hand - expressing examples, the rol
 
 You got it... no step-definitions, therefore no regular expressions, no scrolling through ever-growing _step.rb files.
 
-Of course, you still have to write some code - but only the code that:
+Of course, you still have to write some code - but only the code that expresses:
 
-* Expresses the actions the users can perform and 
-* Expresses the actions the users will perform to complete each task
+* the actions the users can perform and 
+* the actions the users will perform to complete each task
 
 The terms *"actions"* and *"tasks"* above come from Task Analysis, as used in User Centred Design (UCD) of Human Computer Interfaces (HCI) a.k.a. User Experience (UX):
 
