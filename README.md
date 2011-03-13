@@ -16,9 +16,10 @@ Of course, you still have to write some code - but only the code that:
 * Expresses the actions the users will perform to complete each task
 
 The terms *"actions"* and *"tasks"* above come from Task Analysis, as used in User Centred Design (UCD) of Human Computer Interfaces (HCI) a.k.a. User Experience (UX):
-*Goal:* What we’re trying to achieve which has one or more…
-*Tasks:* The high-level work-item that we complete to fulfil the goal, each having one or more…
-*Actions:* The specific steps or interactions we execute to complete the task.
+
+* *Goal:* What we’re trying to achieve which has one or more…
+* *Tasks:* The high-level work-item that we complete to fulfil the goal, each having one or more…
+* *Actions:* The specific steps or interactions we execute to complete the task.
 
 More information about Goals, Tasks and Actions can be found here:
 http://antonymarcano.com/blog/2011/03/goals-tasks-action/
