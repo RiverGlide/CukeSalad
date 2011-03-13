@@ -85,10 +85,6 @@ called `features/roles/calculating_individual.rb`
       @display = 0
     end
   
-Let's require our `CalculatingIndividual` in our `support/env.rb` file:
-
-    require 'calculating_individual'
-
 Then run `cucumber Examples/Calculator`. 
 
 We now have our first passing Feature, without writing a single step definition!
