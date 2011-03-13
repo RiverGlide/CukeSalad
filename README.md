@@ -2,6 +2,29 @@
 
 _Cucumber, washed and ready to eat for Friction-free ATDD/BDD_
 
+## This project has step-free access!
+
+That's right, with CukeSalad you don't need to write step-definitions!
+
+CukeSalad allows you to focus on the task at hand - expressing examples, the roles involved in those examples and what those roles can do with the product under development.
+
+You got it... no step-definitions, therefore no regular expressions, no scrolling through ever-growing _step.rb files.
+
+Of course, you still have to write some code - but only the code that:
+
+* Expresses the actions the users can perform and 
+* Expresses the actions the users will perform to complete each task
+
+The terms *"actions"* and *"tasks"* above come from Task Analysis, as used in User Centred Design (UCD) of Human Computer Interfaces (HCI) a.k.a. User Experience (UX):
+*Goal:* What we’re trying to achieve which has one or more…
+*Tasks:* The high-level work-item that we complete to fulfil the goal, each having one or more…
+*Actions:* The specific steps or interactions we execute to complete the task.
+
+More information about Goals, Tasks and Actions can be found here:
+http://antonymarcano.com/blog/2011/03/goals-tasks-action/
+
+Enjoy!!
+
 ## Install
 
     gem install bundler
@@ -9,7 +32,7 @@ _Cucumber, washed and ready to eat for Friction-free ATDD/BDD_
     git clone git@github.com:RiverGlide/CukeNarrative.git
     bundle install
 
-## Get started
+## Let's Get started
 
 Create a new project outside of the CukeSalad directory structure.
 Inside the root of that project:
@@ -85,7 +108,7 @@ called `features/roles/calculating_individual.rb`
       @display = 0
     end
   
-Then run `cucumber Examples/Calculator`. 
+From your project folder, run `cucumber .` (i.e. telling cucumber to use the current folder). 
 
 We now have our first passing Feature, without writing a single step definition!
 
@@ -106,7 +129,7 @@ Let's examine that for a second...
 
     When I attempt to <do something>: <name> '<value>' <name> '<value>'
 
-So, we need an action called add.rb:
+So, we need a task called `add.rb` that explains the individual actions required to complete the task:
 
     class Add < TaskWithSpecifics
 
