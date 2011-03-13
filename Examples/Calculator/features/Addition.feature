@@ -12,5 +12,8 @@ Scenario Outline: Find the sum of two numbers
 	
 Examples:
 |first_number|second_number|result|
-|        10  |           5 | 15.0 |
-|        10.5|           5 | 15.5 |
+|          0 |           0 |    0 |
+|          0 |           1 |    1 |
+|          1 |           0 |    1 |
+|          1 |           1 |    2 |
+|         10 |           9 |   19 |
