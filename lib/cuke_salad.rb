@@ -1,9 +1,7 @@
-$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
-require 'rubygems'
-require 'bundler'
 require 'actor'
+require 'director'
+require 'researcher'
 require 'task_with_specifics'
-Bundler.setup
 
 Given /^I am a ([a-zA-Z ]+)$/ do |role|
   @actor = Actor.new(role)

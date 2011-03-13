@@ -1,8 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
-require 'rubygems'
-require 'bundler'
 require 'ostruct'
-Bundler.setup
 
 class TaskWithSpecifics
   def initialize details

@@ -1,8 +1,5 @@
-$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
-require 'rubygems'
-require 'bundler'
-require 'task_with_specifics'
-Bundler.setup
+$:.unshift(File.dirname(__FILE__), ".")
+require 'spec_helper'
 
 class MyTask < TaskWithSpecifics
 
