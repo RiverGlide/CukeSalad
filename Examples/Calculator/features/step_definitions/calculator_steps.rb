@@ -1,3 +1,2 @@
-# Look Ma, No step defs!
-
-require 'calculating_individual' 
+# 'Look Ma, No step defs!'
+# Surprised? See http://github.com/RiverGlide/CukeSalad for details.

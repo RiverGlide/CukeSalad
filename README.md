@@ -18,6 +18,7 @@ Inside the root of that project:
     mkdir features/step_definitions
     mkdir features/roles
     mkdir features/tasks
+    mkdir support
 
 In idiomatic Cucumber style, we use `support/env.rb` to require _CukeSalad_ and
 define the location of our project's _roles_ and _tasks_:
@@ -30,7 +31,7 @@ define the location of our project's _roles_ and _tasks_:
 
 ## Write Features
 
-In features, create your first feature file:
+In `features/`, let's create our first feature file - `A_PlaceToStart.feature`:
 
     Feature: A Place To Start
     As Harry, a calculating individual
@@ -42,22 +43,22 @@ In features, create your first feature file:
       When  I attempt to switch on the calculator
       Then  I should get the answer '0'
 
-Let's take a second to understand this scenario:
+Let's take a moment to understand this scenario:
 
     Scenario: Let's Begin
       Given I am a <some role>
       When  I attempt to <do some task>
       Then  I should <ask some question> '<expected answer>'
 
-To get this working, you don't need to write any steps. 
-Just explain how to do the task using a class...
+To get this working, we don't need to write any steps. 
+Just explain how to do the _task_ using a class...
 
 ## Create Tasks
 
 Explaining how to do a _task_ is easy: 
 Create a new file, `features/tasks/switch_on_the_calculator.rb`
 
-      class SwitchOnTheCalculator
+    class SwitchOnTheCalculator
       include RSpec::Matchers
   
       def perform_as calculating_individual
@@ -84,11 +85,7 @@ called `features/roles/calculating_individual.rb`
       @display = 0
     end
   
-Let's require our `CalculatingIndividual` in a step definitions
-file; because it's specific to our domain. 
-
-We do that by creating the
-`features/step_definitions/calculator_steps.rb` file and adding the line:
+Let's require our `CalculatingIndividual` in our `support/env.rb` file:
 
     require 'calculating_individual'
 
@@ -106,8 +103,10 @@ Let's try another scenario...
       When I attempt to add: the number '10.0' to the number '10.0'
       Then I should get the answer '20.0'
 
-Notice that we've reused "switch on the calculator'. 
-The new _When_ step has a slightly different layout. Let's examine that for a second...
+Notice that we've reused 'switch on the calculator'. 
+
+The new _When_ step has a slightly different layout. 
+Let's examine that for a second...
 
     When I attempt to <do something>: <name> '<value>' <name> '<value>'
 
@@ -126,9 +125,9 @@ So, we need an action called add.rb:
 And then modify our `calculating_individual.rb` to receive those calls...
 
     class CalculatingIndividual
-    # This class represents the type of user of your application
-    # This example also contains the implementation
-    #  but obviously, this wouldn't normally be the case.
+      # This class represents the type of user of your application
+      # This example also contains the implementation
+      # but obviously, this wouldn't normally be the case.
   
       attr_reader :display
   
@@ -151,7 +150,7 @@ There's no need to write `step_definitions`...
 Simply express the _roles_ and the _tasks_ in clear, 
 concise, easy to read classes.
 
-Our finished Calculator example's directory structure looks like this...
+Our finished Calculator directory structure looks like this...
 
     └── Calculator/
       ├── cucumber.yml
