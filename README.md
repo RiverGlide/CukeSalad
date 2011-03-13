@@ -2,6 +2,14 @@
 
 _Cucumber, washed and ready to eat for Friction-free ATDD/BDD_
 
+**This is an early release to get community feedback**
+__There are a few step structures that need to be imlpemented before it becomes usable on a real project__
+__This implementation is the result of lessons learned on real projects__
+
+__CukeSalad - a **RiverGlide** innovation__
+
+http://RiverGlide.com
+
 ## This project has step-free access!
 
 That's right, with CukeSalad you don't need to write step-definitions!
