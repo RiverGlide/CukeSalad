@@ -35,21 +35,24 @@ Enjoy!!
 
 ## Let's Get started
 
-Create a new project outside of the CukeSalad directory structure.
-Inside the root of that project:
+Create a new project outside of the CukeSalad directory structure, e.g.:
 
+    mkdir ~/projects/Calculator
+    cd ~/projects/Calculator
+
+Inside the root of that project...
+
+    mkdir support
     mkdir features
-    mkdir features/step_definitions
     mkdir features/roles
     mkdir features/tasks
-    mkdir support
 
 In idiomatic Cucumber style, we use `support/env.rb` to require _CukeSalad_ and
-define the location of our project's _roles_ and _tasks_:
+define the location of our project's _roles_ and _tasks_ e.g.:
 
     $:.unshift(File.dirname(__FILE__) + '/../features/roles')
     $:.unshift(File.dirname(__FILE__) + '/../features/tasks')
-    $:.unshift(File.dirname(__FILE__) + '/../../../lib') #where to find CukeSalad
+    $:.unshift(File.dirname(__FILE__) + '/../../CukeSalad/lib') #where to find CukeSalad
 
     require 'cuke_salad'
 
@@ -109,7 +112,11 @@ called `features/roles/calculating_individual.rb`
       @display = 0
     end
   
-From your project folder, run `cucumber .` (i.e. telling cucumber to use the current folder). 
+From your project folder, run (_note: '%' is our command prompt_)
+
+  % cucumber .
+
+(i.e. telling cucumber to use the current folder). 
 
 We now have our first passing Feature, without writing a single step definition!
 
@@ -126,11 +133,11 @@ Let's try another scenario...
 Notice that we've reused 'switch on the calculator'. 
 
 The new _When_ step has a slightly different layout. 
-Let's examine that for a second...
+Let's examine that for a second... Notice the ':' (colon) after <do something> and the name-value pairs:
 
     When I attempt to <do something>: <name> '<value>' <name> '<value>'
 
-So, we need a task called `add.rb` that explains the individual actions required to complete the task:
+So, we need a task called `tasks/add.rb` that explains the individual actions required to complete the task:
 
     class Add < TaskWithSpecifics
 
@@ -165,6 +172,10 @@ And then modify our `calculating_individual.rb` to receive those calls...
         @display = @result
       end
     end
+
+Now, you can run cucumber again:
+
+    % cucumber .
 
 There's no need to write `step_definitions`... 
 Simply express the _roles_ and the _tasks_ in clear, 
