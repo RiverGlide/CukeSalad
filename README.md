@@ -53,19 +53,20 @@ Create a new project outside of the CukeSalad directory structure, e.g.:
 
 Inside the root of that project...
 
-    mkdir support
     mkdir features
+    mkdir features/support
     mkdir features/roles
     mkdir features/tasks
 
-In idiomatic Cucumber style, we use `support/env.rb` to require _CukeSalad_ and
+In idiomatic Cucumber style, we use `features/support/env.rb` to require _CukeSalad_ and
 define the location of our project's _roles_ and _tasks_ e.g.:
 
-    $:.unshift(File.dirname(__FILE__) + '/../features/roles')
-    $:.unshift(File.dirname(__FILE__) + '/../features/tasks')
-    $:.unshift(File.dirname(__FILE__) + '/../../CukeSalad/lib') #where to find CukeSalad
+    $:.unshift(File.dirname(__FILE__) + '/../roles')
+    $:.unshift(File.dirname(__FILE__) + '/../tasks')
+    $:.unshift(File.dirname(__FILE__) + '/../../../../lib') #where to find CukeSalad
 
     require 'cuke_salad'
+    begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end
 
 ## Write Features
 
@@ -125,11 +126,9 @@ called `features/roles/calculating_individual.rb`
   
 From your project folder, run (_note: '%' is our command prompt_)
 
-  % cucumber .
+  % cucumber 
 
-(i.e. telling cucumber to use the current folder). 
-
-We now have our first passing Feature, without writing a single step definition!
+We now have our first passing Feature, without creating a single step definition!
 
 ## Wash, rinse, repeat
 
@@ -186,7 +185,7 @@ And then modify our `calculating_individual.rb` to receive those calls...
 
 Now, you can run cucumber again:
 
-    % cucumber .
+    % cucumber 
 
 There's no need to write `step_definitions`... 
 Simply express the _roles_ and the _tasks_ in clear, 
