@@ -12,13 +12,16 @@ class Calculator
   end
   
   def plus
-    equals
-    @operator = :add
+    get_ready_to :add
   end
   
   def minus
+    get_ready_to :subtract
+  end
+
+  def get_ready_to do_this
     equals
-    @operator = :subtract
+    @operator = do_this
   end
 
   def equals
