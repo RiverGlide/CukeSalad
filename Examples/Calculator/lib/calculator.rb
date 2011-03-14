@@ -11,14 +11,6 @@ class Calculator
     @display = value
   end
   
-  def plus
-    get_ready_to :add
-  end
-  
-  def minus
-    get_ready_to :subtract
-  end
-
   def get_ready_to do_this
     equals
     @operator = do_this
@@ -32,11 +24,11 @@ class Calculator
     end
   end
 
-  def add 
+  def plus 
     @result + @display
   end
   
-  def subtract 
+  def minus 
     @result - @display
   end
 end

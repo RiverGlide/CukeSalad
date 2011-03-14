@@ -11,7 +11,7 @@ class CalculatingIndividual
   end
 
   def presses button
-    @calculator.send button
+    @calculator.get_ready_to button
   end
 
   def can_see
