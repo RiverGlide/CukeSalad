@@ -5,7 +5,6 @@ class Calculator
   def initialize
     @display = 0
     @result = 0
-    @next_operator = :display
   end
   
   def enter value
@@ -19,15 +18,8 @@ class Calculator
   end
 
   def do_calculation
-    send @next_operator
+    return [@result, @display].inject( @next_operator ) unless @next_operator.nil?
+    @display
   end
   alias :equals :do_calculation
- 
-  def plus
-    @result + @display
-  end
- 
-  def minus 
-    @result - @display
-  end
 end
