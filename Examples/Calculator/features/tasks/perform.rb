@@ -1,7 +1,7 @@
 class Perform < TaskWithSpecifics
 
   def tokens
-    value_of( :the_calculation ).split(" ")
+    value_of( :the_following ).split(" ")
   end
 
   def perform_as the_user
