@@ -12,13 +12,28 @@ class Calculator
   end
   
   def plus
-    @result = @result + @display
-    @display = @result
+    equals
+    @operator = :add
+  end
+  
+  def minus
+    equals
+    @operator = :subtract
   end
 
   def equals
-    # All our examples require us to do so far is addition
-    # Another user-story for subtraction will cause this method to change
-    plus
+    @result = @display if @operator.nil?
+    if !@operator.nil?
+      @result = send @operator
+      @display = @result
+    end
+  end
+
+  def add 
+    @result + @display
+  end
+  
+  def subtract 
+    @result - @display
   end
 end

@@ -7,7 +7,7 @@ class CalculatingIndividual
   end
 
   def enters value
-    @calculator.enter value
+    @calculator.enter value.to_i
   end
 
   def presses button
