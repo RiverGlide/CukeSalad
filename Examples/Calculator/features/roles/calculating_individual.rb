@@ -4,6 +4,10 @@ class CalculatingIndividual
 
   def initialize
     @calculator = Calculator.new
+    @operate_with = {
+      plus: :+,
+     minus: :-
+    }
   end
 
   def enters value
@@ -11,7 +15,7 @@ class CalculatingIndividual
   end
 
   def presses next_operator
-    @calculator.get_ready_to next_operator
+    @calculator.get_ready_to @operate_with[next_operator]
   end
 
   def equals

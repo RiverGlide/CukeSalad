@@ -17,7 +17,7 @@ class Calculator
   end
 
   def do_calculation
-    return [@previous, @display].inject( @next_operator )
+    [@previous, @display].inject( @next_operator )
   end
   alias :equals :do_calculation
 end
