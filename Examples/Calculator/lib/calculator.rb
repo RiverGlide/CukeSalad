@@ -4,22 +4,20 @@ class Calculator
   
   def initialize
     @display = 0
-    @result = 0
   end
   
   def enter value
+    @previous = @display
     @display = value
   end
   
   def get_ready_to do_this
-    @result = do_calculation
-    @display = @result
+    @display = do_calculation unless @next_operator.nil?
     @next_operator = do_this
   end
 
   def do_calculation
-    return [@result, @display].inject( @next_operator ) unless @next_operator.nil?
-    @display
+    return [@previous, @display].inject( @next_operator )
   end
   alias :equals :do_calculation
 end
