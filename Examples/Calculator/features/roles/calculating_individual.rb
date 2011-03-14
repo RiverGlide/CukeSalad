@@ -19,7 +19,7 @@ class CalculatingIndividual
   end
 
   def equals
-    @calculator.equals
+    @calculator.do_calculation
   end
 
   def can_see
