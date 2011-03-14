@@ -1,7 +1,7 @@
 Feature: Addition
-  As Harry, a calculating individual
+  As Callie, a calculating individual
   I want to quickly find out the sum of some numbers
-	So that I don't have the delay of my slow mental arithmetic
+	So that I am not tired out by doing mental arithmetic all day 
 	
 Scenario Outline: Find the sum of two numbers
   Given I am a Calculating Individual

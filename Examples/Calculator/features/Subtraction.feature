@@ -1,9 +1,9 @@
-Feature: Addition
-  As Harry, a calculating individual
-  I want to quickly find out the sum of some numbers
-	So that I don't have the delay of my slow mental arithmetic
+Feature: Subtraction
+  As Callie, a calculating individual
+  I want to quickly find the difference between two numbers
+	So that I am not tired out by doing mental arithmetic all day
 	
-Scenario Outline: Find the sum of two numbers
+Scenario Outline: Find the result of subtracting two numbers
   Given I am a Calculating Individual
   And I was able to switch on the calculator
   When I attempt to subtract: the number '<subtractor>' from the number '<subtractee>'
