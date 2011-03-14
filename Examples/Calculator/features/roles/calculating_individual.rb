@@ -10,8 +10,8 @@ class CalculatingIndividual
     @calculator.enter value.to_i
   end
 
-  def presses button
-    @calculator.get_ready_to button
+  def presses next_operator
+    @calculator.get_ready_to next_operator
   end
 
   def can_see

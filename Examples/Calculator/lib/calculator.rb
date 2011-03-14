@@ -5,6 +5,7 @@ class Calculator
   def initialize
     @display = 0
     @result = 0
+    @next_operator = :display
   end
   
   def enter value
@@ -12,22 +13,20 @@ class Calculator
   end
   
   def get_ready_to do_this
-    equals
-    @operator = do_this
+    @result = do_calculation
+    @display = @result
+    @next_operator = do_this
   end
 
-  def equals
-    @result = @display if @operator.nil?
-    if !@operator.nil?
-      @result = send @operator
-      @display = @result
-    end
+  def do_calculation
+    send @next_operator
   end
-
-  def plus 
+  alias :equals :do_calculation
+ 
+  def plus
     @result + @display
   end
-  
+ 
   def minus 
     @result - @display
   end
