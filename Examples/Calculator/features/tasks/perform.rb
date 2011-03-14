@@ -5,10 +5,10 @@ class Perform < TaskWithSpecifics
   end
 
   def perform_as the_user
-    using_operator = {"+" => :plus, "-" => :minus}
+    operator = {"+" => :plus, "-" => :minus}
     tokens.each do | token |
       the_user.enters token.to_i if token =~ /\d+/
-      the_user.presses using_operator[token] if using_operator.include? token
+      the_user.presses operator[token] if operator.include? token
     end
   end
 end
