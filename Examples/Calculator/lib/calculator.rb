@@ -1,5 +1,6 @@
 class Calculator
-  
+  # This is all the calculator needs to do based on the current specification
+  # Obviously, we'd specifying behaviours until we had a fully-fledged calculator  
   attr_reader :display
   
   def initialize
