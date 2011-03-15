@@ -2,23 +2,21 @@
 
 _Cucumber, washed and ready to eat for Friction-free ATDD/BDD_
 
-**This is an early release to get community feedback**
+**This is a work in progress - feedback welcome**
+e-mail feedback to talktous@riverglide.com
 
-There are a few step structures that need to be implemented before it becomes usable on a real project
-
-This implementation is the result of lessons learned on real projects
-
-__CukeSalad - a **RiverGlide** innovation__
-
-http://RiverGlide.com
+** ToDo: **
+* Support more step structures - such as tables as input
+* Move beyond current examples and document with Cucumber
+* Make available as a gem
+* Remembering data between steps
+* Multiple role/actor scenarios
 
 ## This project has step-free access!
 
-That's right, with CukeSalad you don't need to write step-definitions!
-
 CukeSalad allows you to focus on the task at hand - expressing examples, the roles involved in those examples and what those roles can do with the product under development.
 
-You got it... no step-definitions, therefore no regular expressions, no scrolling through ever-growing _step.rb files.
+With CukeSalad you don't need to write step-definitions.
 
 Of course, you still have to write some code - but only the code that expresses:
 
