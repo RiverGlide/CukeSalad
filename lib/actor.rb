@@ -4,10 +4,6 @@ require 'bundler'
 require 'director'
 Bundler.setup
 
-class Director
-#temporary
-end
-
 class Actor
 
   def initialize role, director=Director.new

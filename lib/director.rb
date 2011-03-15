@@ -12,26 +12,26 @@ class Director
 
   def how_do_i_perform this_thing, *with_details
     directives = @researcher.get_directives_for( this_thing )
-    too_many_arguments if (we_dont_need_details_for?(directives) && we_were_called( with_details ))
-    too_few_arguments  if (we_need_details_for?(directives) &&  we_were_not_called( with_details ))
+    too_many_arguments if (we_dont_need_details_for?(directives) && we_were_called?( with_details ))
+    too_few_arguments  if (we_need_details_for?(directives) &&  we_were_not_called?( with_details ))
 
     directives.new *with_details
   end
 
-  def we_were_called something
-    !we_were_not_called something
+  def we_were_called? with_something
+    !we_were_not_called? with_something
   end
   
-  def we_were_not_called something
-    something.empty?
+  def we_were_not_called? with_something
+    with_something.empty?
   end
 
-  def we_dont_need_details_for? something
-     !we_need_details_for? something
+  def we_dont_need_details_for? with_something
+     !we_need_details_for? with_something
   end
 
-  def we_need_details_for? something
-     something.instance_method(:initialize).arity > 0 
+  def we_need_details_for? with_something
+     with_something.instance_method(:initialize).arity > 0 
   end
 
   def too_many_arguments
