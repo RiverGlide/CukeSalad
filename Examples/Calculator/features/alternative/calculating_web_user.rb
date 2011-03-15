@@ -2,40 +2,35 @@
 # cucumber -r features/roles/calculating_web_user.rb -r features/tasks/ -r features/support/env.rb -r features/*.feature<cr>
 # TODO: Move this stuff to the readme
 
-class Browser
-  
-  # This class will wrap Capybara or whatever browser driver we're using
-  
-  def go_to this_uri
+require 'web_calculator'
+require 'capybara'
+require 'capybara/dsl'
 
-  end
-
-  def page
-    response
-  end
-end
+Capybara.app = WebCalculator
+Capybara.default_driver = :rack_test
 
 class CalculatingIndividual
 
   # Uses a Browser to perform its tasks
+  include Capybara
 
   def initialize 
-    open_browser
-    @browser.go_to '/calculator'
-    @browser.page.should have_selector('title', :content => 'Calculator')
-  end
-
-  def open_browser 
-    @browser ||= Browser.new
+    visit '/'
   end
 
   def enters value
+    fill_in 'display', :with => value
   end
   
-  def presses next_operator
+  def presses operator
+    click_button operator.to_s
   end
 
   def can_see 
-    0
+    find_field('display').value.to_i
+  end
+
+  def is_the_calculator_ready?
+    page.body.should =~ /Calculator is Ready!/
   end
 end
