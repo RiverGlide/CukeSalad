@@ -12,23 +12,47 @@ class WebCalculator < Sinatra::Base
     def operate_with
       { 'plus' => :+, 'minus' => :-}
     end
+
+    def load_session_into calc
+      calc.enter session[:display].to_i ||= 0
+      calc.get_ready_to operate_with[session[:previous_operator]] if session[:previous_operator]
+    end
+
+    def persist_into_session calc
+      session[:previous_operator] = params[:operator]
+      session[:display] = calc.display
+    end
+
+    def display_result_from calc
+      @display = calc.display
+      erb :index
+    end
+
+    def user_input
+      params[:display].to_i
+    end
+
+    def selected_operator
+      params[:operator]
+    end
+
+    def display_result_from_session
+      @display = session[:display] ||= 0
+      erb :index
+    end
   end
 
   get '/' do
-    @display = session[:display] ||= 0
-    erb :index
+    display_result_from_session
   end
 
   post '/' do
-    calc = Calculator.new
-    calc.enter session[:display].to_i ||= 0
-    calc.get_ready_to operate_with[session[:previous_operator]] if session[:previous_operator]
-    calc.enter params[:display].to_i
-    calc.get_ready_to operate_with[params[:operator]]
-    @display = calc.display
-    session[:previous_operator] = params[:operator]
-    session[:display] = calc.display
-    erb :index
+    calculator = Calculator.new
+    load_session_into calculator
+    calculator.enter user_input 
+    calculator.get_ready_to operate_with[selected_operator]
+    persist_into_session calculator
+    display_result_from calculator
   end
 end
 
