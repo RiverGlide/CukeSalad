@@ -1,5 +1,5 @@
 # To run with this version of the Calculating Individual:
-# cucumber -r features/roles/calculating_web_user.rb -r features/tasks/ -r features/support/env.rb -r features/*.feature<cr>
+# cucumber --profile alternative 
 # TODO: Move this stuff to the readme
 
 require 'web_calculator'

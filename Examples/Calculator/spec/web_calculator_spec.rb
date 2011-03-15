@@ -10,6 +10,10 @@ describe "WebCalculator", :type => :request do
 
   include Capybara
 
+  before(:each) do
+    Capybara.reset_sessions! 
+  end
+
   context "homepage" do
     it "is successful" do
       visit '/'
@@ -45,6 +49,7 @@ describe "WebCalculator", :type => :request do
       visit '/'
       fill_in 'display', :with => '15'
       click_button 'plus'
+      calculator_display.should == 15
       visit '/'
       calculator_display.should == 15
     end

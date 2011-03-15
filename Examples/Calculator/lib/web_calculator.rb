@@ -10,7 +10,7 @@ class WebCalculator < Sinatra::Base
 
   helpers do
     def operate_with
-      { :plus => :+, :minus => :- }
+      { 'plus' => :+, 'minus' => :-}
     end
   end
 
@@ -20,13 +20,14 @@ class WebCalculator < Sinatra::Base
   end
 
   post '/' do
-    puts params.inspect
     calc = Calculator.new
-    @display = params[:display]
-    calc.enter @display
+    calc.enter session[:display].to_i ||= 0
+    calc.get_ready_to operate_with[session[:previous_operator]] if session[:previous_operator]
+    calc.enter params[:display].to_i
     calc.get_ready_to operate_with[params[:operator]]
     @display = calc.display
-    session[:display] = @display
+    session[:previous_operator] = params[:operator]
+    session[:display] = calc.display
     erb :index
   end
 end
