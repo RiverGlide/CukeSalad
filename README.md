@@ -72,7 +72,7 @@ define the location of our project's _roles_ and _tasks_ e.g.:
 In `features/`, let's create our first feature file - `A_PlaceToStart.feature`:
 
     Feature: A Place To Start
-    As Harry, a calculating individual
+    As Callie, a calculating individual
     I want to know when my calculator is on
     So that I know when I can start calculating
 
