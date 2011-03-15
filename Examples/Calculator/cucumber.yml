@@ -1,2 +1,4 @@
+default: --exclude features/alternative/*.rb
+alternative: -r features/alternative/calculating_web_user.rb -r features/support/env.rb -r features/tasks/ 
 autotest: --color
 autotest-all: --color
