@@ -94,7 +94,7 @@ Just explain how to do the _task_ using a class...
 ## Create Tasks
 
 Explaining how to do a _task_ is easy: 
-Create a new file, `features/tasks/switch_on_the_calculator.rb`
+Create a new file, `features/lib/tasks/switch_on_the_calculator.rb`
 
     class SwitchOnTheCalculator
       include RSpec::Matchers
@@ -110,7 +110,7 @@ this example, we need to explain how the `CalculatingIndividual` _role_ works...
 ## Create Roles
 
 We explain a _role_ by creating a new file 
-called `features/roles/calculating_individual.rb`
+called `features/lib/roles/calculating_individual.rb`
 
     class CalculatingIndividual
     # This class represents the type of user of your application
@@ -192,16 +192,21 @@ concise, easy to read classes.
 
 Our finished Calculator directory structure looks like this...
 
-    └── Calculator/
-      ├── cucumber.yml
-      └── features/
-        ├── A_PlaceToStart.feature
-        ├── Addition.feature
-        ├── roles/
-        │   └── calculating_individual.rb
-        └── support/
-        │   └── env.rb
-        └── tasks/
-            ├── add.rb
-            ├── get_the_answer.rb
-            └── switch_on_the_calculator.rb
+├── cucumber.yml
+├── features
+│   ├── A_PlaceToStart.feature
+│   ├── LOOK_MA_NO_STEP_DEFS.txt
+│   ├── lib
+│   │   ├── roles
+│   │   │   └── calculating_individual.rb
+│   │   └── tasks
+│   │       ├── add.rb
+│   │       ├── get_the_answer.rb
+│   │       └── switch_on_the_calculator.rb
+│   └── support
+│       └── env.rb
+├── lib
+│   ├── calculator.rb
+└── spec
+    └── calculator_spec.rb
+
