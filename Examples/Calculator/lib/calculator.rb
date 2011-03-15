@@ -1,23 +1,37 @@
+
 class Calculator
-  # This is all the calculator needs to do based on the current specification
-  # Obviously, we'd specifying behaviours until we had a fully-fledged calculator  
+ 
   attr_reader :display
-  
+
   def initialize
     @display = 0
+    @operands = []
   end
   
   def enter value
-    @previous = @display
     @display = value
-  end
-  
-  def get_ready_to do_this
-    @display = do_calculation unless @next_operator.nil?
-    @next_operator = do_this
+    @operands.push value
   end
 
-  def do_calculation
-    [@previous, @display].inject( @next_operator )
+  def get_ready_to op
+    equals if @operands.size == 2
+    @operands = [@display] if @operator.nil?
+    @operator = op
   end
+
+  def equals
+    if @operands.size == 1
+      @operands.concat @operands
+    end
+    if @operands.size == 2 && @operator.nil? && @last_operator
+      @operator = @last_operator
+    end
+    unless @operator.nil?
+      @display = @operands.inject (@operator)
+      @last_operator = @operator
+      @operator = nil
+      @operands[0] = @display
+    end
+  end
+  
 end

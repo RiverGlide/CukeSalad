@@ -15,7 +15,11 @@ class CalculatingIndividual
   end
 
   def presses next_operator
-    @calculator.get_ready_to @operate_with[next_operator]
+    if next_operator == :equals
+      equals
+    else
+      @calculator.get_ready_to @operate_with[next_operator]
+    end
   end
 
   def equals
