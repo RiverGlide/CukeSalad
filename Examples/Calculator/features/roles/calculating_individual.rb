@@ -18,10 +18,6 @@ class CalculatingIndividual
     @calculator.get_ready_to @operate_with[next_operator]
   end
 
-  def equals
-    @calculator.equals
-  end
-
   def can_see
     @calculator.display
   end
