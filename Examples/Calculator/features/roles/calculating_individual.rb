@@ -22,10 +22,6 @@ class CalculatingIndividual
     end
   end
 
-  def equals
-    @calculator.equals
-  end
-
   def can_see
     @calculator.display
   end
