@@ -50,7 +50,11 @@ class WebCalculator < Sinatra::Base
     calculator = Calculator.new
     load_session_into calculator
     calculator.enter user_input 
-    calculator.get_ready_to operate_with[selected_operator]
+    if selected_operator == "equals"
+      calculator.equals
+    else
+      calculator.get_ready_to operate_with[selected_operator]
+    end
     persist_into_session calculator
     display_result_from calculator
   end
