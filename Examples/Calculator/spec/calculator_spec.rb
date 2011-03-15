@@ -28,7 +28,7 @@ describe Calculator do
     calc.display.should == 1
   end
 
-  it "does something 1 + =" do
+  it "treats 1 + = like 1 + 1 =" do
     calc = Calculator.new
 
     calc.enter 1
@@ -38,7 +38,7 @@ describe Calculator do
     calc.display.should == 2
   end
 
-  it "does something 1 + = =" do
+  it "repeats the last operation" do
     calc = Calculator.new
     calc.enter 1
     calc.get_ready_to :+
@@ -47,7 +47,7 @@ describe Calculator do
     calc.display.should == 3
   end
 
-  it "adds two numbers" do
+  it "starts again when you enter a number after equals" do
     calc = Calculator.new
     calc.enter 1
     calc.get_ready_to :+
@@ -71,4 +71,3 @@ describe Calculator do
   end
 
 end
-
