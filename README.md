@@ -3,7 +3,7 @@
 _Cucumber, washed and ready to eat for Friction-free ATDD/BDD_
 
 **This is a work in progress - feedback welcome**
-e-mail feedback to talktous@riverglide.com
+e-mail feedback to <talktous@riverglide.com>
 
 ** ToDo: **
 
@@ -31,8 +31,7 @@ The terms *"actions"* and *"tasks"* above come from Task Analysis, as used in Us
 * *Tasks:* The high-level work-item that we complete to fulfil the goal, each having one or more…
 * *Actions:* The specific steps or interactions we execute to complete the task.
 
-More information about Goals, Tasks and Actions can be found here:
-http://antonymarcano.com/blog/2011/03/goals-tasks-action/
+More information about Goals, Tasks and Actions can be found in this [blog post](http://antonymarcano.com/blog/2011/03/goals-tasks-action/)
 
 Let's see how this works with a simple example...
 
@@ -54,18 +53,19 @@ Inside the root of that project...
 
     mkdir features
     mkdir features/support
-    mkdir features/roles
-    mkdir features/tasks
+    mkdir features/lib/default/roles
+    mkdir features/lib/default/tasks
 
 In idiomatic Cucumber style, we use `features/support/env.rb` to require _CukeSalad_ and
 define the location of our project's _roles_ and _tasks_ e.g.:
 
-    $:.unshift(File.dirname(__FILE__) + '/../roles')
-    $:.unshift(File.dirname(__FILE__) + '/../tasks')
     $:.unshift(File.dirname(__FILE__) + '/../../../../lib') #where to find CukeSalad
 
     require 'cuke_salad'
     begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end
+
+Cucumber will automatically find our project's _roles_ and _tasks_, as it loads
+all .rb files beneath the project's `features/` directory.
 
 ## Write Features
 
@@ -224,3 +224,28 @@ Our finished Calculator directory structure looks like this...
         ├── calculator_spec.rb
             └── web_calculator_spec.rb
 
+## Alternative Roles
+
+As our features _describe the value of a calculator application and not its 
+implementation_, we have the opportunity to reuse them. 
+
+In the Calculator example, we create a new _role_ in
+`./features/lib/alternative/roles/calculating_web_user.rb`, which we can swap
+into our tests using a Cucumber profile defined in `features/cucumber.yml`:
+
+  default --exclude features/lib/alternative/
+  alternative -r features/lib/alternative/ -r features/support/env.rb -r features/lib/default/tasks/
+
+We can run our alternative configuration like so:
+
+  `%cucumber --profile alternative`
+
+The Calculating Web User masquerades as the Calculating Individual from our
+previous example, and provides the same API, allowing us to reuse all of our
+existing features and _tasks_.
+
+The alternative, `./lib/web_calculator.rb`, implementation is a simple [Sinatra](http://www.sinatrarb.com) application,
+which we drive with the [Capybara](http://github.com/jnicklas/capybara) web testing framework.
+
+By writing a single new _role_ class we're able to reuse all of our existing features,
+_tasks_ and even the `Calculator` itself, which the web calculator delegates to in order to do its calculations.
