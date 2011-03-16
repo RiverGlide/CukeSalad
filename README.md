@@ -233,8 +233,8 @@ In the Calculator example, we create a new _role_ in
 `./features/lib/alternative/roles/calculating_web_user.rb`, which we can swap
 into our tests using a Cucumber profile defined in `features/cucumber.yml`:
 
-  default --exclude features/lib/alternative/
-  alternative -r features/lib/alternative/ -r features/support/env.rb -r features/lib/default/tasks/
+    default --exclude features/lib/alternative/
+    alternative -r features/lib/alternative/ -r features/support/env.rb -r features/lib/default/tasks/
 
 We can run our alternative configuration like so:
 
