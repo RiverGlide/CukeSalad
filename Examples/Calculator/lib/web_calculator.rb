@@ -13,14 +13,9 @@ class WebCalculator < Sinatra::Base
       { 'plus' => :+, 'minus' => :-}
     end
 
-    def load_session_into calc
-      calc.enter session[:display].to_i ||= 0
-      calc.get_ready_to operate_with[session[:previous_operator]] if session[:previous_operator]
-    end
-
-    def persist_into_session calc
-      session[:previous_operator] = params[:operator]
-      session[:display] = calc.display
+    def persist calc
+      session[:calc] = calc
+      session[:previous_result] = calc.display
     end
 
     def display_result_from calc
@@ -37,25 +32,38 @@ class WebCalculator < Sinatra::Base
     end
 
     def display_result_from_session
-      @display = session[:display] ||= 0
+      @display = session[:calc].display ||= 0
       erb :index
     end
+
+    def input_entered?
+      params[:display_changed]
+    end
+
+    def equals_pressed?
+      selected_operator == "equals"
+    end
+
+    def load_calculator
+      session[:calc] ||= Calculator.new
+    end
+  
   end
 
   get '/' do
+    load_calculator
     display_result_from_session
   end
 
   post '/' do
-    calculator = Calculator.new
-    load_session_into calculator
-    calculator.enter user_input 
-    if selected_operator == "equals"
+    calculator = load_calculator 
+    calculator.enter user_input if input_entered?
+    if equals_pressed?
       calculator.equals
     else
       calculator.get_ready_to operate_with[selected_operator]
     end
-    persist_into_session calculator
+    persist calculator
     display_result_from calculator
   end
 end
@@ -70,5 +78,6 @@ __END__
   <input type="text" name="display" id="display" value="<%=@display %>" />
   <input type="submit" name="operator" id="minus" text="-" value="minus" />
   <input type="submit" name="operator" id="plus" text="+" value="plus" />
-  <input type="submit" name="equals" id="equals" text="=" value="equals" />
+  <input type="submit" name="operator" id="equals" text="=" value="equals" />
+  <input type="radio" name="display_changed" id="display_changed" value="changed" />
 </form>

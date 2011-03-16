@@ -34,6 +34,7 @@ describe "WebCalculator", :type => :request do
     it "udpates the display when an operator is pressed" do
       visit '/'
       fill_in 'display', :with => '10'
+      choose 'display_changed'
       click_button 'minus'
       calculator_display.should == 10
     end
@@ -41,13 +42,26 @@ describe "WebCalculator", :type => :request do
     it "updates the display when a different different operator is pressed" do
       visit '/'
       fill_in 'display', :with => '15'
+      choose 'display_changed'
       click_button 'plus'
       calculator_display.should == 15
+    end
+
+    it "updates the display when a sequence of operators are entered" do
+      visit '/'
+      fill_in 'display', :with => '1'
+      choose 'display_changed'
+      click_button 'plus'
+      fill_in 'display', :with => '1'
+      choose 'display_changed'
+      click_button 'plus'
+      calculator_display.should == 2 
     end
 
     it "persists the display between requests" do
       visit '/'
       fill_in 'display', :with => '15'
+      choose 'display_changed'
       click_button 'plus'
       calculator_display.should == 15
       visit '/'
@@ -59,10 +73,37 @@ describe "WebCalculator", :type => :request do
     it "adds two numbers" do
       visit '/'
       fill_in 'display', :with => '1'
+      choose 'display_changed'
       click_button 'plus'
       fill_in 'display', :with => '0'
+      choose 'display_changed'
       click_button 'equals'
       calculator_display.should == 1
     end
+    
+    it "adds two of the same number" do
+      visit '/'
+      fill_in 'display', :with => '1'
+      choose 'display_changed'
+      click_button 'plus'
+      fill_in 'display', :with => '1'
+      choose 'display_changed'
+      click_button 'equals'
+      calculator_display.should == 2
+    end
   end
+
+  context "doing meta calculations" do
+    it "allows double equals calculator functionality" do
+      visit '/'
+      fill_in 'display', :with => '1'
+      choose 'display_changed'
+      click_button 'plus'
+      click_button 'equals'
+      calculator_display.should == 2
+      click_button 'equals'
+      calculator_display.should == 3
+    end
+  end
+
 end
