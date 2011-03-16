@@ -192,21 +192,35 @@ concise, easy to read classes.
 
 Our finished Calculator directory structure looks like this...
 
-├── cucumber.yml
-├── features
-│   ├── A_PlaceToStart.feature
-│   ├── LOOK_MA_NO_STEP_DEFS.txt
-│   ├── lib
-│   │   ├── roles
-│   │   │   └── calculating_individual.rb
-│   │   └── tasks
-│   │       ├── add.rb
-│   │       ├── get_the_answer.rb
-│   │       └── switch_on_the_calculator.rb
-│   └── support
-│       └── env.rb
-├── lib
-│   ├── calculator.rb
-└── spec
-    └── calculator_spec.rb
+    ├── cucumber.yml
+    ├── features
+    │   ├── A_PlaceToStart.feature
+    │   ├── Addition.feature
+    │   ├── Complex_calculations.feature
+    │   ├── LOOK_MA_NO_STEP_DEFS.txt
+    │   ├── Subtraction.feature
+    │   ├── Typical_workflow.feature
+    │   ├── lib
+    │   │   ├── alternative
+    │   │   │   ├── roles
+    │   │   │   │   └── calculating_web_user.rb
+    │   │   │   └── tasks
+    │   │   └── default
+    │   │       ├── roles
+    │   │       │   └── calculating_individual.rb
+    │   │       └── tasks
+    │   │           ├── add.rb
+    │   │           ├── get_the_answer.rb
+    │   │           ├── perform.rb
+    │   │           ├── see_the_result.rb
+    │   │           ├── subtract.rb
+    │   │           └── switch_on_the_calculator.rb
+    │   └── support
+    │       └── env.rb
+    ├── lib
+    │   ├── calculator.rb
+    │   └── web_calculator.rb
+    └── spec
+        ├── calculator_spec.rb
+            └── web_calculator_spec.rb
 
