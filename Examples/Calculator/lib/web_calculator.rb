@@ -15,7 +15,6 @@ class WebCalculator < Sinatra::Base
 
     def persist calc
       session[:calc] = calc
-      session[:previous_result] = calc.display
     end
 
     def display_result_from calc
@@ -24,7 +23,7 @@ class WebCalculator < Sinatra::Base
     end
 
     def user_input
-      params[:display].to_i
+      params[:number].to_i
     end
 
     def selected_operator
@@ -37,7 +36,7 @@ class WebCalculator < Sinatra::Base
     end
 
     def input_entered?
-      params[:display_changed]
+      not params[:number].empty?
     end
 
     def equals_pressed?
@@ -75,9 +74,9 @@ __END__
 
 @@ index
 <form method="POST" action="/">
-  <input type="text" name="display" id="display" value="<%=@display %>" />
+  <input type="text" disabled name="display" id="display" value="<%=@display %>" />
+  <input type="text" name="number" id="number" />
   <input type="submit" name="operator" id="minus" text="-" value="minus" />
   <input type="submit" name="operator" id="plus" text="+" value="plus" />
   <input type="submit" name="operator" id="equals" text="=" value="equals" />
-  <input type="radio" name="display_changed" id="display_changed" value="changed" />
 </form>

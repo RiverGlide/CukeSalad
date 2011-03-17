@@ -19,8 +19,7 @@ class CalculatingIndividual
   end
 
   def enters value
-    fill_in 'display', :with => value
-    choose 'display_changed'
+    fill_in 'number', :with => value
   end
   
   def presses operator
