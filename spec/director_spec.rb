@@ -1,21 +1,31 @@
 $:.unshift(File.dirname(__FILE__), ".")
 require 'spec_helper'
 
-class SomeTaskOrRole
+class Something
 end
-
-class SomeTaskThatNeedsInformation
-  attr_reader :information
-  def initialize information
-    @information = information
-  end
+class Another
+end
+class MoreThanOneWord
 end
 
 describe Director do
-  
-  it "tells you how to perform something like a task or a role" do
-    director = Director.new
 
-    director.how_do_i_perform( "some task or role" ).should == SomeTaskOrRole
+  before :each do
+    @director = Director.new
   end
+
+  it "gives you directives (i.e. a class) for Something" do
+    the_thing_we_found = @director.how_do_i_perform "something"
+    the_thing_we_found.should == Something  
+  end
+
+  it "finds directives (i.e. a class) for something described with more than one word" do
+    the_thing_we_found = @director.how_do_i_perform "more than one word"
+    the_thing_we_found.should == MoreThanOneWord
+  end
+
+  it "apologises when it can't find what you asked for" do
+    lambda { @director.how_do_i_perform "something that isnt there" }.should raise_error NameError
+  end
+
 end

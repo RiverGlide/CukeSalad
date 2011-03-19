@@ -1,9 +1,5 @@
-$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
-require 'rubygems'
-require 'bundler'
-require 'director'
 require 'specifics'
-Bundler.setup
+require 'director'
 
 class Actor
   include Specifics
