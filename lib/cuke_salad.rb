@@ -1,7 +1,7 @@
 require 'actor'
 require 'director'
 require 'researcher'
-require 'task_with_specifics'
+require 'specifics'
 
 Given /^I am a ([a-zA-Z ]+)$/ do |role|
   @actor = Actor.new(role)

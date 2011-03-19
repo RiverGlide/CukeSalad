@@ -1,14 +1,14 @@
-class Perform < TaskWithSpecifics
+module Perform
 
   def tokens
     value_of( :the_following ).split(" ")
   end
 
-  def perform_as the_user
+  def follow_instructions
     operator = {"+" => :plus, "-" => :minus, "=" => :equals}
     tokens.each do | token |
-      the_user.enters token.to_i if token =~ /\d+/
-      the_user.presses operator[token] if operator.include? token
+      enters token.to_i if token =~ /\d+/
+      presses operator[token] if operator.include? token
     end
   end
 end

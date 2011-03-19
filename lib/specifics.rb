@@ -1,5 +1,5 @@
-class TaskWithSpecifics
-  def initialize details
+module Specifics
+  def understand_the details
     @info = with_specifics_from( details )
   end
   

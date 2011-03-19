@@ -1,8 +1,8 @@
-class Subtract < TaskWithSpecifics
+module Subtract
 
-  def perform_as the_user
-    the_user.enters value_of( :from_the_number)
-    the_user.presses :minus
-    the_user.enters value_of( :the_number )
+  def follow_instructions
+    enters value_of( :from_the_number)
+    presses :minus
+    enters value_of( :the_number )
   end
 end
