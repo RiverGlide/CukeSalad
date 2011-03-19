@@ -3,7 +3,7 @@ require 'rspec/expectations'
 module SwitchOnTheCalculator
   include RSpec::Matchers
   
-  def follow_instructions 
+  def perform_task 
      @calc = switch_on_the_calculator
      self.should respond_to :enter
      self.should respond_to :press

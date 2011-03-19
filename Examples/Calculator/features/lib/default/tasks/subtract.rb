@@ -1,6 +1,6 @@
 module Subtract
 
-  def follow_instructions
+  def perform_task
     lets_say_you_want_the_difference_between_two_numbers
     enter @the_first_number
     press :minus

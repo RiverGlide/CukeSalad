@@ -3,7 +3,7 @@ require 'spec_helper'
 
 module SetThePlaceAtTheTable
 
-  def follow_instructions
+  def perform_task
     place = []
     place_the_fork_on_the_left_of place
     place_the_knife_on_the_right_of place
@@ -13,7 +13,7 @@ end
 
 module LayTheTable
  
-  def follow_instructions
+  def perform_task
     value_of( :with_places_for ).to_i
   end
 end

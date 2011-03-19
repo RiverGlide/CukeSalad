@@ -1,6 +1,6 @@
 module SeeTheAnswer
 
-  def follow_instructions
+  def perform_task
     look_at_the_display
   end
 end

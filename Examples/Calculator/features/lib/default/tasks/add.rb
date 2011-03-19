@@ -1,6 +1,6 @@
 module Add
 
-  def follow_instructions
+  def perform_task
     lets_say_you_want_to_add_two_numbers
     enter @first_number
     press :plus

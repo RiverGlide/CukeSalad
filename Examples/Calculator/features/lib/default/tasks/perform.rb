@@ -1,6 +1,6 @@
 module Calculate
 
-  def follow_instructions
+  def perform_task
     enter_numbers_and_operators_in_turn
   end
 
