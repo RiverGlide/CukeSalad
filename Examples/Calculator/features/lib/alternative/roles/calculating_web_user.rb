@@ -9,12 +9,12 @@ require 'capybara/dsl'
 Capybara.app = WebCalculator
 Capybara.default_driver = :rack_test
 
-class CalculatingIndividual
+module CalculatingIndividual
 
   # Uses a Browser to perform its tasks
   include Capybara
 
-  def initialize 
+  def switch_on_the_calculator
     visit '/'
   end
 

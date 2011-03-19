@@ -1,6 +1,6 @@
-class SeeTheResult
+module SeeTheResult
 
-  def perform_as the_user
-    the_user.can_see
+  def follow_instructions
+    can_see
   end
 end
