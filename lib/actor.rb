@@ -13,10 +13,9 @@ class Actor
     get_ready_to_perform this_type_of_role
   end
   
-  def perform described_task, *with_these_details
+  def perform described_task, *details
     get_ready_to_perform described_task
-    details_required = with_these_details[0]
-    understand_the details_required unless details_required.nil?
+    understand_the *details unless details.empty?
     perform_task 
   end
   alias :answer :perform
