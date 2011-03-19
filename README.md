@@ -96,15 +96,23 @@ Just explain how to do the _task_ using a class...
 Explaining how to do a _task_ is easy: 
 Create a new file, `features/lib/tasks/switch_on_the_calculator.rb`
 
-    class SwitchOnTheCalculator
+    module SwitchOnTheCalculator
       include RSpec::Matchers
-  
-      def perform_as calculating_individual
-        calculating_individual.should_not be_nil
+      
+      def perform_task 
+         @calc = switch_on_the_calculator
       end
     end
 
-Now we've explained the _task_, we need to define the _role_ that performs it. In
+Now we need `task/see_the_display.rb`
+
+    module SeeTheAnswer
+      def perform_task
+        look_at_the_display
+      end
+    end
+
+Now we've explained the _tasks_, we need to define the _role_ that performs them. In
 this example, we need to explain how the `CalculatingIndividual` _role_ works...
 
 ## Create Roles
@@ -112,17 +120,19 @@ this example, we need to explain how the `CalculatingIndividual` _role_ works...
 We explain a _role_ by creating a new file 
 called `features/lib/roles/calculating_individual.rb`
 
-    class CalculatingIndividual
-    # This class represents the type of user of your application
-    # This example also contains the implementation
-    #  but obviously, this wouldn't normally be the case.
-  
-    attr_reader :display
-  
-    def initialize
-      @display = 0
-    end
-  
+    module CalculatingIndividual
+
+      def switch_on_the_calculator
+        @calculator = Calculator.new
+      end
+
+      def look_at_the_display
+        @calculator.display
+      end
+    end  
+
+You'll need a class called Calculator on the load path of course, but that's it.
+
 From your project folder, run (_note: '%' is our command prompt_)
 
   % cucumber 
@@ -136,8 +146,8 @@ Let's try another scenario...
     Scenario Outline: Find the sum of two numbers
       Given I am a Calculating Individual
       And I was able to switch on the calculator
-      When I attempt to add: the number '10.0' to the number '10.0'
-      Then I should get the answer '20.0'
+      When I attempt to add: the number '10' to the number '10'
+      Then I should get the answer '20'
 
 Notice that we've reused 'switch on the calculator'. 
 
@@ -146,39 +156,53 @@ Let's examine that for a second... Notice the ':' (colon) after <do something> a
 
     When I attempt to <do something>: <name> '<value>' <name> '<value>'
 
+You can have as many name-value pairs as you like.
+
 So, we need a task called `tasks/add.rb` that explains the individual actions required to complete the task:
 
-    class Add < TaskWithSpecifics
+    module Add
 
-      def perform_as calculating_individual
-        calculating_individual.enter value_of(:the_number).to_f
-        calculating_individual.plus
-        calculating_individual.enter value_of(:to_the_number).to_f
-        calculating_individual.plus
+      def perform_task
+        lets_say_you_want_to_add_two_numbers
+        enter @value_of(:the_number)
+        press :plus
+        enter @value_of(:to_the_number)
+        press :equals
       end
     end
 
-And then modify our `calculating_individual.rb` to receive those calls...
+Notice how the `value_of` lines use symbols that correspond to the wording `'the number '10' to the number '10'` in the "When" step.
 
-    class CalculatingIndividual
-      # This class represents the type of user of your application
-      # This example also contains the implementation
-      # but obviously, this wouldn't normally be the case.
-  
-      attr_reader :display
-  
-      def initialize
-        @display = 0
-        @result = 0
+Now we modify our `calculating_individual.rb` to receive those calls...
+
+    module CalculatingIndividual
+
+      def switch_on_the_calculator
+        @calculator = Calculator.new
+        @operate_with = {
+          plus: :+,
+         minus: :-
+        }
       end
-  
+
       def enter value
-        @display = value
+        @calculator.enter value.to_i
       end
-  
-      def plus
-        @result = @result + @display
-        @display = @result
+
+      def press next_operator
+        if next_operator == :equals
+          equals
+        else
+          @calculator.get_ready_to @operate_with[next_operator]
+        end
+      end
+
+      def equals
+        @calculator.equals
+      end
+
+      def look_at_the_display
+        @calculator.display
       end
     end
 
@@ -210,9 +234,8 @@ Our finished Calculator directory structure looks like this...
     │   │       │   └── calculating_individual.rb
     │   │       └── tasks
     │   │           ├── add.rb
-    │   │           ├── get_the_answer.rb
     │   │           ├── perform.rb
-    │   │           ├── see_the_result.rb
+    │   │           ├── see_the_answer.rb
     │   │           ├── subtract.rb
     │   │           └── switch_on_the_calculator.rb
     │   └── support
