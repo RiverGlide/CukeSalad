@@ -8,12 +8,12 @@ class Actor
 
   def initialize role, director=Director.new
     @director = director
-    @character = @director.how_do_i_perform role
+    extend( @director.how_do_i_perform role )
   end
   
   def perform task_description, *with_these_details
-    task = @director.how_do_i_perform task_description, *with_these_details
-    task.perform_as @character
+    extend( @director.how_do_i_perform task_description )
+    follow_instructions 
   end
   alias :answer :perform
 end

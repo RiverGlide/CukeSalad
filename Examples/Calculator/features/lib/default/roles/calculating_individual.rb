@@ -1,8 +1,8 @@
 require 'calculator'
 
-class CalculatingIndividual
+module CalculatingIndividual
 
-  def initialize
+  def switch_on_the_calculator
     @calculator = Calculator.new
     @operate_with = {
       plus: :+,

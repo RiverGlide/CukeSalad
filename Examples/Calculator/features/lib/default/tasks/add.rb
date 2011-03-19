@@ -1,8 +1,7 @@
-class Add < TaskWithSpecifics
-  #a change
-  def perform_as the_user
-    the_user.enters value_of(:the_number)
-    the_user.presses :plus
-    the_user.enters value_of(:to_the_number)
+module Add
+  def follow_the_instructions
+    enters value_of(:the_number)
+    presses :plus
+    enters value_of(:to_the_number)
   end
 end

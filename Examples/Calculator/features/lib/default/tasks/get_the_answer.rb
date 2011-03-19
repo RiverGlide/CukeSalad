@@ -1,7 +1,7 @@
-class GetTheAnswer
+module GetTheAnswer
 
-  def perform_as the_user
-    the_user.presses :equals
-    the_user.can_see
+  def follow_instructions
+    presses :equals
+    can_see
   end
 end
