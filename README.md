@@ -79,7 +79,7 @@ In `features/`, let's create our first feature file - `A_PlaceToStart.feature`:
     Scenario: Let's Begin
       Given I am a Calculating Individual
       When  I attempt to switch on the calculator
-      Then  I should get the answer '0'
+      Then  I should see the answer '0'
 
 Let's take a moment to understand this scenario:
 
@@ -96,15 +96,17 @@ Just explain how to do the _task_ using a class...
 Explaining how to do a _task_ is easy: 
 Create a new file, `features/lib/tasks/switch_on_the_calculator.rb`
 
+Remember the step `When  I attempt to switch on the calculator`
+
     module SwitchOnTheCalculator
-      include RSpec::Matchers
       
       def perform_task 
          @calc = switch_on_the_calculator
       end
     end
 
-Now we need `task/see_the_display.rb`
+Remember the step `Then  I should see the answer '0'`
+Now we need `task/see_the_answer.rb`
 
     module SeeTheAnswer
       def perform_task
@@ -116,6 +118,8 @@ Now we've explained the _tasks_, we need to define the _role_ that performs them
 this example, we need to explain how the `CalculatingIndividual` _role_ works...
 
 ## Create Roles
+
+Remember the step `Given I am a Calculating Individual`?
 
 We explain a _role_ by creating a new file 
 called `features/lib/roles/calculating_individual.rb`
