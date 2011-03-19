@@ -151,7 +151,7 @@ Let's try another scenario...
       Given I am a Calculating Individual
       And I was able to switch on the calculator
       When I attempt to add: the number '10' to the number '10'
-      Then I should get the answer '20'
+      Then I should see the answer '20'
 
 Notice that we've reused 'switch on the calculator'. 
 
