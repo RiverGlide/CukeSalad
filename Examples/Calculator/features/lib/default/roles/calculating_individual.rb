@@ -10,11 +10,11 @@ module CalculatingIndividual
     }
   end
 
-  def enters value
+  def enter value
     @calculator.enter value.to_i
   end
 
-  def presses next_operator
+  def press next_operator
     if next_operator == :equals
       equals
     else
@@ -26,7 +26,7 @@ module CalculatingIndividual
     @calculator.equals
   end
 
-  def can_see
+  def check_the_display
     @calculator.display
   end
 end

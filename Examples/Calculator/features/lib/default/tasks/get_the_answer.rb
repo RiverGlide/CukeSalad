@@ -1,7 +1,7 @@
 module GetTheAnswer
 
   def follow_instructions
-    presses :equals
-    can_see
+    press :equals
+    check_the_display
   end
 end

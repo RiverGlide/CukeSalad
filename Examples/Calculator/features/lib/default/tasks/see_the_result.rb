@@ -1,6 +1,6 @@
 module SeeTheResult
 
   def follow_instructions
-    can_see
+    check_the_display
   end
 end

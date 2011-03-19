@@ -5,8 +5,8 @@ module SwitchOnTheCalculator
   
   def follow_instructions 
      @calc = switch_on_the_calculator
-     self.should respond_to :enters
-     self.should respond_to :presses
-     self.should respond_to :can_see
+     self.should respond_to :enter
+     self.should respond_to :press
+     self.should respond_to :check_the_display
   end
 end

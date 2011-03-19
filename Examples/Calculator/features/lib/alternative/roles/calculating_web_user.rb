@@ -18,15 +18,15 @@ module CalculatingIndividual
     visit '/'
   end
 
-  def enters value
+  def enter value
     fill_in 'number', :with => value
   end
   
-  def presses operator
+  def press operator
     click_button operator.to_s
   end
 
-  def can_see 
+  def check_the_display 
     find_field('display').value.to_i
   end
 

@@ -1,7 +1,14 @@
 module Add
+
+  def we_need_two_numbers_to_add
+    @first_number = value_of :the_number
+    @second_number = value_of :to_the_number
+  end
+
   def follow_instructions
-    enters value_of(:the_number)
-    presses :plus
-    enters value_of(:to_the_number)
+    we_need_two_numbers_to_add
+    enter @first_number
+    press :plus
+    enter @second_number
   end
 end
