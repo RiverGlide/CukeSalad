@@ -26,7 +26,7 @@ module CalculatingIndividual
     click_button operator.to_s
   end
 
-  def check_the_display 
+  def look_at_the_display
     find_field('display').value.to_i
   end
 

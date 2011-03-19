@@ -26,7 +26,7 @@ module CalculatingIndividual
     @calculator.equals
   end
 
-  def check_the_display
+  def look_at_the_display
     @calculator.display
   end
 end

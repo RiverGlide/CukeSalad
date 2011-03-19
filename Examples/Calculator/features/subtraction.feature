@@ -7,7 +7,7 @@ Scenario Outline: Find the result of subtracting two numbers
   Given I am a Calculating Individual
   And I was able to switch on the calculator
   When I attempt to subtract: the number '<subtractor>' from the number '<subtractee>'
-  Then I should get the answer '<result>'
+  Then I should see the answer '<result>'
 
 	
 Examples:

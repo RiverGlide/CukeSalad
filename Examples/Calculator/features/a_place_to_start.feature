@@ -6,4 +6,4 @@ Feature: A Place To Start
 Scenario: Let's Begin
 	Given I am a Calculating Individual
 	When  I attempt to switch on the calculator
-	Then  I should get the answer '0'
+	Then  I should see the answer '0'
