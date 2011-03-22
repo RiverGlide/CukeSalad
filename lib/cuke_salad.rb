@@ -5,11 +5,13 @@ require 'actor'
 Bundler.setup
 
 def in_order_to name, &block
-  #TODO: Refactor out this eval. Temporary solution to get feedback on alternative style for tasks
-  eval "module #{name}
-  end"
-  m = Kernel.const_get name
-  m.send( :define_method, :perform_task, &block)
+
+  m = Module.new do
+    define_method :perform_task, &block
+  end
+
+  Kernel.const_get(name) = m
+
 end
 
 Given /^I am a ([a-zA-Z ]+)$/ do |role|
