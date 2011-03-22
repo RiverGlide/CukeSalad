@@ -10,7 +10,7 @@ def in_order_to name, &block
     define_method :perform_task, &block
   end
 
-  Kernel.const_get(name) = m
+  Kernel.const_set(name, m)
 
 end
 
