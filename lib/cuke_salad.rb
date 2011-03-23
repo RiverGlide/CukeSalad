@@ -5,13 +5,10 @@ require 'actor'
 Bundler.setup
 
 def in_order_to name, &block
-
   m = Module.new do
     define_method :perform_task, &block
   end
-
   Kernel.const_set(name, m)
-
 end
 
 Given /^I am a ([a-zA-Z ]+)$/ do |role|
