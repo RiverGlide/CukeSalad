@@ -1,15 +1,12 @@
-module Subtract
+in_order_to "Subtract" do
+  lets_say_we_want_to_subtract_two_numbers
+  enter value_of( @first_number )
+  press :minus
+  enter value_of( @second_number )
+  press :equals
+end
 
-  def perform_task
-    lets_say_you_want_the_difference_between_two_numbers
-    enter @the_first_number
-    press :minus
-    enter @the_second_number
-    press :equals
-  end
-
-  def lets_say_you_want_the_difference_between_two_numbers
-    @the_first_number = value_of( :from_the_number)
-    @the_second_number = value_of( :the_number )
-  end
+def lets_say_we_want_to_subtract_two_numbers
+  @first_number = :from_the_number
+  @second_number = :the_number
 end
