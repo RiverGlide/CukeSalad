@@ -1,6 +1,6 @@
-in_order_to "Subtract", the_number: :subtractor, from_the_number: :subtractee do
-  enter value_of( the :subtractee )
+in_order_to "Subtract" do
+  enter value_of( :from_the_number )
   press :minus
-  enter value_of( the :subtractor )
+  enter value_of( :the_number ) 
   press :equals
 end

@@ -1,6 +1,12 @@
+# This demonstrates how to use an attribute mapping 
+#  to make the interactions within the task read more naturally
+# In the scenario it might say "add: the number '5', to the number '10'
+# The form illustrated below simply maps the elements the_number and to_the_number
+#  to alternative symbols that make the interactions read more like real instructions
+# See subtract.rb for another way of writing a task
 in_order_to "Add", the_number: :first_number, to_the_number: :second_number do
-    enter value_of( the :first_number )
+    enter the :first_number 
     press :plus
-    enter value_of( the :second_number )
+    enter the :second_number 
     press :equals
 end
