@@ -4,9 +4,13 @@ require 'bundler'
 require 'actor'
 Bundler.setup
 
-def in_order_to name, &block
+def in_order_to name, *map, &block
+  attr_map = map[0]
   m = Module.new do
     define_method :perform_task, &block
+    define_method :the do | value |
+      attr_map.key value
+    end
   end
   Kernel.const_set(name, m)
 end

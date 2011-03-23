@@ -1,12 +1,6 @@
-in_order_to "Subtract" do
-  lets_say_we_want_to_subtract_two_numbers
-  enter value_of( @first_number )
+in_order_to "Subtract", the_number: :subtractor, from_the_number: :subtractee do
+  enter value_of( the :subtractee )
   press :minus
-  enter value_of( @second_number )
+  enter value_of( the :subtractor )
   press :equals
-end
-
-def lets_say_we_want_to_subtract_two_numbers
-  @first_number = :from_the_number
-  @second_number = :the_number
 end

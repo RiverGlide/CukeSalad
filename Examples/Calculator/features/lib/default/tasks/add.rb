@@ -1,12 +1,6 @@
-in_order_to "Add" do
-    lets_say_we_have_two_numbers
-    enter value_of( @first_number )
+in_order_to "Add", the_number: :first_number, to_the_number: :second_number do
+    enter value_of( the :first_number )
     press :plus
-    enter value_of( @second_number )
+    enter value_of( the :second_number )
     press :equals
-end
-
-def lets_say_we_have_two_numbers
-  @first_number = :the_number
-  @second_number = :to_the_number
 end
