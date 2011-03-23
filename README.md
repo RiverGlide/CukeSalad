@@ -98,20 +98,15 @@ Create a new file, `features/lib/tasks/switch_on_the_calculator.rb`
 
 Remember the step `When  I attempt to switch on the calculator`
 
-    module SwitchOnTheCalculator
-      
-      def perform_task 
-         @calc = switch_on_the_calculator
-      end
+    in_order_to "SwitchOnTheCalculator" do
+      @calc = switch_on_the_calculator
     end
 
 Remember the step `Then  I should see the answer '0'`
 Now we need `task/see_the_answer.rb`
 
-    module SeeTheAnswer
-      def perform_task
-        look_at_the_display
-      end
+    in_order_to "SeeTheAnswer" do
+      look_at_the_display
     end
 
 Now we've explained the _tasks_, we need to define the _role_ that performs them. In
@@ -164,15 +159,12 @@ You can have as many name-value pairs as you like.
 
 So, we need a task called `tasks/add.rb` that explains the individual actions required to complete the task:
 
-    module Add
-
-      def perform_task
-        lets_say_you_want_to_add_two_numbers
-        enter @value_of(:the_number)
-        press :plus
-        enter @value_of(:to_the_number)
-        press :equals
-      end
+    in_order_to "Add" do
+      lets_say_you_want_to_add_two_numbers
+      enter @value_of(:the_number)
+      press :plus
+      enter @value_of(:to_the_number)
+      press :equals
     end
 
 Notice how the `value_of` lines use symbols that correspond to the wording `'the number '10' to the number '10'` in the "When" step.
