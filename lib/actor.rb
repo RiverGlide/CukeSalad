@@ -17,6 +17,11 @@ class Actor
   alias :answer :perform
 
   def get_ready_to_perform something
-    extend( @director.how_do_i_perform something )
+    the_thing = @director.how_do_i_perform something
+    see_how_to_do the_thing 
+  end
+
+  def see_how_to_do something
+    extend something
   end
 end
