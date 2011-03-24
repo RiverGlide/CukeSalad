@@ -8,7 +8,7 @@ e-mail feedback to <talktous@riverglide.com>
 ** ToDo: **
 
 * Support more step structures - such as tables as input
-* Move beyond current examples and document with Cucumber
+* Move beyond current examples by documenting CukeSalad with Cucumber
 * Make available as a gem
 * Remembering data between steps
 * Multiple role/actor scenarios
@@ -160,7 +160,6 @@ You can have as many name-value pairs as you like.
 So, we need a task called `tasks/add.rb` that explains the individual actions required to complete the task:
 
     in_order_to "Add" do
-      lets_say_you_want_to_add_two_numbers
       enter @value_of(:the_number)
       press :plus
       enter @value_of(:to_the_number)
@@ -169,7 +168,18 @@ So, we need a task called `tasks/add.rb` that explains the individual actions re
 
 Notice how the `value_of` lines use symbols that correspond to the wording `'the number '10' to the number '10'` in the "When" step.
 
-Now we modify our `calculating_individual.rb` to receive those calls...
+There is some 'syntactic sugar' that we can use to dress this up a little and make it read nicer... a simple attribute mapping:
+
+    in_order_to "Add", the_number: :first_number, to_the_number: :second_number do
+        enter the :first_number 
+        press :plus
+        enter the :second_number 
+        press :equals
+    end
+
+All we've done is mapped "the_number" to "first_number". There is a special method called "the" that allows you to reference the mapped values rather than the symbols derived from the scenario.
+
+Now all we need to do is modify our `calculating_individual.rb` to receive those calls...
 
     module CalculatingIndividual
 
@@ -210,7 +220,7 @@ There's no need to write `step_definitions`...
 Simply express the _roles_ and the _tasks_ in clear, 
 concise, easy to read classes.
 
-Our finished Calculator directory structure looks like this...
+After adding some more scenarios and tasks and an alternative "Calculating Individual" (see below for why), our finished Calculator directory structure looks like this...
 
     ├── cucumber.yml
     ├── features
@@ -242,6 +252,8 @@ Our finished Calculator directory structure looks like this...
     └── spec
         ├── calculator_spec.rb
             └── web_calculator_spec.rb
+
+Take a look around the examples and the code to see how it all works. We hope you enjoy reading as much as we enjoyed writing it. 
 
 ## Alternative Roles
 
