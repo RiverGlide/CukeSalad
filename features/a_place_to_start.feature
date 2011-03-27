@@ -1,68 +1,32 @@
-Feature: A Place To Start
-  As Colin, a conscientious cuker
-  I want to write Cucumber features without step definitions
-  So that I don't have to focus on writing regular expressions,
-  save time maintaining large step-def files 
-  and spend more time delivering valuable features to my stakeholders 
+@in-development
+Feature: A Place To Start: Making the first step
+  As a Cuke Salad Chef 
+  You want guidance on how you establish the role
+  So that you know what to do next
 
-  Scenario: Getting some guidance about an undefined role 
-    Given I am a Conscientious Cuker
-    And I am using Cuke Salad 
-    When I write a simple feature like this:
+  Scenario: We'll tell you what you need to do to establish the role
+    Given you are a Cuke Salad Chef
+    And   you did not create a role: called 'StepFreeCuker'
+    When  you attempt to run a scenario: containing
     """
-    Feature: No Step Defs
-      Scenario: Step free access
-        Given I am a Step Free Cuker
-        When I attempt to do an important thing
-        Then I should see an equally important answer
+    Given I am a Step Free Cuker
     """
-    And I run `cucumber` 
-    Then I should be told to define the 'Step Free Cuker' role 
-
-  Scenario: Getting some guidance about an undefined task
-    Given I am a Conscientious Cuker
-    And I am using Cuke Salad 
-    When I write a simple feature like this:
+    Then you should see the step as 'pending'
+    And  you should see a message saying 
     """
-    Feature: No Step Defs
-      Scenario: Step free access
-        Given I am a Step Free Cuker
-        When I attempt to do an important thing
-        Then I should see an equally important answer
-    """
-    And I define a role like this:
-    """
-    module StepFreeCuker
-    end
-    """
-    And I run `cucumber` 
-    Then I should be told to define the 'DoAnImportantThing' task 
-
-  Scenario: Getting some guidance about an unknown question
-    Given I am a Conscientious Cuker
-    And I am using Cuke Salad 
-    When I write a simple feature like this:
-    """
-    Feature: No Step Defs
-      Scenario: Step free access
-        Given I am a Step Free Cuker
-        When I attempt to do an important thing
-        Then I should see an equally important answer
-    """
-    And I define a role like this:
-    """
-    module StepFreeCuker
-      def do_the_thing
+    I can't find a role called 'StepFreeCuker'.
+    You may need to put it on the load path,
+    or perhaps you haven't created one yet?
+    For example:
+      module StepFreeCuker
       end
-    end
     """
-    And I define a task like this:
-    """
-    in_order_to "DoAnImportantThing" do
-      do_the_thing
-    end
-    """
-    And I run `cucumber` 
-    Then I should be told to define the 'SeeAnImportantAnswer' task 
 
-
+  Scenario: Once you've created the role, you see the step pass
+    Given you are a Cuke Salad Chef
+    And   you did create a role: called 'StepFreeCuker'
+    When  you attempt to run a scenario: containing
+    """
+    Given I am a Step Free Cuker
+    """
+    Then you should see the step is 'passed'
