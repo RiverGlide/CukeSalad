@@ -19,12 +19,9 @@ Given /^I am a ([a-zA-Z ]+)$/ do |role|
   @actor = Actor.new(role)
 end
 
-When /^I (?:attempt to|was able to)? ([^']*)$/ do |this_task|
-  @actor.perform this_task
-end
-
-When /^I (?:attempt to|was able to)? ([A-Z a-z_-]*): (.*)$/ do |this_task, with_these_details|
-  @actor.perform this_task, with_these_details
+When /^^I (?:attempt to|was able to)? ([A-Z a-z_-]*)(?:: (.*))?$/ do |this_task, with_these_details|
+  @actor.perform this_task, with_these_details unless with_these_details.nil?
+  @actor.perform this_task if with_these_details.nil?
 end
 
 Then /^I should ([^']*) '([^']*)'$/ do |this_question, expect_value|
