@@ -6,12 +6,13 @@ Feature: A Place To Start: Making the first step
 
   Scenario: We'll tell you what you need to do to establish the role
     Given you are a Step Free Cuker
+    And   you were able to create a new Cuke Salad project
     And   you did not create a role: called 'NewCustomer'
     When  you attempt to run a scenario: containing
     """
     Given I am a New Customer
     """
-    Then you should see the step as 'pending'
+    Then you should see the step has 'failed'
     And  you should see a message saying 
     """
     I can't find a role called 'NewCustomer'.
@@ -24,9 +25,10 @@ Feature: A Place To Start: Making the first step
 
   Scenario: Once you've created the role, you see the step pass
     Given you are a Step Free Cuker
-    And   you did create a role: called 'StepFreeCuker'
+    And   you were able to create a new Cuke Salad project
+    And   you did create a role: called 'NewCustomer'
     When  you attempt to run a scenario: containing
     """
-    Given I am a Step Free Cuker
+    Given I am a New Customer
     """
-    Then you should see the step is 'passed'
+    Then you should see the step has 'passed'
