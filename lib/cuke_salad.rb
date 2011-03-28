@@ -15,15 +15,15 @@ def in_order_to name, *map, &block
   Kernel.const_set(name, m)
 end
 
-Given /^I am a ([a-zA-Z ]+)$/ do |role|
+Given /^(?:I am|you are) a ([a-zA-Z ]+)$/ do |role|
   @actor = Actor.new(role)
 end
 
-When /^^I (?:attempt to|was able to)? ([A-Z a-z_-]*)(?:: (.*))?$/ do |this_task, with_these_details|
+When /^(?:I|you) (?:attempt to|was able to|did)? ([A-Z a-z_-]*)(?:: (.*))?$/ do |this_task, with_these_details|
   @actor.perform this_task, with_these_details unless with_these_details.nil?
   @actor.perform this_task if with_these_details.nil?
 end
 
-Then /^I should ([^']*) '([^']*)'$/ do |this_question, expect_value|
+Then /^(?:I|you) should ([^']*)(?: '([^']*)')?$/ do |this_question, expect_value|
   @actor.answer( this_question ).to_s.should == expect_value
 end

@@ -24,7 +24,7 @@ Feature: A Place To Start: Making the first step
 
   Scenario: Once you've created the role, you see the step pass
     Given you are a Step Free Cuker
-    And   you did create a role: called 'NewCustomer'
+    And   you did create a role: called 'StepFreeCuker'
     When  you attempt to run a scenario: containing
     """
     Given I am a Step Free Cuker
