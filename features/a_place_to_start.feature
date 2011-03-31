@@ -1,5 +1,4 @@
-@in-development
-Feature: A Place To Start: Making the first step
+Feature: Your First Step
   As a Step Free Cuker
   You want guidance on how you establish the role
   So that you know what to do next
@@ -7,21 +6,19 @@ Feature: A Place To Start: Making the first step
   Scenario: We'll tell you what you need to do to establish the role
     Given you are a Step Free Cuker
     And   you were able to create a new Cuke Salad project
-    And   you did not create a role: called 'NewCustomer'
+    But   you did not create a role: called 'NewCustomer'
     When  you attempt to run a scenario: containing
-    """
-    Given I am a New Customer
-    """
+      """
+      Given I am a New Customer
+      """
     Then you should see the step has 'failed'
-    And  you should see a message saying 
-    """
-    I can't find a role called 'NewCustomer'.
-    You may need to put it on the load path,
-    or perhaps you haven't created one yet?
-    For example:
-      module StepFreeCuker
-      end
-    """
+    And  you should see a reply that includes:
+      """
+            I can't find a role called 'NewCustomer'. Have you created it?
+            e.g.
+              module NewCustomer
+              end
+      """
 
   Scenario: Once you've created the role, you see the step pass
     Given you are a Step Free Cuker
