@@ -1,0 +1,3 @@
+default: --tags ~@draft
+autotest: --color
+autotest-all: --color
