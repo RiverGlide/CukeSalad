@@ -20,10 +20,9 @@ Given /^(?:I am|you are) a ([a-zA-Z ]+)$/ do |role|
 end
 
 When /^(?:I|you) (?:attempt to|was able to|were able to|did)? ([A-Z a-z_-]*)(?:: (.*))?$/ do |this_task, with_these_details, *and_more|
-  details = ""
-  details <<  with_these_details unless with_these_details.nil?
-  details << " '#{and_more[0]}'" unless and_more.empty?
-  @actor.perform this_task, details unless details.nil?
+  with_these_details ||= ""
+  with_these_details << " '#{and_more[0]}'" unless and_more.empty?
+  @actor.perform this_task, with_these_details unless with_these_details.nil?
   @actor.perform this_task if with_these_details.nil?
 end
 
