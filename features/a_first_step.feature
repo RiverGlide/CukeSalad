@@ -1,4 +1,4 @@
-Feature: Your First Step
+Feature: A First Step
   As a Step Free Cuker
   You want guidance on how you establish the role
   So that you know what to do next
