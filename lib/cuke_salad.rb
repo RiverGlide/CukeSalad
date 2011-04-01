@@ -15,6 +15,10 @@ def in_order_to name, *map, &block
   Kernel.const_set(name, m)
 end
 
+When /^I say hello CukeSalad$/ do 
+  puts "CukeSalad says: Hello!!"
+end
+
 Given /^(?:I am|you are) a ([a-zA-Z ]+)$/ do |role|
   @actor = Actor.new(role)
 end

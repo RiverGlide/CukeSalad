@@ -1,7 +1,7 @@
-Feature: A First Step
+Feature: Start With The Role
   As a Step Free Cuker
-  You want guidance on how you establish the role
-  So that you know what to do next
+  You want to name your role
+  So that you are ready to explain the tasks 
 
   Scenario: We'll tell you what you need to do to establish the role
     Given you are a Step Free Cuker
@@ -11,7 +11,7 @@ Feature: A First Step
       """
       Given I am a New Customer
       """
-    Then you should see the step has 'failed'
+    Then you should see it has 'failed'
     And  you should see a reply that includes:
       """
             I can't find a role called 'NewCustomer'. Have you created it?
@@ -28,4 +28,4 @@ Feature: A First Step
     """
     Given I am a New Customer
     """
-    Then you should see the step has 'passed'
+    Then you should see it has 'passed'

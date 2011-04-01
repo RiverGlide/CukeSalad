@@ -4,7 +4,7 @@ class Director
     begin 
       find_directives_for something
     rescue NameError
-      raise NameError, "I can't find a role called 'NewCustomer'. Have you created it?\ne.g.\n  module NewCustomer\n  end"
+      raise NameError, "I can't find a role called '#{class_name_from something}'. Have you created it?\ne.g.\n  module #{class_name_from something}\n  end"
     end
   end
 
