@@ -1,10 +1,7 @@
 $:.unshift(File.dirname(__FILE__), ".")
 require 'spec_helper'
-require 'cuke_salad/task_author'
+require 'task_author'
 
-class TaskAuthorUser
-  include CukeSalad::TaskAuthor
-end
 class SomeActor
   def see_how_to_do something
     extend something
@@ -17,17 +14,16 @@ class SomeActor
   end
 end
 
-
-describe CukeSalad::TaskAuthor do
+describe 'TaskAuthor' do
 
   it "creates a module by the same name" do
-    TaskAuthorUser.new.in_order_to "SomeTask" do;end
+    in_order_to "SomeTask" do;end
 
     SomeActor.new.see_how_to_do SomeTask
   end
 
   it "enables the actor to do something" do
-    TaskAuthorUser.new.in_order_to "SomeOtherTask" do
+    in_order_to "SomeOtherTask" do
       "done"
     end
 
@@ -37,7 +33,7 @@ describe CukeSalad::TaskAuthor do
   end
 
   it "maps some attributes" do
-    TaskAuthorUser.new.in_order_to "SomeOtherTask", with_info: :info do
+    in_order_to "SomeOtherTask", with_info: :info do
       the :info
     end
 

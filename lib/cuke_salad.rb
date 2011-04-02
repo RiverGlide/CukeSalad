@@ -2,18 +2,8 @@ $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 require 'rubygems'
 require 'bundler'
 require 'actor'
+require 'task_author'
 Bundler.setup
-
-def in_order_to name, *map, &block
-  attr_map = map[0]
-  m = Module.new do
-    define_method :perform_task, &block
-    define_method :the do | value |
-      value_of( attr_map.key value )
-    end
-  end
-  Kernel.const_set(name, m)
-end
 
 When /^I say hello CukeSalad$/ do 
   puts "CukeSalad says: Hello!!"
