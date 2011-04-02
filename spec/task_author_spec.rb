@@ -22,6 +22,12 @@ describe 'TaskAuthor' do
     SomeActor.new.see_how_to_do SomeTask
   end
 
+  it "creates a module by a similar name" do
+    in_order_to "some different task" do;end
+
+    SomeActor.new SomeDifferentTask
+  end
+
   it "enables the actor to do something" do
     in_order_to "SomeOtherTask" do
       "done"

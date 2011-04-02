@@ -1,4 +1,4 @@
-in_order_to "SwitchOnTheCalculator" do
+in_order_to "switch on the calculator" do
   require 'rspec/expectations'
   extend RSpec::Matchers
   
