@@ -1,6 +1,6 @@
 module Codify
-  module Codify::ClassName
-    def as_class_name
+  module Codify::AsConstName
+    def as_const_name
       joined_together capitalised( words_from self )
     end
     

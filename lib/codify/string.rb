@@ -1,4 +1,4 @@
-require 'codify/strings'
+require 'codify/as_const_name'
 class String
-  include Codify::ClassName
+  include Codify::AsConstName
 end
