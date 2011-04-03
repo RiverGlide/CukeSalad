@@ -1,5 +1,5 @@
 module Codify
-  module Codify::AsConstName
+  module AsConstName
     def as_const_name
       joined_together capitalised( words_from self )
     end
