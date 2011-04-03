@@ -1,8 +1,8 @@
 $:.unshift(File.dirname(__FILE__), ".")
 require 'spec_helper'
-require 'codify/strings'
+require 'codify/string'
 
-describe "Codified String" do
+describe Codify::ClassName do
 
   it "gives you ClassName from variations of 'class name'" do
     "ClassName".as_class_name.should == "ClassName"
