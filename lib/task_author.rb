@@ -1,3 +1,4 @@
+require 'codify/string'
 def in_order_to do_something, *map, &block
   attr_map = map[0]
   name = do_something.as_const_name
