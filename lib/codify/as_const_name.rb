@@ -10,8 +10,8 @@ module Codify
     end
     
     def words_from this_sentence
-      /\s|([A-Z][a-z]+)/
-      this_sentence.split(/\s|([A-Z][a-z]+)/)
+      on_word_boundary = /\s|([A-Z][a-z]+)/
+      this_sentence.split( on_word_boundary )
     end
 
     def capitalised words
