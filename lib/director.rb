@@ -1,4 +1,4 @@
-require 'codify/as_const_name'
+require 'codify/const_name'
 class Director
 
   include Codify

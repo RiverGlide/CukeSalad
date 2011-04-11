@@ -1,6 +1,6 @@
 $:.unshift(File.dirname(__FILE__), ".")
 require 'spec_helper'
-require 'codify/as_const_name'
+require 'codify/const_name'
 
 describe Codify::ConstName do
   include Codify
