@@ -26,11 +26,20 @@ Feature: Define the Task
               end
       """
 
-  Scenario: Once you've created the task, you see the step pass
+  Scenario Outline: Once you've created the task, you see the step pass
     Given you did create a task: called 'do something'
     When  you attempt to run a scenario: containing
     """
     Given I am a New Customer
-    And I was able to do something
+    <step using the task>
     """
     Then you should see it has 'passed'
+
+    Examples:
+      | step using the task              |
+      | Given I was able to do something |
+      | And   I was able to do something |
+      | But   I did do something |
+      | When  I attempt to do something  |
+      | And   I attempt to do something  |
+      | And   I did do something  |
