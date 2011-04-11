@@ -2,7 +2,8 @@ require 'codify/const_name'
 class Director
 
   include Codify
-  #TODO: the director needs to know the difference between a role and a task to give more appropriate feedback
+ 
+  #TODO: Needs refactoring 
   def explain_the_role description
     name = ConstName.from description
     begin
