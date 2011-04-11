@@ -24,8 +24,11 @@ describe Director do
     the_thing_we_found.should == MoreThanOneWord
   end
 
-  it "apologises when it can't find what you asked for" do
-    lambda { @director.how_do_i_perform "something that isnt there" }.should raise_error NameError
+  it "apologises when it can't find the role" do
+    lambda { @director.explain_the_role "non existent role" }.should raise_error RuntimeError
   end
 
+  it "apologises when it can't find the task" do
+    lambda { @director.how_do_i_perform "non existent task" }.should raise_error RuntimeError
+  end
 end

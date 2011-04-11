@@ -35,7 +35,7 @@ describe Actor do
   it "gets into character" do
     director = double("director")
     role_description = "Butler"
-    director.should_receive( :how_do_i_perform ).with( role_description ).and_return( Butler )
+    director.should_receive( :explain_the_role ).with( role_description ).and_return( Butler )
     
     actor = Actor.new role_description, director
   end  
@@ -46,7 +46,7 @@ describe Actor do
     task_description = "set the place at the table"
     
     director = double("director")
-    director.should_receive( :how_do_i_perform ).with( role_description ).and_return( Butler )
+    director.should_receive( :explain_the_role ).with( role_description ).and_return( Butler )
     director.should_receive( :how_do_i_perform ).with( task_description ).and_return( SetThePlaceAtTheTable )
    
     actor = Actor.new role_description, director
@@ -61,7 +61,7 @@ describe Actor do
     details = "with places for '5'" 
 
     director = double("director")
-    director.should_receive( :how_do_i_perform ).with( role_description ).and_return( Butler )
+    director.should_receive( :explain_the_role ).with( role_description ).and_return( Butler )
     director.should_receive( :how_do_i_perform ).with( task_description ).and_return( LayTheTable )
 
     actor = Actor.new role_description, director

@@ -5,7 +5,7 @@
 #  to alternative symbols that make the interactions read more like real instructions
 # See subtract.rb for a way of writing tasks that reuses the common interactions 
 # required to perform calculations.
-in_order_to "Add", the_number: :first_number, to_the_number: :second_number do
+in_order_to 'add', the_number: :first_number, to_the_number: :second_number do
     enter the :first_number 
     press :plus
     enter the :second_number 
