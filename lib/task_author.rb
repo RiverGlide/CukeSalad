@@ -1,7 +1,7 @@
-require 'codify/string'
+require 'codify/as_const_name'
 def in_order_to do_something, *map, &block
   attr_map = map[0]
-  name = do_something.as_const_name
+  name = Codify::ConstName.from do_something
   m = Module.new do
     define_method :perform_task, &block
     define_method :the do | value |
