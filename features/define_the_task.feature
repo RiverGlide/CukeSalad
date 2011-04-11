@@ -39,7 +39,7 @@ Feature: Define the Task
       | step using the task              |
       | Given I was able to do something |
       | And   I was able to do something |
-      | But   I did do something |
+      | But   I did do something         |
       | When  I attempt to do something  |
       | And   I attempt to do something  |
-      | And   I did do something  |
+      | And   I did do something         |
