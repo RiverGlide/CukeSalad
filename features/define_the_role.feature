@@ -1,6 +1,6 @@
-Feature: Start With The Role
+Feature: Define the Role
   As a Step Free Cuker
-  You want to name your role
+  You want to define a role
   So that you are ready to explain the tasks 
 
   Background:

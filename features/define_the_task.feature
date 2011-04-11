@@ -1,7 +1,7 @@
-Feature: Describe the Task
+Feature: Define the Task
   As a Step Free Cuker
-  You want to describe your task
-  So that your steps are executed 
+  You want to describe a task
+  So that your steps that use that role are executed 
 
 
   Background:
