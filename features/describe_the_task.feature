@@ -4,7 +4,7 @@ Feature: Describe the Task
   So that your steps are executed 
 
 
-  Background: Some things that you have to do first
+  Background:
     Given you are a Step Free Cuker
     And   you were able to create a new Cuke Salad project
     And   you were able to create a role: called 'NewCustomer'

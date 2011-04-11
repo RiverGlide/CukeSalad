@@ -3,7 +3,7 @@ Feature: Start With The Role
   You want to name your role
   So that you are ready to explain the tasks 
 
-  Background: Some things you'll have to do first
+  Background:
     Given you are a Step Free Cuker
     And   you were able to create a new Cuke Salad project
 
