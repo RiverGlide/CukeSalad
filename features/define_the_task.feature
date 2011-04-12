@@ -36,10 +36,20 @@ Feature: Define the Task
     Then you should see it has 'passed'
 
     Examples:
-      | step using the task              |
-      | Given I was able to do something |
-      | And   I was able to do something |
-      | But   I did do something         |
-      | When  I attempt to do something  |
-      | And   I attempt to do something  |
-      | And   I did do something         |
+      | step using the task                 |
+      | Given I was able to do something    |
+      | And   I was able to do something    |
+      | But   I did do something            |
+      | Given you were able to do something |
+      | And   you were able to do something |
+      | But   you did do something          |
+      | When  I attempt to do something     |
+      | And   I attempt to do something     |
+      | And   I did do something            |
+      | When  you attempt to do something   |
+      | And   you attempt to do something   |
+      | And   you did do something          |
+      | Then  I should do something         |
+      | And   I should do something         |
+      | Then  you should do something       |
+      | And   you should do something       |
