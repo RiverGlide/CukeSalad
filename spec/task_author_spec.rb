@@ -39,12 +39,12 @@ describe 'TaskAuthor' do
   end
 
   it "maps some attributes" do
-    in_order_to "SomeOtherTask", with_info: :info do
+    in_order_to "YetAnotherTask", with_info: :info do
       the :info
     end
 
     actor = SomeActor.new
-    actor.see_how_to_do SomeOtherTask
+    actor.see_how_to_do YetAnotherTask
     actor.do_your_thing.should == "this is the info"
   end
 end
