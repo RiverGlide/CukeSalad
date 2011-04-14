@@ -1,3 +1,15 @@
 .rvmrc
 *.swp
 .DS_Store
+
+#rdoc generated
+rdoc
+
+# yard generated
+doc
+
+# bundler
+.bundle
+
+# jeweler generated
+pkg

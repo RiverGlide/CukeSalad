@@ -30,6 +30,11 @@ GEM
       rake (>= 0.8.7)
     gherkin (2.3.3)
       json (~> 1.4.6)
+    git (1.2.5)
+    jeweler (1.5.2)
+      bundler (~> 1.0.0)
+      git (>= 1.2.5)
+      rake
     json (1.4.6)
     json_pure (1.5.1)
     mime-types (1.16)
@@ -65,7 +70,9 @@ PLATFORMS
 
 DEPENDENCIES
   aruba (= 0.3.5)
+  bundler (~> 1.0.0)
   capybara (= 0.4.1.2)
   cucumber (= 0.10.0)
+  jeweler (~> 1.5.2)
   rspec (= 2.5.0)
   sinatra (= 1.2.0)
