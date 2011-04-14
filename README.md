@@ -1,4 +1,4 @@
-# Cuke Salad 
+# Cuke Salad
 
 _Cucumber, washed and ready to eat for Friction-free ATDD/BDD_
 
@@ -21,7 +21,7 @@ With CukeSalad you don't need to write step-definitions.
 
 Of course, you still have to write some code - but only the code that expresses:
 
-* the roles and the actions they can perform 
+* the roles and the actions they can perform
 * the tasks and the actions involved in completing that task
 
 ## Goals->Tasks->Actions
@@ -37,14 +37,11 @@ Let's see how this works with a simple example...
 
 ## Install
 
-    gem install bundler
-    gem update --system
-    git clone git@github.com:RiverGlide/CukeNarrative.git
-    bundle install
+    gem install cuke_salad
 
 ## Let's Get started
 
-Create a new project outside of the CukeSalad directory structure, e.g.:
+Create a new project:
 
     mkdir ~/projects/Calculator
     cd ~/projects/Calculator
@@ -58,8 +55,6 @@ Inside the root of that project...
 
 In idiomatic Cucumber style, we use `features/support/env.rb` to require _CukeSalad_ and
 define the location of our project's _roles_ and _tasks_ e.g.:
-
-    $:.unshift(File.dirname(__FILE__) + '/../../../../lib') #where to find CukeSalad
 
     require 'cuke_salad'
     begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end
@@ -88,12 +83,12 @@ Let's take a moment to understand this scenario:
       When  I attempt to <do some task>
       Then  I should <ask some question> '<expected answer>'
 
-To get this working, we don't need to write any steps. 
+To get this working, we don't need to write any steps.
 Just explain how to do the _task_ using a class...
 
 ## Create Tasks
 
-Explaining how to do a _task_ is easy: 
+Explaining how to do a _task_ is easy:
 Create a new file, `features/lib/tasks/switch_on_the_calculator.rb`
 
 Remember the step `When  I attempt to switch on the calculator`
@@ -116,7 +111,7 @@ this example, we need to explain how the `CalculatingIndividual` _role_ works...
 
 Remember the step `Given I am a Calculating Individual`?
 
-We explain a _role_ by creating a new file 
+We explain a _role_ by creating a new file
 called `features/lib/roles/calculating_individual.rb`
 
     module CalculatingIndividual
@@ -128,13 +123,13 @@ called `features/lib/roles/calculating_individual.rb`
       def look_at_the_display
         @calculator.display
       end
-    end  
+    end
 
 You'll need a class called Calculator on the load path of course, but that's it.
 
 From your project folder, run (_note: '%' is our command prompt_)
 
-  % cucumber 
+  % cucumber
 
 We now have our first passing Feature, without creating a single step definition!
 
@@ -148,9 +143,9 @@ Let's try another scenario...
       When I attempt to add: the number '10' to the number '10'
       Then I should see the answer '20'
 
-Notice that we've reused 'switch on the calculator'. 
+Notice that we've reused 'switch on the calculator'.
 
-The new _When_ step has a slightly different layout. 
+The new _When_ step has a slightly different layout.
 Let's examine that for a second... Notice the ':' (colon) after <do something> and the name-value pairs:
 
     When I attempt to <do something>: <name> '<value>' <name> '<value>'
@@ -171,9 +166,9 @@ Notice how the `value_of` lines use symbols that correspond to the wording `'the
 There is some 'syntactic sugar' that we can use to dress this up a little and make it read nicer... a simple attribute mapping:
 
     in_order_to "Add", the_number: :first_number, to_the_number: :second_number do
-        enter the :first_number 
+        enter the :first_number
         press :plus
-        enter the :second_number 
+        enter the :second_number
         press :equals
     end
 
@@ -214,10 +209,10 @@ Now all we need to do is modify our `calculating_individual.rb` to receive those
 
 Now, you can run cucumber again:
 
-    % cucumber 
+    % cucumber
 
-There's no need to write `step_definitions`... 
-Simply express the _roles_ and the _tasks_ in clear, 
+There's no need to write `step_definitions`...
+Simply express the _roles_ and the _tasks_ in clear,
 concise, easy to read classes.
 
 After adding some more scenarios and tasks and an alternative "Calculating Individual" (see below for why), our finished Calculator directory structure looks like this...
@@ -251,14 +246,14 @@ After adding some more scenarios and tasks and an alternative "Calculating Indiv
     │   └── web_calculator.rb
     └── spec
         ├── calculator_spec.rb
-            └── web_calculator_spec.rb
+        └── web_calculator_spec.rb
 
-Take a look around the examples and the code to see how it all works. We hope you enjoy reading as much as we enjoyed writing it. 
+Take a look around the examples and the code to see how it all works. We hope you enjoy reading as much as we enjoyed writing it.
 
 ## Alternative Roles
 
-As our features _describe the value of a calculator application and not its 
-implementation_, we have the opportunity to reuse them. 
+As our features _describe the value of a calculator application and not its
+implementation_, we have the opportunity to reuse them.
 
 In the Calculator example, we create a new _role_ in
 `./features/lib/alternative/roles/calculating_web_user.rb`, which we can swap
