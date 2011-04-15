@@ -9,7 +9,6 @@ e-mail feedback to <talktous@riverglide.com>
 
 * Support more step structures - such as tables as input
 * Move beyond current examples by documenting CukeSalad with Cucumber
-* Make available as a gem
 * Remembering data between steps
 * Multiple role/actor scenarios
 
