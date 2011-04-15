@@ -15,8 +15,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "cuke_salad"
   gem.homepage = "https://github.com/RiverGlide/CukeSalad"
   gem.license = "MIT"
-  gem.summary = %Q{Step free cucumber}
-  gem.description = %Q{CukeSalad allows you to focus on the task at hand - expressing examples, the roles involved in those examples and what those roles can do with the product under development.}
+  gem.summary = %Q{Friction Free BDD/ATDD with cucumber}
+  gem.description = %Q{CukeSalad allows you to focus on the tasks at hand - expressing examples, the roles involved in those examples and the tasks that those roles need to perform with the product under development.}
   gem.email = "talktous@riverglide.com"
   gem.authors = ["RiverGlide"]
 
