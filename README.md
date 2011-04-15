@@ -41,17 +41,14 @@ Let's see how this works with a simple example...
 
 ## Let's Get started
 
-Create a new project:
+Create a new project Calculator:
 
-    mkdir ~/projects/Calculator
-    cd ~/projects/Calculator
+    cuke_salad new Calculator
 
-Inside the root of that project...
+Or configure an existing project by running the following command inside the project directory
 
-    mkdir features
-    mkdir features/support
-    mkdir features/lib/default/roles
-    mkdir features/lib/default/tasks
+    cuke_salad configure
+
 
 In idiomatic Cucumber style, we use `features/support/env.rb` to require _CukeSalad_ and
 define the location of our project's _roles_ and _tasks_ e.g.:

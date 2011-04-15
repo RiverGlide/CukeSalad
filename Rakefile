@@ -24,7 +24,8 @@ Jeweler::Tasks.new do |gem|
   # The following two lines need to be commented out in order to gain access to the version rake tasks
   gem_version = File.exist?('VERSION') ? File.read('VERSION') : ""
   gem.version = gem_version
-
+  gem.executables = ["cuke_salad"]
+  gem.files.include 'lib/cuke_salad/cli.rb'
 end
 
 Jeweler::RubygemsDotOrgTasks.new

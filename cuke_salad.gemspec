@@ -9,10 +9,13 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["RiverGlide"]
-  s.date = %q{2011-04-14}
+  s.date = %q{2011-04-15}
+  s.default_executable = %q{cuke_salad}
   s.description = %q{CukeSalad allows you to focus on the task at hand - expressing examples, the roles involved in those examples and what those roles can do with the product under development.}
   s.email = %q{talktous@riverglide.com}
+  s.executables = ["cuke_salad"]
   s.extra_rdoc_files = [
+    "LICENSE",
     "README.md"
   ]
   s.files = [
@@ -41,7 +44,10 @@ Gem::Specification.new do |s|
     "Gemfile",
     "Gemfile.lock",
     "README.md",
+    "Rakefile",
+    "VERSION",
     "cucumber.yml",
+    "cuke_salad.gemspec",
     "features/a_new_cuke_salad_project.feature",
     "features/define_a_role.feature",
     "features/define_a_task.feature",
@@ -61,6 +67,7 @@ Gem::Specification.new do |s|
     "lib/actor.rb",
     "lib/codify/const_name.rb",
     "lib/cuke_salad.rb",
+    "lib/cuke_salad/cli.rb",
     "lib/director.rb",
     "lib/specifics.rb",
     "lib/task_author.rb",
@@ -92,6 +99,7 @@ Gem::Specification.new do |s|
     "examples/Calculator/spec/web_calculator_spec.rb",
     "spec/actor_spec.rb",
     "spec/codify/as_const_name_spec.rb",
+    "spec/cuke_salad/cli_spec.rb",
     "spec/director_spec.rb",
     "spec/spec_helper.rb",
     "spec/specifics_spec.rb",
