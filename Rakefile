@@ -14,6 +14,7 @@ Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "cuke_salad"
   gem.homepage = "https://github.com/RiverGlide/CukeSalad"
+  gem.platform = Gem::Platform::RUBY
   gem.license = "MIT"
   gem.summary = %Q{Step free cucumber}
   gem.description = %Q{CukeSalad allows you to focus on the task at hand - expressing examples, the roles involved in those examples and what those roles can do with the product under development.}
