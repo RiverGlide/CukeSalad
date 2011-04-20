@@ -146,7 +146,7 @@ Notice how the `value_of` lines use symbols that correspond to the wording `'the
 
 There is some 'syntactic sugar' that we can use to dress this up a little and make it read nicer... a simple attribute mapping:
 
-    in_order_to "Add", the_number: :first_number, to_the_number: :second_number do
+    in_order_to "add", the_number: :first_number, to_the_number: :second_number do
         enter the :first_number
         press :plus
         enter the :second_number
