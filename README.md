@@ -42,7 +42,7 @@ Create a new project called Calculator:
 
 Or, if you have an existing cucumber project that you want to configure to use cukesalad, you can type:
 
-   cukesalad configure
+    cukesalad configure
 
 ## Write Features
 
