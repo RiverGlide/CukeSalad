@@ -25,7 +25,7 @@ Jeweler::Tasks.new do |gem|
   gem_version = File.exist?('VERSION') ? File.read('VERSION') : ""
   gem.version = gem_version
   gem.executables = ["cukesalad"]
-  gem.files.include 'lib/cukesalad/cli.rb'
+  gem.files.include 'cukesalad/cli.rb'
 end
 
 Jeweler::RubygemsDotOrgTasks.new
