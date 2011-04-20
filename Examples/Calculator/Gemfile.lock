@@ -1,6 +1,10 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    aruba (0.3.5)
+      childprocess (>= 0.1.7)
+      cucumber (>= 0.10.0)
+      rspec (>= 2.5.0)
     builder (3.0.0)
     capybara (0.4.1.2)
       celerity (>= 0.7.9)
@@ -20,6 +24,10 @@ GEM
       gherkin (~> 2.3.2)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
+    cukesalad (0.3.0)
+      aruba (= 0.3.5)
+      cucumber (= 0.10.0)
+      rspec (= 2.5.0)
     culerity (0.2.15)
     diff-lcs (1.1.2)
     ffi (1.0.7)
@@ -62,5 +70,6 @@ PLATFORMS
 DEPENDENCIES
   capybara (= 0.4.1.2)
   cucumber (= 0.10.0)
+  cukesalad (>= 0.3.0)
   rspec (= 2.5.0)
   sinatra (= 1.2.0)

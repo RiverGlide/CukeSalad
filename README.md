@@ -5,12 +5,8 @@ _Cucumber, washed and ready to eat for Friction-free ATDD/BDD_
 **This is a work in progress - feedback welcome**
 e-mail feedback to <talktous@riverglide.com>
 
-** ToDo: **
-
-* Support more step structures - such as tables as input
-* Move beyond current examples by documenting CukeSalad with Cucumber
-* Remembering data between steps
-* Multiple role/actor scenarios
+You can see our current list of intended features here:
+https://github.com/RiverGlide/CukeSalad/issues?labels=Feature
 
 ## This project has step-free access!
 
@@ -40,23 +36,13 @@ Let's see how this works with a simple example...
 
 ## Let's Get started
 
-Create a new project Calculator:
+Create a new project called Calculator:
 
-    cukesalad new Calculator
+    cukesalad Calculator
 
-Or configure an existing project by running the following command inside the project directory
+Or, if you have an existing cucumber project that you want to configure to use cukesalad, you can type:
 
     cukesalad configure
-
-
-In idiomatic Cucumber style, we use `features/support/env.rb` to require _CukeSalad_ and
-define the location of our project's _roles_ and _tasks_ e.g.:
-
-    require 'cukesalad'
-    begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end
-
-Cucumber will automatically find our project's _roles_ and _tasks_, as it loads
-all .rb files beneath the project's `features/` directory.
 
 ## Write Features
 
@@ -79,8 +65,7 @@ Let's take a moment to understand this scenario:
       When  I attempt to <do some task>
       Then  I should <ask some question> '<expected answer>'
 
-To get this working, we don't need to write any steps.
-Just explain how to do the _task_ using a class...
+To get this working, we don't need to write any steps. Instead, we describe tasks...
 
 ## Create Tasks
 
@@ -89,14 +74,14 @@ Create a new file, `features/lib/tasks/switch_on_the_calculator.rb`
 
 Remember the step `When  I attempt to switch on the calculator`
 
-    in_order_to "SwitchOnTheCalculator" do
+    in_order_to "switch on the calculator" do
       @calc = switch_on_the_calculator
     end
 
 Remember the step `Then  I should see the answer '0'`
 Now we need `task/see_the_answer.rb`
 
-    in_order_to "SeeTheAnswer" do
+    in_order_to "see the answer" do
       look_at_the_display
     end
 
@@ -150,7 +135,7 @@ You can have as many name-value pairs as you like.
 
 So, we need a task called `tasks/add.rb` that explains the individual actions required to complete the task:
 
-    in_order_to "Add" do
+    in_order_to "add" do
       enter @value_of(:the_number)
       press :plus
       enter @value_of(:to_the_number)
@@ -161,7 +146,7 @@ Notice how the `value_of` lines use symbols that correspond to the wording `'the
 
 There is some 'syntactic sugar' that we can use to dress this up a little and make it read nicer... a simple attribute mapping:
 
-    in_order_to "Add", the_number: :first_number, to_the_number: :second_number do
+    in_order_to "add", the_number: :first_number, to_the_number: :second_number do
         enter the :first_number
         press :plus
         enter the :second_number
