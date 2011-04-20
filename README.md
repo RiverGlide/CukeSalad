@@ -61,7 +61,7 @@ define the location of our project's _roles_ and _tasks_ e.g.:
 
     $:.unshift(File.dirname(__FILE__) + '/../../../../lib') #where to find CukeSalad
 
-    require 'cuke_salad'
+    require 'cukesalad'
     begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end
 
 Cucumber will automatically find our project's _roles_ and _tasks_, as it loads

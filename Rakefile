@@ -12,7 +12,7 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "cuke_salad"
+  gem.name = "cukesalad"
   gem.homepage = "https://github.com/RiverGlide/CukeSalad"
   gem.license = "MIT"
   gem.summary = %Q{Friction Free BDD/ATDD with cucumber}

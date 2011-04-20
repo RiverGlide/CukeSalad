@@ -17,9 +17,9 @@ Feature: Cuke Salad
       """
       $:.unshift(File.dirname(__FILE__) + "/../../../../lib") #where to find CukeSalad
              
-      require "cuke_salad"
+      require "cukesalad"
       """
-    And you were able to create a file: at 'features/hello_cuke_salad.feature' containing
+    And you were able to create a file: at 'features/hello_cukesalad.feature' containing
       """
       Feature: Hello CukeSalad
   

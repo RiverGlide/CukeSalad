@@ -13,3 +13,4 @@ doc
 
 # jeweler generated
 pkg
+*.gemspec
