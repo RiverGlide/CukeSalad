@@ -52,18 +52,12 @@ describe CukeSalad::CLI do
       end
 
       context 'in lib' do
-        it 'creates default directory' do
-          dir_exists?(features+'/lib/default').should be_true
+        it 'creates roles directory' do
+          dir_exists?(features+'/lib/roles').should be_true
         end
 
-        context 'in features/lib/default' do
-          it 'creates roles directory' do
-            dir_exists?(features+'/lib/default/roles').should be_true
-          end
-
-          it 'creates tasks directory' do
-            dir_exists?(features+'/lib/default/tasks').should be_true
-          end
+        it 'creates tasks directory' do
+          dir_exists?(features+'/lib/tasks').should be_true
         end
       end
     end

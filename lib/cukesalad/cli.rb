@@ -47,10 +47,9 @@ module CukeSalad
 
       def create_cukesalad_structure
         create_and_navigate_to "lib"
-        create_and_navigate_to "default"
         create_dir "roles"
         create_dir "tasks"
-        cd "../../../"
+        cd "../../"
       end
 
       def configure
