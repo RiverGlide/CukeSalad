@@ -42,15 +42,13 @@ Let's see how this works with a simple example...
 
 Create a new project Calculator:
 
-    cukesalad new Calculator
+  mkdir Calculator
+  mkdir features
+  mkdir features/lib
+  mkdir features/lib/tasks
+  mkdir features/lib/roles
 
-Or configure an existing project by running the following command inside the project directory
-
-    cukesalad configure
-
-
-In idiomatic Cucumber style, we use `features/support/env.rb` to require _CukeSalad_ and
-define the location of our project's _roles_ and _tasks_ e.g.:
+In idiomatic Cucumber style, we use `features/support/env.rb` to require _CukeSalad_: 
 
     require 'cukesalad'
     begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end
