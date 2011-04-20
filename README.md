@@ -40,6 +40,10 @@ Create a new project called Calculator:
 
     cukesalad Calculator
 
+Or, if you have an existing cucumber project that you want to configure to use cukesalad, you can type:
+
+   cukesalad configure
+
 ## Write Features
 
 In `features/`, let's create our first feature file - `a_place_to_start.feature`:
