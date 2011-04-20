@@ -43,6 +43,7 @@ Let's see how this works with a simple example...
 Create a new project Calculator:
 
     mkdir Calculator
+    cd Calculator
     mkdir features
     mkdir features/lib
     mkdir features/lib/tasks
