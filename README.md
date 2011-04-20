@@ -45,6 +45,7 @@ Create a new project Calculator:
     mkdir Calculator
     cd Calculator
     mkdir features
+    mkdir features/support
     mkdir features/lib
     mkdir features/lib/tasks
     mkdir features/lib/roles
