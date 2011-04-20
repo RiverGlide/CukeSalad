@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
-
 require 'optparse'
 require 'cukesalad/cli'
+CONFIRMATION = 'y'
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: cukesalad [new | configure] project_name"
+  opts.banner = "Usage: cukesalad or cukesalad project"
 
   begin
     opts.parse!(ARGV)
@@ -15,14 +15,47 @@ OptionParser.new do |opts|
   end
 end
 
-if ARGV.empty?
-  abort "Usage: cukesalad new <project name>\nOr: cukesalad configure"
-elsif ARGV.first == 'new'
-  project = ARGV[1]
-  puts "Creating project #{project}..."
-  CukeSalad::CLI.create_new_project project 
-  puts "Done!"
-elsif ARGV.first == 'configure'
-  CukeSalad::CLI.configure_existing_project
-  puts "Done!"
+def user_confirm_setup? project
+  puts %Q|About to set-up project '#{project}' and configure cukesalad
+The following project structure will be created:
+  #{project}
+  #{project}/features
+  #{project}/features/tasks
+  #{project}/features/roles
+  #{project}/features/support
+  #{project}/features/support/env.rb
+Continue (y/n)?|
+user_confirmed?
 end
+
+def user_confirm_configuration?
+  puts %Q|About to set-up your current project to work with cukesalad
+The following files will be created/modified:
+    features
+    features/tasks
+    features/roles
+    features/support
+    features/support/env.rb
+ Continue (y/n)?|
+ user_confirmed?
+end
+
+def user_confirmed?
+  STDIN.gets.chomp == CONFIRMATION
+end
+
+if ARGV.empty?
+  if user_confirm_configuration?
+    CukeSalad::CLI.configure_existing_project
+  else
+    abort "User aborted"
+  end
+elsif ARGV.first
+  project = ARGV[0]
+  if user_confirm_setup? project
+    CukeSalad::CLI.create_new_project project
+  else
+    abort "User aborted"
+  end
+end
+
