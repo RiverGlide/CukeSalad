@@ -36,23 +36,9 @@ Let's see how this works with a simple example...
 
 ## Let's Get started
 
-Create a new project Calculator:
+Create a new project called Calculator:
 
-    mkdir Calculator
-    cd Calculator
-    mkdir features
-    mkdir features/support
-    mkdir features/lib
-    mkdir features/lib/tasks
-    mkdir features/lib/roles
-
-In idiomatic Cucumber style, we use `features/support/env.rb` to require _CukeSalad_: 
-
-    require 'cukesalad'
-    begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end
-
-Cucumber will automatically find our project's _roles_ and _tasks_, as it loads
-all .rb files beneath the project's `features/` directory.
+    cukesalad Calculator
 
 ## Write Features
 
@@ -75,8 +61,7 @@ Let's take a moment to understand this scenario:
       When  I attempt to <do some task>
       Then  I should <ask some question> '<expected answer>'
 
-To get this working, we don't need to write any steps.
-Just explain how to do the _task_ using a class...
+To get this working, we don't need to write any steps. Instead, we describe tasks...
 
 ## Create Tasks
 
@@ -85,14 +70,14 @@ Create a new file, `features/lib/tasks/switch_on_the_calculator.rb`
 
 Remember the step `When  I attempt to switch on the calculator`
 
-    in_order_to "SwitchOnTheCalculator" do
+    in_order_to "switch on the calculator" do
       @calc = switch_on_the_calculator
     end
 
 Remember the step `Then  I should see the answer '0'`
 Now we need `task/see_the_answer.rb`
 
-    in_order_to "SeeTheAnswer" do
+    in_order_to "see the answer" do
       look_at_the_display
     end
 
@@ -146,7 +131,7 @@ You can have as many name-value pairs as you like.
 
 So, we need a task called `tasks/add.rb` that explains the individual actions required to complete the task:
 
-    in_order_to "Add" do
+    in_order_to "add" do
       enter @value_of(:the_number)
       press :plus
       enter @value_of(:to_the_number)
