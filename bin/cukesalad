@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'cukesalad/cli'
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: cukesalad [new | configure] project_name"
+
+  begin
+    opts.parse!(ARGV)
+  rescue OptionParser::ParseError => e
+    warn e.message
+    puts opts
+    exit 1
+  end
+end
+
+if ARGV.empty?
+  abort "Usage: cukesalad new <project name>\nOr: cukesalad configure"
+elsif ARGV.first == 'new'
+  project = ARGV[1]
+  puts "Creating project #{project}..."
+  CukeSalad::CLI.create_new_project project 
+  puts "Done!"
+elsif ARGV.first == 'configure'
+  CukeSalad::CLI.configure_existing_project
+  puts "Done!"
+end
