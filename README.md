@@ -5,12 +5,8 @@ _Cucumber, washed and ready to eat for Friction-free ATDD/BDD_
 **This is a work in progress - feedback welcome**
 e-mail feedback to <talktous@riverglide.com>
 
-** ToDo: **
-
-* Support more step structures - such as tables as input
-* Move beyond current examples by documenting CukeSalad with Cucumber
-* Remembering data between steps
-* Multiple role/actor scenarios
+You can see our current list of intended features here:
+https://github.com/RiverGlide/CukeSalad/issues?labels=Feature
 
 ## This project has step-free access!
 
