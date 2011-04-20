@@ -42,11 +42,11 @@ Let's see how this works with a simple example...
 
 Create a new project Calculator:
 
-  mkdir Calculator
-  mkdir features
-  mkdir features/lib
-  mkdir features/lib/tasks
-  mkdir features/lib/roles
+    mkdir Calculator
+    mkdir features
+    mkdir features/lib
+    mkdir features/lib/tasks
+    mkdir features/lib/roles
 
 In idiomatic Cucumber style, we use `features/support/env.rb` to require _CukeSalad_: 
 
