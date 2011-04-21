@@ -1,4 +1,4 @@
-default: --tags ~@draft
+default: --tags ~@wip --tags ~@todo
 all: features
 autotest: --color
 autotest-all: --color
