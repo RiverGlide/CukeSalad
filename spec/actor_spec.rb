@@ -58,7 +58,7 @@ describe Actor do
     role_description = "Butler"
     
     task_description = "Lay The Table"
-    details = "with places for '5'" 
+    details = { with_places_for: '5' }
 
     director = double("director")
     director.should_receive( :explain_the_role ).with( role_description ).and_return( Butler )

@@ -3,7 +3,10 @@ require 'rubygems'
 require 'bundler'
 require 'actor'
 require 'task_author'
+require 'specifics'
 Bundler.setup
+
+World(Specifics)
 
 When /^I say hello CukeSalad$/ do 
   puts "CukeSalad says: Hello!!"
@@ -14,10 +17,10 @@ Given /^(?:I am|you are) a ([a-zA-Z ]+)$/ do |role|
 end
 
 When /^(?:I|you) (?:attempt to|was able to|were able to|did)? ([A-Z a-z_-]*)(?:: (.*))?$/ do | this_task, with_these_details, *and_more |
-  with_these_details ||= ""
-  with_these_details << " '#{and_more[0]}'" unless and_more.empty?
-  @actor.perform this_task, with_these_details unless with_these_details.nil?
-  @actor.perform this_task if with_these_details.nil?
+  info = understand_the with_these_details unless with_these_details.nil?
+  info[info.keys.last] = and_more[0] unless and_more.empty?
+  @actor.perform this_task, info unless info.nil?
+  @actor.perform this_task if info.nil?
 end
 
 Then /^(?:I|you) should ([^':]*)(?: '([^']*)')$/ do | this_question, expect_value |

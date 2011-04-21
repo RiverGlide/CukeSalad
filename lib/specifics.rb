@@ -15,6 +15,10 @@ module Specifics
     result
   end
 
+  def set_last value
+    @info[@info.keys.last] = value
+  end
+
   def names_and_values_in details
     specifics_pattern = /('[^']+')/
     details.split(specifics_pattern)
@@ -25,6 +29,6 @@ module Specifics
   end
 
   def the_value_from_the item 
-    item.gsub(/(^'|'$)/, '')
+    item.gsub(/(^'|'$)/, '') unless item.nil?
   end
 end

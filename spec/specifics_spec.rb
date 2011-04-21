@@ -33,4 +33,35 @@ describe Specifics do
     something.value_of(:first_thing).should == "item"
     something.value_of(:second_thing).should == "another thing"
   end
+
+  context 'the last item' do
+    it "can be empty" do
+      something = NeedingSpecifics.new
+      something.understand_the "containing"
+      something.value_of(:containing).should be_nil
+    end
+
+    it "can be the only item and have a value assigned" do
+      something = NeedingSpecifics.new
+      something.understand_the "containing"
+      something.set_last('some value')
+      something.value_of(:containing).should == 'some value'
+    end
+
+    it "can be the only item and be empty" do
+      something = NeedingSpecifics.new
+      something.understand_the "called 'something' containing"
+      something.value_of(:called).should == 'something'
+      something.value_of(:containing).should be_nil
+    end
+
+    it "can have a value assigned" do
+      something = NeedingSpecifics.new
+      something.understand_the "called 'something' containing"
+      something.value_of(:called).should == 'something'
+      something.set_last('some value')
+      something.value_of(:containing).should == 'some value'
+    end
+
+  end
 end
