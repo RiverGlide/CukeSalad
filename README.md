@@ -121,19 +121,19 @@ Let's try another scenario...
     Scenario Outline: Find the sum of two numbers
       Given I am a Calculating Individual
       And I was able to switch on the calculator
-      When I attempt to add, the number '10' to the number '10'
+      When I attempt to add: the number '10' and the number '10'
       Then I should see the answer '20'
 
 Notice that we've reused 'switch on the calculator'.
 
 The new _When_ step has a slightly different layout.
-Let's examine that for a second... See below. Notice the ',' (comma) after <do something> followed by the name-value pairs:
-
-    When I attempt to <do something>, <name> '<value>' <name> '<value>'
-
-You can also use a ':' (colon):
+Let's examine that for a second... See below. Notice the ':' (colon) after <do something> followed by the name-value pairs:
 
     When I attempt to <do something>: <name> '<value>' <name> '<value>'
+
+You can also use a ',' (comma) in situations where a colon wouldn't quite work:
+
+    When I attempt to <do something>, <name> '<value>' <name> '<value>'
 
 <do something> can be as many words as you like. You can have as many name-value pairs as you like.
 
@@ -142,7 +142,7 @@ For this to work we need a task called `tasks/add.rb` that explains the individu
     in_order_to "add" do
       enter @value_of(:the_number)
       press :plus
-      enter @value_of(:to_the_number)
+      enter @value_of(:and_the_number)
       press :equals
     end
 
@@ -159,7 +159,7 @@ There is some 'syntactic sugar' that we can use to dress this up a little and ma
 
 All we've done is mapped `:the_number` to `:first_number` and `:to_the_number` to `:second_number`. There is a special method called "the" that allows you to reference the mapped values rather than the symbols derived from the scenario.
 
-Now all we need to do is create the corresponding methods in `calculating_individual.rb`...
+Now all we need to do is create the corresponding methods in `calculating_individual.rb`.
 
     module CalculatingIndividual
 
@@ -192,6 +192,8 @@ Now all we need to do is create the corresponding methods in `calculating_indivi
       end
     end
 
+Of course you'll have to [implement the calculator too](https://github.com/RiverGlide/CukeSalad/blob/master/Examples/Calculator/lib/calculator.rb)
+
 Now, you can run cucumber again:
 
     % cucumber
@@ -199,6 +201,41 @@ Now, you can run cucumber again:
 There's no need to write `step_definitions`...
 Simply express the _roles_ and the _tasks_ in clear,
 concise, easy to read classes.
+
+If we want to know what things we can say, instead of trawling through a step-def ruby file, we can look in our tasks folder:
+
+    features/lib/default/tasks/
+    ├── add.rb
+    ├── calculate.rb
+    ├── calculations.rb
+    ├── see_the_answer.rb
+    ├── subtract.rb
+    └── switch_on_the_calculator.rb
+
+You can structure your tasks as you see fit. For example, as the project grows, it might end up looking like this:
+
+    features/lib/default/tasks/
+    ├── all_purpose
+    |   └── calculate.rb
+    ├── arithmetic
+    |   ├── add.rb
+    |   ├── divide.rb
+    |   ├── multiply.rb
+    |   └── subtract.rb
+    ├── extras
+    |   ├── recall_from_memory.rb
+    |   ├── store_in_memory.rb
+    |   └── switch_on_the_calculator.rb
+    ├── questions
+    |   ├── see_the_answer.rb
+    |   ├── see_the_following_indicators.rb
+    |   └── switch_on_the_calculator.rb
+    ├── trigonometry
+    |   ├── sine.rb
+    |   ├── cosine.rb
+    |   └── tangent.rb
+    └── reference_material
+        └── calculations.rb
 
 After adding some more scenarios and tasks and an alternative "Calculating Individual" (see below for why), our finished Calculator directory structure looks like this...
 
