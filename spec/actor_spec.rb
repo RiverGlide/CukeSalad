@@ -33,8 +33,8 @@ end
 describe Actor do
 
   it "gets into character" do
-    director = double("director")
     role_description = "Butler"
+    director = double("director")
     director.should_receive( :explain_the_role ).with( role_description ).and_return( Butler )
     
     actor = Actor.new role_description, director
@@ -89,7 +89,8 @@ describe Actor do
 
     actor = Actor.new role_description, director
 
-    lambda {actor.recall( :something )}.should raise_error KeyError, "You tried to recall ':something' but no previous step appears to have taken note of that information."
+    lambda {actor.recall( :something )}.should raise_error KeyError, 
+      "You tried to recall ':something' but no previous step appears to have taken note of that information."
   end
 end
 
