@@ -135,7 +135,7 @@ You can also use a ',' (comma) in situations where a colon wouldn't quite work:
 
     When I attempt to <do something>, <name> '<value>' <name> '<value>'
 
-<do something> can be as many words as you like. You can have as many name-value pairs as you like.
+`<do something>` can be as many words as you like. You can have as many name-value pairs as you like.
 
 For this to work we need a task called `tasks/add.rb` that explains the individual actions required to complete the task:
 
