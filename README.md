@@ -75,7 +75,7 @@ Create a new file, `features/lib/tasks/switch_on_the_calculator.rb`
 Remember the step `When  I attempt to switch on the calculator`
 
     in_order_to "switch on the calculator" do
-      @calc = switch_on_the_calculator
+      switch_on_the_calculator
     end
 
 Remember the step `Then  I should see the answer '0'`
@@ -110,7 +110,7 @@ You'll need a class called Calculator on the load path of course, but that's it.
 
 From your project folder, run (_note: '%' is our command prompt_)
 
-  % cucumber
+    % cucumber
 
 We now have our first passing Feature, without creating a single step definition!
 
@@ -121,19 +121,23 @@ Let's try another scenario...
     Scenario Outline: Find the sum of two numbers
       Given I am a Calculating Individual
       And I was able to switch on the calculator
-      When I attempt to add: the number '10' to the number '10'
+      When I attempt to add, the number '10' to the number '10'
       Then I should see the answer '20'
 
 Notice that we've reused 'switch on the calculator'.
 
 The new _When_ step has a slightly different layout.
-Let's examine that for a second... Notice the ':' (colon) after <do something> and the name-value pairs:
+Let's examine that for a second... See below. Notice the ',' (comma) after <do something> followed by the name-value pairs:
+
+    When I attempt to <do something>, <name> '<value>' <name> '<value>'
+
+You can also use a ':' (colon):
 
     When I attempt to <do something>: <name> '<value>' <name> '<value>'
 
-You can have as many name-value pairs as you like.
+<do something> can be as many words as you like. You can have as many name-value pairs as you like.
 
-So, we need a task called `tasks/add.rb` that explains the individual actions required to complete the task:
+For this to work we need a task called `tasks/add.rb` that explains the individual actions required to complete the task:
 
     in_order_to "add" do
       enter @value_of(:the_number)
@@ -144,7 +148,7 @@ So, we need a task called `tasks/add.rb` that explains the individual actions re
 
 Notice how the `value_of` lines use symbols that correspond to the wording `'the number '10' to the number '10'` in the "When" step.
 
-There is some 'syntactic sugar' that we can use to dress this up a little and make it read nicer... a simple attribute mapping:
+There is some 'syntactic sugar' that we can use to dress this up a little and make it read nicer... a simple attribute mapping (using Ruby 1.9.x syntax):
 
     in_order_to "add", the_number: :first_number, to_the_number: :second_number do
         enter the :first_number
@@ -153,9 +157,9 @@ There is some 'syntactic sugar' that we can use to dress this up a little and ma
         press :equals
     end
 
-All we've done is mapped "the_number" to "first_number". There is a special method called "the" that allows you to reference the mapped values rather than the symbols derived from the scenario.
+All we've done is mapped `:the_number` to `:first_number` and `:to_the_number` to `:second_number`. There is a special method called "the" that allows you to reference the mapped values rather than the symbols derived from the scenario.
 
-Now all we need to do is modify our `calculating_individual.rb` to receive those calls...
+Now all we need to do is create the corresponding methods in `calculating_individual.rb`...
 
     module CalculatingIndividual
 
