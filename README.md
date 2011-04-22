@@ -127,7 +127,7 @@ Let's try another scenario...
 Notice that we've reused 'switch on the calculator'.
 
 The new _When_ step has a slightly different layout.
-Let's examine that for a second... See below. Notice the ':' (colon) after <do something> followed by the name-value pairs:
+Let's examine that for a second... See below. Notice the ':' (colon) after `<do something>` followed by the name-value pairs:
 
     When I attempt to <do something>: <name> '<value>' <name> '<value>'
 
