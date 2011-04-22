@@ -237,14 +237,39 @@ You can structure your tasks as you see fit. For example, as the project grows, 
     └── reference_material
         └── calculations.rb
 
-After adding some more scenarios and tasks and an alternative "Calculating Individual" (see below for why), our finished Calculator directory structure looks like this...
+## Alternative Roles
+
+As our features _describe the value of a calculator application and not its
+implementation_, we have the opportunity to reuse them.
+
+In the Calculator example, we create a new _role_ in
+`./features/lib/alternative/roles/calculating_web_user.rb`, which we can swap
+into our tests using a Cucumber profile defined in `features/cucumber.yml`:
+
+    default --exclude features/lib/alternative/
+    alternative -r features/lib/alternative/ -r features/support/env.rb -r features/lib/default/tasks/
+
+We can run our alternative configuration like so:
+
+  `%cucumber --profile alternative`
+
+The Calculating Web User masquerades as the Calculating Individual from our
+previous example, and provides the same API, allowing us to reuse all of our
+existing features and _tasks_.
+
+The alternative, `./lib/web_calculator.rb`, implementation is a simple [Sinatra](http://www.sinatrarb.com) application,
+which we drive with the [Capybara](http://github.com/jnicklas/capybara) web testing framework.
+
+By writing a single new _role_ class we're able to reuse all of our existing features,
+_tasks_ and even the `Calculator` itself, which the web calculator delegates to in order to do its calculations.
+
+After adding some more scenarios and tasks and an alternative "Calculating Individual" (see below for why), our Calculator directory structure currently looks like this...
 
     ├── cucumber.yml
     ├── features
     │   ├── A_PlaceToStart.feature
     │   ├── Addition.feature
     │   ├── Complex_calculations.feature
-    │   ├── LOOK_MA_NO_STEP_DEFS.txt
     │   ├── Subtraction.feature
     │   ├── Typical_workflow.feature
     │   ├── lib
@@ -271,29 +296,3 @@ After adding some more scenarios and tasks and an alternative "Calculating Indiv
         └── web_calculator_spec.rb
 
 Take a look around the examples and the code to see how it all works. We hope you enjoy reading as much as we enjoyed writing it.
-
-## Alternative Roles
-
-As our features _describe the value of a calculator application and not its
-implementation_, we have the opportunity to reuse them.
-
-In the Calculator example, we create a new _role_ in
-`./features/lib/alternative/roles/calculating_web_user.rb`, which we can swap
-into our tests using a Cucumber profile defined in `features/cucumber.yml`:
-
-    default --exclude features/lib/alternative/
-    alternative -r features/lib/alternative/ -r features/support/env.rb -r features/lib/default/tasks/
-
-We can run our alternative configuration like so:
-
-  `%cucumber --profile alternative`
-
-The Calculating Web User masquerades as the Calculating Individual from our
-previous example, and provides the same API, allowing us to reuse all of our
-existing features and _tasks_.
-
-The alternative, `./lib/web_calculator.rb`, implementation is a simple [Sinatra](http://www.sinatrarb.com) application,
-which we drive with the [Capybara](http://github.com/jnicklas/capybara) web testing framework.
-
-By writing a single new _role_ class we're able to reuse all of our existing features,
-_tasks_ and even the `Calculator` itself, which the web calculator delegates to in order to do its calculations.
