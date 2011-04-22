@@ -6,7 +6,7 @@ Feature: Remember information between steps
   Background:
     Given you are a Step Free Cuker
     And   you were able to create a new Cuke Salad project
-    And   you were able to create a role: called 'NewCustomer'
+    And   you were able to create a role, called 'NewCustomer'
 
   Scenario: You can reuse information
     Given you were able to create a task, called 'do something' containing
@@ -21,7 +21,7 @@ Feature: Remember information between steps
         recall :some_key
       end
       """
-    When you attempt to run a scenario: containing
+    When you attempt to run a scenario, containing
       """
       Given I am a New Customer
       When I attempt to do something, remembering 'a value'
@@ -37,7 +37,7 @@ Feature: Remember information between steps
       recall :some_key
     end
     """
-    When I attempt to run a scenario: containing
+    When I attempt to run a scenario, containing
       """
       Given I am a New Customer
       Then I should find that the thing remembered was 'a value'
