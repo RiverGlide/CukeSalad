@@ -68,5 +68,28 @@ describe Actor do
 
     actor.perform( task_description, details ).should == 5
   end
+
+  it "can take note of information" do
+    role_description = "Butler"
+    
+    director = double("director")
+    director.should_receive( :explain_the_role ).with( role_description ).and_return( Butler )
+
+    actor = Actor.new role_description, director
+
+    actor.take_note_of :something, "of importance"
+    actor.recall( :something ).should == "of importance"
+  end
+
+  it "tells you when it can't find the information you're looking for" do
+    role_description = "Butler"
+    
+    director = double("director")
+    director.should_receive( :explain_the_role ).with( role_description ).and_return( Butler )
+
+    actor = Actor.new role_description, director
+
+    lambda {actor.recall( :something )}.should raise_error KeyError, "You tried to recall ':something' but no previous step appears to have taken note of that information."
+  end
 end
 
