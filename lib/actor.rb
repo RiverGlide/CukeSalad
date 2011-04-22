@@ -1,11 +1,10 @@
 require 'director'
 
 class Actor
-   
+
   def initialize this_type_of_role, directed_by=Director.new
     @director = directed_by
     get_into_character_for this_type_of_role
-    @note_pad = {}
   end
   
   def perform described_task, details = {}
@@ -31,17 +30,5 @@ class Actor
 
   def value_of(symbol)
     @info[symbol]
-  end
-
-  def take_note_of key, value
-   @note_pad.store key, value
-  end
-
-  def recall key
-    begin
-      @note_pad.fetch key
-    rescue KeyError
-      raise KeyError, "You tried to recall ':#{key}' but no previous step appears to have taken note of that information."
-    end
   end
 end
