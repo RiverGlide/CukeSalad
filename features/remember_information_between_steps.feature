@@ -1,7 +1,7 @@
 Feature: Remember information between steps
   As a Step Free Cuker
-  I want information captured in one step to be available in a later step
-  So that I can deal with situations where dynamic information is required in later steps
+  You want information captured in one step to be available in a later step
+  So that you can deal with situations where dynamic information is required in later steps
 
   Background:
     Given you are a Step Free Cuker
