@@ -1,6 +1,5 @@
-$:.unshift(File.dirname(__FILE__), ".")
 require 'spec_helper'
-require 'task_author'
+require 'cukesalad/task_author'
 
 class SomeActor
   def see_how_to_do something

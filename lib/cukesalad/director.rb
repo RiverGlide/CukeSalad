@@ -1,4 +1,4 @@
-require 'codify/const_name'
+require 'cukesalad/codify/const_name'
 class Director
 
   include Codify

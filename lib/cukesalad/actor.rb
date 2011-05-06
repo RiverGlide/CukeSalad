@@ -1,4 +1,4 @@
-require 'director'
+require 'cukesalad/director'
 
 class Actor
    

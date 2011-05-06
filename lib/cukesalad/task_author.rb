@@ -1,4 +1,4 @@
-require 'codify/const_name'
+require 'cukesalad/codify/const_name'
 def in_order_to do_something, *with_attributes, &actions
   attr_map = with_attributes[0]
   name = Codify::ConstName.from do_something
