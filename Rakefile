@@ -8,27 +8,7 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 require 'rake'
-
-require 'jeweler'
-Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "cukesalad"
-  gem.homepage = "https://github.com/RiverGlide/CukeSalad"
-  gem.platform = Gem::Platform::RUBY
-  gem.license = "MIT"
-  gem.summary = %Q{Friction Free BDD/ATDD with cucumber}
-  gem.description = %Q{CukeSalad allows you to focus on the tasks at hand - expressing examples, the roles involved in those examples and the tasks that those roles need to perform with the product under development.}
-  gem.email = "talktous@riverglide.com"
-  gem.authors = ["RiverGlide"]
-
-  # The following two lines need to be commented out in order to gain access to the version rake tasks
-  gem_version = File.exist?('VERSION') ? File.read('VERSION') : ""
-  gem.version = gem_version
-  gem.executables = ["cukesalad"]
-  gem.files.include 'lib/cukesalad/cli.rb'
-end
-
-Jeweler::RubygemsDotOrgTasks.new
+Bundler::GemHelper.install_tasks
 
 require 'rspec/core'
 require 'rspec/core/rake_task'
