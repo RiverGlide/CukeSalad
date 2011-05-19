@@ -11,6 +11,5 @@ doc
 # bundler
 .bundle
 
-# jeweler generated
+# ignore built gems
 pkg
-*.gemspec
