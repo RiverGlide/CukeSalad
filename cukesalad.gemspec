@@ -20,9 +20,10 @@ Gem::Specification.new do |s|
   s.default_executable = "cukesalad"
   s.require_paths      = ["lib"]
 
-  s.add_runtime_dependency "cucumber", "0.10.0"
-  s.add_runtime_dependency "rspec",    "2.5.0"
-  s.add_runtime_dependency "aruba",    "0.3.5"
+  s.add_runtime_dependency "cucumber", ">=0.10.0"
+  s.add_runtime_dependency "rspec",    ">=2.5.0"
+  s.add_runtime_dependency "aruba",    ">=0.3.5"
 
   s.add_development_dependency "bundler", "~> 1.0.0"
+  s.add_development_dependency "rake", "~> 0.8.7"
 end
