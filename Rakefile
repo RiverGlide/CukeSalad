@@ -20,7 +20,7 @@ end
 require 'cucumber/rake/task'
 Cucumber::Rake::Task.new(:cucumber)
 
-task :default => :spec
+task :default => [:spec, :cucumber]
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
