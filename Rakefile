@@ -19,8 +19,11 @@ end
 
 require 'cucumber/rake/task'
 Cucumber::Rake::Task.new(:cucumber)
+Cucumber::Rake::Task.new(:wip) do |wip|
+  wip.cucumber_opts = "-p wip"
+end
 
-task :default => :spec
+task :default => [:spec, :cucumber]
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
@@ -30,4 +33,21 @@ Rake::RDocTask.new do |rdoc|
   rdoc.title = "CukeSalad #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+require 'relish/command'
+namespace :relish do
+  task :create do
+    `relish projects:add RiverGlive/CukeSalad`
+  end
+
+  task :push do
+    `relish push CukeSalad:#{CukeSalad::VERSION}`
+  end
+
+  namespace :version do
+    task :add do
+      `relish versions:add CukeSalad:#{CukeSalad::VERSION}`
+    end
+  end
 end

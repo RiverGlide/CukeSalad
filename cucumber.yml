@@ -1,4 +1,6 @@
 default: --tags ~@wip --tags ~@todo
+wip: --tags @wip
+todo: --tags @todo
 all: features
 autotest: --color
 autotest-all: --color
