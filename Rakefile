@@ -34,3 +34,20 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+require 'relish/command'
+namespace :relish do
+  task :create do
+    `relish projects:add RiverGlive/CukeSalad`
+  end
+
+  task :push do
+    `relish push CukeSalad:#{CukeSalad::VERSION}`
+  end
+
+  namespace :version do
+    task :add do
+      `relish versions:add CukeSalad:#{CukeSalad::VERSION}`
+    end
+  end
+end
