@@ -38,7 +38,7 @@ end
 require 'relish/command'
 namespace :relish do
   task :create do
-    `relish projects:add RiverGlive/CukeSalad`
+    `relish projects:add RiverGlide/CukeSalad`
   end
 
   task :push do
