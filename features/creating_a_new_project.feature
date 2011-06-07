@@ -1,4 +1,4 @@
-Feature: Cuke Salad
+Feature: Creating a New Project
   As a Step Free Cuker
   You want to set up your project to use use Cuke Salad 
   So that you can start writing scenarios without step definitions 
