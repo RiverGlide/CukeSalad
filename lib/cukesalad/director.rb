@@ -10,7 +10,7 @@ module CukeSalad
       begin
         find_directives_for name
       rescue NameError
-        raise "I can't find a role called '#{ name }'. Have you created it?\ne.g.\n  module #{ name }\n  end"
+        raise "I can't find a role called '#{ name }'. Have you created it?\ne.g.\n  module #{ name }\n  end\n\n"
       end
     end
 
@@ -19,7 +19,7 @@ module CukeSalad
       begin
         find_directives_for name
       rescue NameError
-        raise "I can't find a task called '#{ something }'. Have you created it?\ne.g.\n  in_order_to '#{ something }' do\n    # the actions\n  end" 
+        raise "I can't find a task called '#{ something }'. Have you created it?\ne.g.\n  in_order_to '#{ something }' do\n    # the actions\n  end\n\n" 
       end
     end
 
