@@ -7,18 +7,16 @@ end
 module CukeSalad
   describe Specifics do
 
-    it "has an item of specific information" do
-      something = NeedingSpecifics.new
-      something.understand_the "specific 'information'"
-      something.value_of(:specific).should == "information"
+    [ "specific 'information'",
+      'specific "information"'
+    ].each do | specifics |
+      it "can find #{specifics}" do
+        something = NeedingSpecifics.new
+        something.understand_the specifics
+        something.value_of(:specific).should == "information"
+      end
     end
     
-    it "has an item of specific information" do
-      something = NeedingSpecifics.new
-      something.understand_the 'specific "information"'
-      something.value_of(:specific).should == "information"
-    end
-
     it "has items of specific information" do
       something = NeedingSpecifics.new
       something.understand_the "first 'item' second 'another'"
