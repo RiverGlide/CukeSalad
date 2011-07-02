@@ -25,9 +25,13 @@ GEM
       term-ansicolor (>= 1.0.5)
     diff-lcs (1.1.2)
     ffi (1.0.9)
+    ffi (1.0.9-java)
     gherkin (2.3.10)
       json (>= 1.4.6)
+    gherkin (2.3.10-java)
+      json (>= 1.4.6)
     json (1.4.6)
+    json (1.4.6-java)
     mime-types (1.16)
     rake (0.8.7)
     relish (0.3.0)
@@ -47,6 +51,7 @@ GEM
     term-ansicolor (1.0.5)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES

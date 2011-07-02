@@ -12,6 +12,12 @@ module CukeSalad
       something.understand_the "specific 'information'"
       something.value_of(:specific).should == "information"
     end
+    
+    it "has an item of specific information" do
+      something = NeedingSpecifics.new
+      something.understand_the 'specific "information"'
+      something.value_of(:specific).should == "information"
+    end
 
     it "has items of specific information" do
       something = NeedingSpecifics.new

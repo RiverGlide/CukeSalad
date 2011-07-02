@@ -21,7 +21,7 @@ module CukeSalad
     end
 
     def names_and_values_in details
-      specifics_pattern = /('[^']+')/
+      specifics_pattern = /('[^']+'|"[^"]+")/
       details.split(specifics_pattern)
     end
 
@@ -30,7 +30,7 @@ module CukeSalad
     end
 
     def the_value_from_the item 
-      item.gsub(/(^'|'$)/, '') unless item.nil?
+      item.gsub(/((?:^'|'$)|(?:^"|"$))/, '') unless item.nil?
     end
   end
 end
