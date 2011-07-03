@@ -1,2 +1,2 @@
 require 'cukesalad/salad'
-require 'cukesalad/cucumber'
+require 'cukesalad/cucumber_steps'
