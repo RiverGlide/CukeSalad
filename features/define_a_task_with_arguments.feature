@@ -6,7 +6,6 @@ Feature: Define a Task with arguments
 
   Background:
     Given you are a Step Free Cuker
-    And   you were able to create a new Cuke Salad project
     And   you were able to create a role: called 'NewCustomer'
     
   Scenario Outline: A task can accept arguments

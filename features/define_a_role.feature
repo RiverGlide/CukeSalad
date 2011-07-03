@@ -5,7 +5,6 @@ Feature: Define the Role
 
   Background:
     Given you are a Step Free Cuker
-    And   you were able to create a new Cuke Salad project
 
   Scenario: We'll tell you what you need to do to establish the role
     Given you did not create a role: called 'NewCustomer'

@@ -6,11 +6,10 @@ Feature: Define the Task
 
   Background:
     Given you are a Step Free Cuker
-    And   you were able to create a new Cuke Salad project
     And   you were able to create a role: called 'NewCustomer'
 
   Scenario Outline: Once you've created the task, you see the step pass
-    Given you did create a task: called 'do something'
+    Given you were able to create a task: called 'do something'
     When  you attempt to run a scenario: containing
     """
     Given I am a New Customer

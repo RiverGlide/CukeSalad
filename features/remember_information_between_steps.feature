@@ -5,7 +5,6 @@ Feature: Remember information between steps
 
   Background:
     Given you are a Step Free Cuker
-    And   you were able to create a new Cuke Salad project
     And   you were able to create a role, called 'NewCustomer'
 
   Scenario: You can reuse information

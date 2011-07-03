@@ -2,6 +2,10 @@ require 'calculator'
 
 module CalculatingIndividual
 
+  def role_preparation
+    switch_on_the_calculator
+  end
+
   def switch_on_the_calculator
     @calculator = Calculator.new
     @operate_with = {

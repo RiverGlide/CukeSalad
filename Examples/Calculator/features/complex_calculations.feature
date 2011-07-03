@@ -5,7 +5,6 @@ Feature: Complex Calculations
 
 Scenario Outline: Get the result of a more complex calculation
   Given I am a calculating individual
-  And I was able to switch on the calculator
   When I attempt to calculate, with the following '<calculation>'
   Then I should see the answer '<correct_result>'
 

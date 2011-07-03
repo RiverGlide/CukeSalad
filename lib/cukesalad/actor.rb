@@ -19,6 +19,7 @@ module CukeSalad
     def get_into_character_for described_role
       the_role = @director.explain_the_role described_role
       see_how_to_do the_role
+      role_preparation
     end
     
     def get_ready_to_perform something
@@ -28,7 +29,6 @@ module CukeSalad
 
     def see_how_to_do something
       extend something
-      role_preparation
     end
 
     def role_preparation

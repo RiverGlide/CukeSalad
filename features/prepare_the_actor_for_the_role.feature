@@ -5,7 +5,6 @@ Feature: Prepare the actor for the role
 
   Background:
     Given you are a Step Free Cuker
-    And you were able to create a new Cuke Salad project
 
   Scenario: Initialization
     Given you were able to create a file, at 'features/roles/role_with_prep.rb' containing
