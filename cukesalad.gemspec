@@ -10,7 +10,12 @@ Gem::Specification.new do |s|
   s.email       = ["talktous@riverglide.com"]
   s.homepage    = "https://github.com/RiverGlide/CukeSalad"
   s.summary     = %q{Friction Free BDD/ATDD with cucumber}
-  s.description = %q{CukeSalad allows you to focus on the tasks at hand - expressing examples, the roles involved in those examples and the tasks that those roles need to perform with the product under development.}
+  s.description = %q{CukeSalad allows you to focus on the tasks at hand - expressing examples, the roles involved in those examples and the tasks that those roles need to perform with the product under development.
+  New in this version:
+    - Single or double quotes can be used for parameters
+    - Single or double quotes can be used for expectations
+    - You can initialise the actor by having a role_preparation method in your role
+  }
 
   s.licenses = ["MIT"]
 
