@@ -3,11 +3,9 @@ Feature: Prepare the actor for the role
   You want the role to initialize some things
   So that you can define the things that the role always does at the start
 
-  Background:
-    Given you are a Step Free Cuker
-
   Scenario: Initialization
-    Given you were able to create a file, at 'features/roles/role_with_prep.rb' containing
+    Given you are a Step Free Cuker
+    And you were able to create a file, at 'features/roles/role_with_prep.rb' containing
     """
     module RoleWithPrep
       def role_preparation

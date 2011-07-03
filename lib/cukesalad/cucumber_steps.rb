@@ -26,7 +26,11 @@ Then /^(?:I|you) should ([^':]*)(?: '([^']*)')$/ do | this_question, expect_valu
   @actor.answer( this_question ).to_s.should == expect_value
 end
 
-Then /^(?:I|you) should ([^':]+)$/ do | this_question |
+Then /^(?:I|you) should ([^':]*)(?: "([^"]*)")$/ do | this_question, expect_value |
+  @actor.answer( this_question ).to_s.should == expect_value
+end
+
+Then /^(?:I|you) should ([^'^":]+)$/ do | this_question |
   @actor.answer( this_question )
 end
 

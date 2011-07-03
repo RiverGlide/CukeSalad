@@ -30,6 +30,7 @@ module CukeSalad
     def see_how_to_do something
       extend something
     end
+    alias :see_how_to :see_how_to_do
 
     def role_preparation
       # Does nothing unless you override it from your role
