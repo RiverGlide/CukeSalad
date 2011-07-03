@@ -7,35 +7,38 @@ end
 module CukeSalad
   describe Specifics do
 
-    [ "specific 'information'",
-      'specific "information"'
-    ].each do | specifics |
-      it "can find #{specifics}" do
-        something = NeedingSpecifics.new
-        something.understand_the specifics
-        something.value_of(:specific).should == "information"
-      end
-    end
-    
-    it "has items of specific information" do
-      something = NeedingSpecifics.new
-      something.understand_the "first 'item' second 'another'"
-      something.value_of(:first).should == "item"
-      something.value_of(:second).should == "another"
-    end
+    context 'name value pairs' do
 
-    it "copes with names having more than one word" do
-      something = NeedingSpecifics.new 
-      something.understand_the "first thing 'item' second thing 'another'"
-      something.value_of(:first_thing).should == "item"
-      something.value_of(:second_thing).should == "another"
-    end
-    
-    it "should cope with values having more than one word" do
-      something = NeedingSpecifics.new
-      something.understand_the "first thing 'item' second thing 'another thing'"
-      something.value_of(:first_thing).should == "item"
-      something.value_of(:second_thing).should == "another thing"
+      [ "specific 'information'",
+        'specific "information"'
+      ].each do | specifics |
+        it "can be found in: #{specifics}" do
+          something = NeedingSpecifics.new
+          something.understand_the specifics
+          something.value_of(:specific).should == "information"
+        end
+      end
+      
+      it "can have more than one name-value pair" do
+        something = NeedingSpecifics.new
+        something.understand_the "first 'item' second 'another'"
+        something.value_of(:first).should == "item"
+        something.value_of(:second).should == "another"
+      end
+
+      it "can have more than one word as the name" do
+        something = NeedingSpecifics.new 
+        something.understand_the "first thing 'item' second thing 'another'"
+        something.value_of(:first_thing).should == "item"
+        something.value_of(:second_thing).should == "another"
+      end
+      
+      it "can have more than one word as the name or value" do
+        something = NeedingSpecifics.new
+        something.understand_the "first thing 'item' second thing 'another thing'"
+        something.value_of(:first_thing).should == "item"
+        something.value_of(:second_thing).should == "another thing"
+      end
     end
 
     context 'the last item' do
