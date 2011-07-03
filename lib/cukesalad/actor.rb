@@ -5,8 +5,8 @@ module CukeSalad
      
     def initialize this_type_of_role, directed_by=Director.new
       @director = directed_by
-      get_into_character_for this_type_of_role
       @note_pad = {}
+      get_into_character_for this_type_of_role
     end
     
     def perform described_task, details = {}
@@ -28,6 +28,11 @@ module CukeSalad
 
     def see_how_to_do something
       extend something
+      role_preparation
+    end
+
+    def role_preparation
+      # Does nothing unless you override it from your role
     end
 
     def value_of(symbol)
