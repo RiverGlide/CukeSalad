@@ -12,20 +12,28 @@ Feature: Prepare the actor for the role
     """
     module RoleWithPrep
       def role_preparation
-        take_note_of :something, 'important'
+        do_something_important
+      end
+
+      def do_something_important
+        @something = 'something important was done'
+      end
+
+      def see_what_was_done
+        @something
       end
     end
     """
-    And you were able to create a task, called 'recall something' containing
+    And you were able to create a task, called 'see that' containing
     """
-    in_order_to 'recall something' do
-      recall :something
+    in_order_to 'see that' do
+      see_what_was_done
     end
     """
     When you attempt to run a scenario, containing
     """
     Given I am a Role With Prep
-    Then I should recall something 'important'
+    Then I should see that 'something important was done'
     """
     Then you should see it has 'passed'
 
