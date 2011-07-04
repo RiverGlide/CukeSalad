@@ -5,20 +5,7 @@ Feature: Creating a New Project
 
   Scenario: Set up your project and verify that you can use CukeSalad
     Given you are a Step Free Cuker
-    And   you were able to create directories: as follows
-    """
-    features
-    features/lib
-    features/lib/roles
-    features/lib/tasks
-    features/support
-    """
-    And you were able to create a file: at 'features/support/env.rb' containing
-      """
-      $:.unshift(File.dirname(__FILE__) + "/../../../../lib") #where to find CukeSalad
-             
-      require "cukesalad"
-      """
+    And   you were able to interactively run, the command 'cukesalad' and type 'y'
     And you were able to create a file: at 'features/hello_cukesalad.feature' containing
       """
       Feature: Hello CukeSalad
@@ -31,4 +18,4 @@ Feature: Creating a New Project
     """
     CukeSalad says: Hello!!
     """
-   And  you should see it has 'passed'
+    And  you should see it has 'passed'

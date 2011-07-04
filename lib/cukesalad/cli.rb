@@ -54,7 +54,7 @@ module CukeSalad
 
       def configure
         cd "features/support"
-        content = "require 'cukesalad'\n begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end"
+        content = "\nrequire 'cukesalad'\nbegin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end"
         append_to_file "env.rb",content
       end
 

@@ -42,7 +42,7 @@ describe CukeSalad::CLI do
         end
 
         it 'env.rb has the right content' do
-          content = "require 'cukesalad'\n begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end"
+          content = "\nrequire 'cukesalad'\nbegin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end"
           file_content(file).should == content
         end
       end
