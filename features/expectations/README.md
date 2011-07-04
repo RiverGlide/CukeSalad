@@ -1,5 +1,3 @@
-# Expectations
-
 In your scenario, you'll want to express expectations in a number of forms.
 
 The most comprehensive representation of the various ways you can express expectations is in the full set of cukesalad features.

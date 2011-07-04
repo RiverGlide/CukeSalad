@@ -1,5 +1,3 @@
-# Defining Tasks
-
 In your scenario, once you've named you role, you can write tasks that use methods on that role.
 For example:
 

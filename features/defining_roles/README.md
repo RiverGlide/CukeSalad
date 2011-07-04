@@ -1,5 +1,3 @@
-## Defining Roles
-
 Your first step in your scenarios or in your background names a role relevant to your feature.
 Cukesalad has an actor that adopts this role at run-time.
 
