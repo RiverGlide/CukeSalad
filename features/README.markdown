@@ -1,18 +1,20 @@
-![RiverGlide logo](http://riverglide-live.heroku.com/attachments/branding/riverglide_logo.png)
+![RiverGlide logo](http://riverglide-live.heroku.com/attachments/branding/riverglide_logo_medium.png)
 
 # cukesalad - a cucumber extension
 
 _Cucumber, washed and ready to eat for friction-free ATDD/BDD_
 
+Cukesalad is an extension to cucumber that allows you to write scenarios without regular expression.
+It encourages you to separte your code in neat, organised and focused parts.
+With cukesalad you focus on expressing your intent not on regular expressions.
+
+You can combine cukesalad with your regular step definitions.
+
 * [Get the Gem](https://rubygems.org/gems/cukesalad)
 * [Find it on Github](http://github.com/RiverGlide/CukeSalad)
 
 ## Synopsis
-
-Cukesalad is an extension to cucumber that allows you to write scenarios without regular expression.
-It encourages you to separte your code in neat, organised and focused parts.
-
-You can combine cukesalad with your regular step definitions.
+<iframe width="560" height="349" src="http://www.youtube.com/embed/UYN7p_7IlZ8" frameborder="0" allowfullscreen></iframe>
 
 There are no step-definitions required for this to work:
 
