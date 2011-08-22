@@ -11,7 +11,7 @@ When /^I say hello CukeSalad$/ do
   puts "CukeSalad says: Hello!!"
 end
 
-Given /^(?:I am|you are) a ([a-zA-Z ]+)$/ do |role|
+Given /^(?:I am|you are) a(?:n)? ([a-zA-Z ]+)$/ do |role|
   @actor = CukeSalad::Actor.new(role)
 end
 
