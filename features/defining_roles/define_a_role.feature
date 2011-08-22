@@ -28,3 +28,11 @@ Feature: Define the Role
     Given I am a New Customer
     """
     Then you should see it has 'passed'
+
+  Scenario: Roles which grammatically required an 'an'
+    Given you did create a role: called 'UnregisteredCustomer'
+    When  you attempt to run a scenario: containing
+    """
+    Given I am an Unregistered Customer
+    """
+    Then you should see it has 'passed'
