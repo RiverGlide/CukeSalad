@@ -1,12 +1,18 @@
 require 'sinatra/base'
 require 'erb'
+
 $:.unshift(File.dirname(__FILE__), '.')
 require 'calculator'
 
 Sinatra::Base.enable :inline_templates
-Sinatra::Base.enable :sessions
 
 class WebCalculator < Sinatra::Base
+
+  use Rack::Session::Pool
+
+  configure :development, :test do
+      require 'sinatra/reloader'
+  end
 
   helpers do
     def operate_with
