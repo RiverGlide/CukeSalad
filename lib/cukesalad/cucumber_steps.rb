@@ -1,4 +1,4 @@
-require 'cukesalad'
+require 'cukesalad/salad'
 
 def in_order_to(do_something, *with_attributes, &actions)
  CukeSalad::TaskAuthor.in_order_to(do_something, *with_attributes, &actions)
