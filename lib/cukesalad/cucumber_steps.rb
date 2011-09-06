@@ -1,4 +1,4 @@
-require 'cukesalad'
+require 'cukesalad/salad'
 
 def in_order_to(do_something, *with_attributes, &actions)
  CukeSalad::TaskAuthor.in_order_to(do_something, *with_attributes, &actions)
@@ -13,6 +13,11 @@ end
 
 Given /^(?:I am|you are) a ([a-zA-Z ]+)$/ do |role|
   @actor = CukeSalad::Actor.new(role)
+end
+
+Given /^(?:I am|you are) a '([^']*)' ([a-zA-Z ]+)$/ do |this_task, role|
+  @actor = CukeSalad::Actor.new(role)
+  @actor.perform this_task
 end
 
 When /^(?:I|you) (?:attempt to|was able to|were able to|did)? ([A-Z a-z_-]*)(?:[:|,] (.*))?:?$/ do | this_task, details, *and_more |
