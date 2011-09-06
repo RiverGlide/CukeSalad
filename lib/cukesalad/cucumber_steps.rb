@@ -15,6 +15,11 @@ Given /^(?:I am|you are) a ([a-zA-Z ]+)$/ do |role|
   @actor = CukeSalad::Actor.new(role)
 end
 
+Given /^(?:I am|you are) a '([^']*)' ([a-zA-Z ]+)$/ do |this_task, role|
+  @actor = CukeSalad::Actor.new(role)
+  @actor.perform this_task
+end
+
 When /^(?:I|you) (?:attempt to|was able to|were able to|did)? ([A-Z a-z_-]*)(?:[:|,] (.*))?:?$/ do | this_task, details, *and_more |
   info = understand_the details unless details.nil?
   info[info.keys.last] = and_more[0] unless and_more.empty?
