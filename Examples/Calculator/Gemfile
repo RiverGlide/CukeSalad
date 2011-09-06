@@ -3,3 +3,7 @@ gem "cukesalad", ">=0.7"
 gem "rspec", ">=2.5.0", :require => 'spec'
 gem "capybara", ">=0.4.1.2"
 gem "sinatra", ">=1.2.0"
+
+group :test, :development do
+  gem 'sinatra-reloader', '0.5.0'
+end
