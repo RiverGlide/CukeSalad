@@ -15,8 +15,12 @@ class WebCalculator < Sinatra::Base
   end
 
   helpers do
-    def operate_with
-      { 'plus' => :+, 'minus' => :-}
+    def available_operations
+      { 'plus' => :+, 'minus' => :- }
+    end
+
+    def operate_with operator
+      available_operations[operator]
     end
 
     def persist calc
@@ -25,7 +29,7 @@ class WebCalculator < Sinatra::Base
 
     def display_result_from calc
       @display = calc.display
-      @operations = operate_with
+      @operations = available_operations
       erb :index
     end
 
@@ -39,7 +43,7 @@ class WebCalculator < Sinatra::Base
 
     def display_result_from_session
       @display = session[:calc].display ||= 0
-      @operations = operate_with
+      @operations = available_operations
       erb :index
     end
 
@@ -68,7 +72,7 @@ class WebCalculator < Sinatra::Base
     if equals_pressed?
       calculator.equals
     else
-      calculator.get_ready_to operate_with[selected_operator]
+      calculator.get_ready_to operate_with(selected_operator)
     end
     persist calculator
     display_result_from calculator
