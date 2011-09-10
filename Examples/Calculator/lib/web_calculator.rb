@@ -72,17 +72,3 @@ class WebCalculator < Sinatra::Base
     display_result_from calculator
   end
 end
-
-__END__
-@@ layout
-<h1>Calculator is Ready!</h1>
-<%= yield %>
-
-@@ index
-<form method="POST" action="/">
-  <input type="text" disabled name="display" id="display" value="<%=@display %>" />
-  <input type="text" name="number" id="number" />
-  <input type="submit" name="operator" id="minus" text="-" value="minus" />
-  <input type="submit" name="operator" id="plus" text="+" value="plus" />
-  <input type="submit" name="operator" id="equals" text="=" value="equals" />
-</form>
