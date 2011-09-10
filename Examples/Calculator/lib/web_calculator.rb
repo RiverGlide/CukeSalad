@@ -4,8 +4,6 @@ require 'erb'
 $:.unshift(File.dirname(__FILE__), '.')
 require 'calculator'
 
-Sinatra::Base.enable :inline_templates
-
 class WebCalculator < Sinatra::Base
 
   use Rack::Session::Pool
@@ -16,7 +14,7 @@ class WebCalculator < Sinatra::Base
 
   helpers do
     def available_operations
-      { 'plus' => :+, 'minus' => :- }
+      { 'plus' => :+, 'minus' => :-, 'equals' => '=' }
     end
 
     def operate_with operator
