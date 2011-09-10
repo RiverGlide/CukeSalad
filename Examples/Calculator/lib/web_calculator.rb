@@ -25,6 +25,7 @@ class WebCalculator < Sinatra::Base
 
     def display_result_from calc
       @display = calc.display
+      @operations = operate_with
       erb :index
     end
 
@@ -38,6 +39,7 @@ class WebCalculator < Sinatra::Base
 
     def display_result_from_session
       @display = session[:calc].display ||= 0
+      @operations = operate_with
       erb :index
     end
 
