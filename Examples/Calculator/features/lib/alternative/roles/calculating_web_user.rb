@@ -6,7 +6,7 @@ require 'capybara'
 require 'capybara/dsl'
 
 Capybara.app = WebCalculator
-Capybara.default_driver = :rack_test
+Capybara.default_driver = :selenium
 
 module CalculatingIndividual
 

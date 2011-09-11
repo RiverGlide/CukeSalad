@@ -25,9 +25,9 @@ Gem::Specification.new do |s|
   s.default_executable = "cukesalad"
   s.require_paths      = ["lib"]
 
-  s.add_runtime_dependency "cucumber", ">=0.10.0"
+  s.add_runtime_dependency "cucumber", "1.0.2" # Version 1.0.4 experiences following error: 'Illformed requirement ["#<Syck::DefaultKey:0x000001034764a0> 0.8.4"]'
   s.add_runtime_dependency "rspec",    ">=2.5.0"
-  s.add_runtime_dependency "aruba",    ">=0.3.5"
+  s.add_runtime_dependency "aruba",    "0.4.3"
 
   s.add_development_dependency "bundler", "~> 1.0.0"
   s.add_development_dependency "rake", "~> 0.8.7"
