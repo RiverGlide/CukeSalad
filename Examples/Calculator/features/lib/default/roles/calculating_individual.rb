@@ -1,4 +1,5 @@
 require 'calculator'
+require 'calculator_operations'
 
 module CalculatingIndividual
 
@@ -8,10 +9,7 @@ module CalculatingIndividual
 
   def switch_on_the_calculator
     @calculator = Calculator.new
-    @operate_with = {
-      plus: :+,
-     minus: :-
-    }
+    @operate_with = CalculatorOperations::OPERATIONS
   end
 
   def enter value
@@ -22,7 +20,7 @@ module CalculatingIndividual
     if next_operator == :equals
       equals
     else
-      @calculator.get_ready_to @operate_with[next_operator]
+      @calculator.get_ready_to @operate_with[next_operator.to_s]
     end
   end
 

@@ -3,8 +3,7 @@ require 'erb'
 
 $:.unshift(File.dirname(__FILE__), '.')
 require 'calculator'
-
-Sinatra::Base.enable :inline_templates
+require 'calculator_operations'
 
 class WebCalculator < Sinatra::Base
 
@@ -15,8 +14,12 @@ class WebCalculator < Sinatra::Base
   end
 
   helpers do
-    def operate_with
-      { 'plus' => :+, 'minus' => :-}
+    def available_operations
+      CalculatorOperations::OPERATIONS
+    end
+
+    def operate_with operator
+      available_operations[operator]
     end
 
     def persist calc
@@ -25,6 +28,7 @@ class WebCalculator < Sinatra::Base
 
     def display_result_from calc
       @display = calc.display
+      @operations = available_operations
       erb :index
     end
 
@@ -38,6 +42,7 @@ class WebCalculator < Sinatra::Base
 
     def display_result_from_session
       @display = session[:calc].display ||= 0
+      @operations = available_operations
       erb :index
     end
 
@@ -66,23 +71,9 @@ class WebCalculator < Sinatra::Base
     if equals_pressed?
       calculator.equals
     else
-      calculator.get_ready_to operate_with[selected_operator]
+      calculator.get_ready_to operate_with(selected_operator)
     end
     persist calculator
     display_result_from calculator
   end
 end
-
-__END__
-@@ layout
-<h1>Calculator is Ready!</h1>
-<%= yield %>
-
-@@ index
-<form method="POST" action="/">
-  <input type="text" disabled name="display" id="display" value="<%=@display %>" />
-  <input type="text" name="number" id="number" />
-  <input type="submit" name="operator" id="minus" text="-" value="minus" />
-  <input type="submit" name="operator" id="plus" text="+" value="plus" />
-  <input type="submit" name="operator" id="equals" text="=" value="equals" />
-</form>
