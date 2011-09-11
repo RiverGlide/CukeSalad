@@ -1,6 +1,6 @@
 <form method="POST" action="/">
-  <input type="text" disabled name="display" id="display" value="<%=@display %>" />
-  <input type="text" name="number" id="number" />
+  <input type="text" disabled name="display" id="display" value="<%=@display %>" /><br/>
+  <input type="text" name="number" id="number" /><br/>
   <% @operations.each do |key, value| %>
     <input type="submit" name="operator" id="<%=key%>" text="<%=value%>" value="<%=key%>" />
   <% end %>
