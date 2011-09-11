@@ -1,4 +1,4 @@
 default: --exclude features/lib/alternative/
-alternative: -r features/lib/alternative/ -r features/support/env.rb -r features/lib/default/tasks/ 
+browser: -r features/lib/browser/ -r features/support/env.rb -r features/lib/default/tasks/ 
 autotest: --color
 autotest-all: --color
