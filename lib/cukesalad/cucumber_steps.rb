@@ -11,11 +11,11 @@ When /^I say hello CukeSalad$/ do
   puts "CukeSalad says: Hello!!"
 end
 
-Given /^(?:I am|you are) a ([a-zA-Z ]+)$/ do |role|
+Given /^(?:I am|you are) a(?:n)? ([a-zA-Z ]+)$/ do |role|
   @actor = CukeSalad::Actor.new(role)
 end
 
-When /^(?:I|you) (?:attempt to|was able to|were able to|did)? ([A-Z a-z_-]*)(?:[:|,] (.*))?:?$/ do | this_task, details, *and_more |
+When /^(?:I|you) (?:attempt to|was able to|were able to|did)? ([A-Z a-z\d_-]*)(?:[:|,] (.*))?:?$/ do | this_task, details, *and_more |
   info = understand_the details unless details.nil?
   info[info.keys.last] = and_more[0] unless and_more.empty?
   @actor.perform this_task, info unless info.nil?
