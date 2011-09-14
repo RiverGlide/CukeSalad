@@ -2,17 +2,17 @@ require 'cukesalad/director'
 
 module CukeSalad
   class Actor
-     
+
     def initialize this_type_of_role, directed_by=Director.new
       @director = directed_by
       @note_pad = {}
       get_into_character_for this_type_of_role
     end
-    
+
     def perform described_task, details = {}
       get_ready_to_perform described_task
       @info = details
-      perform_task 
+      perform_task
     end
     alias :answer :perform
 
@@ -21,10 +21,10 @@ module CukeSalad
       see_how_to_do the_role
       role_preparation
     end
-    
+
     def get_ready_to_perform something
       the_thing = @director.how_do_i_perform something
-      see_how_to_do the_thing 
+      see_how_to_do the_thing
     end
 
     def see_how_to_do something
