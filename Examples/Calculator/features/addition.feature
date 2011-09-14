@@ -5,7 +5,7 @@ Feature: Addition
 	
 Scenario Outline: Find the sum of two numbers
   Given I am a Calculating Individual
-  When I attempt to add: the number '<first_number>' and the number '<second_number>'
+  When I add, the number '<first_number>' and the number '<second_number>'
   Then I should see the answer '<result>'
 
 	

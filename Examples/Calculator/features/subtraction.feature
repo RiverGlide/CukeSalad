@@ -5,7 +5,7 @@ Feature: Subtraction
 	
 Scenario Outline: Find the result of subtracting two numbers
   Given I am a Calculating Individual
-  When I attempt to subtract, the number '<subtractor>' from the number '<subtractee>'
+  When I subtract, the number '<subtractor>' from the number '<subtractee>'
   Then I should see the answer '<result>'
 
 	
