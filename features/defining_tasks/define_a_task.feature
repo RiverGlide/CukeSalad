@@ -80,3 +80,16 @@ Feature: Define a Task
       | And   I should do something for 123Company         |
       | Then  you should do something for 123Company       |
       | And   you should do something for 123Company       |
+
+  Scenario Outline: Once you've created the task, you see the step pass
+    Given you were able to create a task: called 'have something'
+    When  you attempt to run a scenario: containing
+    """
+    Given I am a New Customer
+    <step using the task>
+    """
+    Then you should see it has 'passed'
+
+    Examples:
+      | step using the task                 |
+      | Given I have something              |
