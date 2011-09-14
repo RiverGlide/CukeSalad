@@ -1,16 +1,7 @@
-# To run with this version of the Calculating Individual:
-# cucumber --profile alternative 
-
-require 'web_calculator'
-require 'capybara'
 require 'capybara/dsl'
+module WebCalculatingIndividual
 
-Capybara.app = WebCalculator
-Capybara.default_driver = :selenium
-
-module CalculatingIndividual
-
-  include Capybara
+  include Capybara::DSL
 
   def role_preparation
     switch_on_the_calculator

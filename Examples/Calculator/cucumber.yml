@@ -1,4 +1,5 @@
-default: --exclude features/lib/alternative/
-front_door: -r features/lib/browser/ -r features/support/env.rb -r features/lib/default/tasks/ 
+default: --exclude features/lib/front_door/
+side_door: -r features/lib/side_door/ -r features/support/env.rb -r features/lib/default/tasks/ 
+front_door: -r features/lib/front_door/ -r features/support/env.rb -r features/lib/default/tasks/ 
 autotest: --color
 autotest-all: --color

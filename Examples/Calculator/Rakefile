@@ -1,0 +1,25 @@
+require 'rubygems'
+require 'bundler'
+
+namespace :check do
+  require 'rspec/core'
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:design) do |spec|
+    spec.pattern = FileList['spec/**/*_spec.rb']
+    spec.rspec_opts = "-cfd"
+  end
+
+  require 'cucumber/rake/task'
+  Cucumber::Rake::Task.new(:features)
+
+  namespace :features do
+    Cucumber::Rake::Task.new(:side_door) do |wip|
+      wip.cucumber_opts = "-p side_door"
+    end
+
+    Cucumber::Rake::Task.new(:front_door) do |wip|
+      wip.cucumber_opts = "-p front_door"
+    end
+  end
+end
+task :default => ['check:design', 'check:features']
