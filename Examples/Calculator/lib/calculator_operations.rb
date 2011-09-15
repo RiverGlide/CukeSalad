@@ -1,4 +1,5 @@
 module CalculatorOperations
-  OPERATORS = { '+' => :plus, '-' => :minus, '=' => :equals }
+  OPS = { 'plus' => '+', 'minus' => '-', 'equals' => '=' }
+  OPERATORS = OPS.invert 
   OPERATIONS = { 'plus' => :+, 'minus' => :-, 'equals' => '=' }
 end

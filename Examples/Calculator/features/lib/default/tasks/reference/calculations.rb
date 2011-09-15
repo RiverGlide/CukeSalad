@@ -10,7 +10,7 @@ module Calculations
     operators = CalculatorOperations::OPERATORS
     sum.each do | token |
       enter token.to_i if token =~ /\d+/
-      press operators[token] if operators.include? token
+      press operators[token].to_sym if operators.include? token
     end
   end
 end
