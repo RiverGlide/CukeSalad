@@ -1,5 +1,4 @@
 require 'calculator'
-require 'calculator_operations'
 
 module CalculatingIndividual
 
@@ -9,7 +8,7 @@ module CalculatingIndividual
 
   def switch_on_the_calculator
     @calculator = Calculator.new
-    @operate_with = CalculatorOperations::OPERATIONS
+    @operate_with = Calculator::OPERATIONS
   end
 
   def enter value

@@ -1,6 +1,9 @@
 
 class Calculator
  
+  OPERATIONS = { 'plus' => '+', 'minus' => '-', 'equals' => '=' }
+  OPERATORS = OPERATIONS.invert 
+
   attr_reader :display
 
   def initialize

@@ -3,7 +3,6 @@ require 'erb'
 
 $:.unshift(File.dirname(__FILE__), '.')
 require 'calculator'
-require 'calculator_operations'
 
 class WebCalculator < Sinatra::Base
 
@@ -15,7 +14,7 @@ class WebCalculator < Sinatra::Base
 
   helpers do
     def available_operations
-      CalculatorOperations::OPERATIONS
+      Calculator::OPERATIONS
     end
 
     def operate_with operator
