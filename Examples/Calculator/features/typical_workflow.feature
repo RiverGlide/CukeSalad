@@ -5,7 +5,7 @@ Feature: Typical Calculator Workflow
 
 Scenario Outline: See what I expect based on specific interactions
   Given I am a calculating individual
-  When I attempt to calculate: with the following '<interactions>'
+  When I calculate, with the following '<interactions>'
   Then I should see the answer '<expected>'
 
 Examples:
