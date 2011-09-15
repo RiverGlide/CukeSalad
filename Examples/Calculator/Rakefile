@@ -21,5 +21,9 @@ namespace :check do
       wip.cucumber_opts = "-p front_door"
     end
   end
+
+  desc "Check absolutely everything!"
+  task :everything => ['check:design', 'check:features', 'check:features:side_door', 'check:features:front_door']
 end
+desc "Check design and features"
 task :default => ['check:design', 'check:features']
