@@ -19,12 +19,12 @@ Feature: Define a Task with arguments
     When  you attempt to run a scenario: called 'something' containing
     """
     Given I am a New Customer
-    When I attempt to <task_with_argument>
+    When I <do a task with an argument>
     """
     Then you should see it has 'passed'
 
     Examples:
-      | task_with_argument             |
+      | do a task with an argument          |
       | do some task: with 'information' |
       | do some task, with 'information' |
       | do some task: with "information" |

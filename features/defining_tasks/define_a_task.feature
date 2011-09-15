@@ -10,10 +10,10 @@ Feature: Define a Task
 
   Scenario: We'll tell you what you need to do to describe the task
     Given you did not create a task: called 'do something'
-    When  you attempt to run a scenario: containing
+    When  you run a scenario: containing
       """
       Given I am a New Customer
-      And I was able to do something
+      When I do something
       """
     Then you should see it has 'failed'
     And  you should see a reply that includes:
@@ -25,9 +25,46 @@ Feature: Define a Task
               end
       """
 
-  Scenario Outline: Once you've created the task, you see the step pass
+  Scenario: Once you've created a task, you can use it in a Given step 
+    Given you were able to create a task, called 'have something'
+    When  you run a scenario, containing
+    """
+    Given I am a New Customer
+    Given I have something
+    """
+    Then you should see it has 'passed'
+
+  Scenario: Tasks can be used in a When step too
+    Given you were able to create a task, called 'do something'
+    When  you run a scenario, containing
+    """
+    Given I am a New Customer
+    When I do something
+    """
+    Then you should see it has 'passed'
+
+  Scenario: You can reuse a step between a Given and a When step
+    Given you were able to create a task, called 'do something'
+    When  you run a scenario, containing
+    """
+    Given I am a New Customer
+    And you were able to do something
+    When I do something
+    """
+    Then you should see it has 'passed'
+
+  Scenario: Tasks can contain numbers
+    Given you were able to create a task: called 'do something for 123Company'
+    When  you run a scenario: containing
+    """
+    Given I am a New Customer
+    When I do something for 123Company
+    """
+    Then you should see it has 'passed'
+
+  Scenario Outline: There are all sorts of ways you can say things
     Given you were able to create a task: called 'do something'
-    When  you attempt to run a scenario: containing
+    When  you run a scenario: containing
     """
     Given I am a New Customer
     <step using the task>
@@ -42,54 +79,14 @@ Feature: Define a Task
       | Given you were able to do something |
       | And   you were able to do something |
       | But   you did do something          |
-      | When  I attempt to do something     |
-      | And   I attempt to do something     |
+      | When  I do something                |
+      | And   I do something                |
       | And   I did do something            |
-      | When  you attempt to do something   |
-      | And   you attempt to do something   |
+      | When  you do something              |
+      | And   you do something              |
       | And   you did do something          |
       | Then  I should do something         |
       | And   I should do something         |
       | Then  you should do something       |
       | And   you should do something       |
 
-  Scenario Outline: Once you've created the task, you see the step pass
-    Given you were able to create a task: called 'do something for 123Company'
-    When  you attempt to run a scenario: containing
-    """
-    Given I am a New Customer
-    <step using the task>
-    """
-    Then you should see it has 'passed'
-
-    Examples:
-      | step using the task                                |
-      | Given I was able to do something for 123Company    |
-      | And   I was able to do something for 123Company    |
-      | But   I did do something for 123Company            |
-      | Given you were able to do something for 123Company |
-      | And   you were able to do something for 123Company |
-      | But   you did do something for 123Company          |
-      | When  I attempt to do something for 123Company     |
-      | And   I attempt to do something for 123Company     |
-      | And   I did do something for 123Company            |
-      | When  you attempt to do something for 123Company   |
-      | And   you attempt to do something for 123Company   |
-      | And   you did do something for 123Company          |
-      | Then  I should do something for 123Company         |
-      | And   I should do something for 123Company         |
-      | Then  you should do something for 123Company       |
-      | And   you should do something for 123Company       |
-
-  Scenario Outline: Once you've created the task, you see the step pass
-    Given you were able to create a task: called 'have something'
-    When  you attempt to run a scenario: containing
-    """
-    Given I am a New Customer
-    <step using the task>
-    """
-    Then you should see it has 'passed'
-
-    Examples:
-      | step using the task                 |
-      | Given I have something              |
