@@ -2,7 +2,7 @@ These scenarios are examples of what you might write using [cukesalad](http://cu
 
 cukesalad is an extension to cucumber that does away with regular expression. 
 
-The examples are for your 'typical' *calculator*. To 'automate' this:
+The examples are for your **typical calculator**. To 'automate' this:
 
     When I add, the number '1' to the number '2'
 
