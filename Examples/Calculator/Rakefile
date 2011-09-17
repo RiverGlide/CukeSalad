@@ -13,6 +13,10 @@ namespace :check do
   Cucumber::Rake::Task.new(:features)
 
   namespace :features do
+    Cucumber::Rake::Task.new(:back_door) do |wip|
+      wip.cucumber_opts = "-p back_door"
+    end
+
     Cucumber::Rake::Task.new(:side_door) do |wip|
       wip.cucumber_opts = "-p side_door"
     end
@@ -23,7 +27,16 @@ namespace :check do
   end
 
   desc "Check absolutely everything!"
-  task :everything => ['check:design', 'check:features', 'check:features:side_door', 'check:features:front_door']
+  task :everything => [
+    'check:design', 
+    'check:features:back_door',
+    'check:features:side_door', 
+    'check:features:front_door'
+  ]
 end
+
 desc "Check design and features"
-task :default => ['check:design', 'check:features']
+task :default => [
+  'check:design', 
+  'check:features:side_door'
+]

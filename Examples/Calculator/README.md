@@ -6,13 +6,21 @@ Setup the environment:
 
     bundle install
 
-Then you can run the examples:
+Then you can run the examples quickly (via rack_test):
 
-    bundle exec cucumber
+    rake check:features
 
-To run these via a web front end, use:
+To run these via a web browser, use:
 
-    bundle exec cucumber -p alternative
+    rake check:features:front_door
+
+To run these via rack_test, use:
+
+    rake check:features:side_door
+
+To run these against the calculator API, use:
+
+    rake check:features:back_door
 
 To run the Calculator app
 
