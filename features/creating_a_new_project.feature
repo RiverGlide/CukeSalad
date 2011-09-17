@@ -6,7 +6,7 @@ Feature: Creating a New Project
   Background:
     * you are a Step Free Cuker
 
-  Scenario: Set up your project and verify that you can use CukeSalad
+  Scenario: How to get started
     * you start by interactively running, the command 'cukesalad' and answering 'y'
     * you follow by creating a file: at 'features/hello_cukesalad.feature' containing
         """

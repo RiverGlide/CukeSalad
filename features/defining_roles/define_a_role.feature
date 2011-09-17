@@ -13,14 +13,14 @@ Feature: Define the Role
       """
     * you should see it has 'failed'
     * you should also see a reply that includes:
-    """
-          I can't find a role called 'NewCustomer'. Have you created it?
-          e.g.
-            module NewCustomer
-            end
-    """
+      """
+            I can't find a role called 'NewCustomer'. Have you created it?
+            e.g.
+              module NewCustomer
+              end
+      """
 
-  Scenario: Once you've created the role, you see the step pass
+  Scenario: How to establish the role
     * you start by creating a role, named 'NewCustomer'
     * you run a scenario: containing
       """
@@ -28,7 +28,7 @@ Feature: Define the Role
       """
     * you should see it has 'passed'
 
-  Scenario: Roles which grammatically require an 'an'
+  Scenario: How to establish roles that grammatically require an 'an'
     * you have created a role, named 'UnregisteredCustomer'
     * you attempt to run a scenario: containing
       """
