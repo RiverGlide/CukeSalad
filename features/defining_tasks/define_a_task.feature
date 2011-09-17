@@ -6,10 +6,9 @@ Feature: Define a Task
 
   Background:
     Given you are a Step Free Cuker
-    And   you have created a role, named 'NewCustomer'
+    And you have created a role, named 'NewCustomer'
 
   Scenario: We'll tell you what you need to do to describe the task
-    Given you did not create a task: called 'do something'
     When  you run a scenario: containing
       """
       Given I am a New Customer
@@ -21,54 +20,55 @@ Feature: Define a Task
             I can't find a task called 'do something'. Have you created it?
             e.g.
               in_order_to 'do something' do
-                # the actions
+                raise "TODO: You need to explain how to 'do something'"
               end
       """
 
   Scenario: Once you've created a task, you can use it in a Given step 
-    Given you were able to create a task, called 'have something'
-    When  you run a scenario, containing
-    """
-    Given I am a New Customer
-    Given I have something
-    """
+    Given you have created a task, called 'done something'
+    When you run a scenario, containing
+      """
+      Given I am a New Customer
+      And I have done something
+      """
     Then you should see it has 'passed'
 
   Scenario: Tasks can be used in a When step too
-    Given you were able to create a task, called 'do something'
-    When  you run a scenario, containing
-    """
-    Given I am a New Customer
-    When I do something
-    """
+    Given you have created a task, called 'do something'
+    When you run a scenario, containing
+      """
+      Given I am a New Customer
+      When I do something
+      """
     Then you should see it has 'passed'
 
   Scenario: You can reuse a step between a Given and a When step
-    Given you were able to create a task, called 'do something'
-    When  you run a scenario, containing
-    """
-    Given I am a New Customer
-    And you were able to do something
-    When I do something
-    """
+    Given you have created a task, called 'do something'
+    When you run a scenario, containing
+      """
+      Given I am a New Customer
+      And you were able to do something
+      When I do something
+      """
     Then you should see it has 'passed'
 
   Scenario: Tasks can contain numbers
-    Given you were able to create a task: called 'do something for 123Company'
-    When  you run a scenario: containing
-    """
-    Given I am a New Customer
-    When I do something for 123Company
-    """
+    Given you have created a task: called 'do something for 123Company'
+    When you run a scenario: containing
+      """
+      Given I am a New Customer
+      When I do something for 123Company
+      """
     Then you should see it has 'passed'
 
   Scenario Outline: There are all sorts of ways you can say things
-    Given you were able to create a task: called 'do something'
-    When  you run a scenario: containing
-    """
-    Given I am a New Customer
-    <step using the task>
-    """
+    Given you have created a task, called 'do something'
+    And you have created a task, called 'done something'
+    When you run a scenario: containing
+      """
+      Given I am a New Customer
+      <step using the task>
+      """
     Then you should see it has 'passed'
 
     Examples:
@@ -89,4 +89,3 @@ Feature: Define a Task
       | And   I should do something         |
       | Then  you should do something       |
       | And   you should do something       |
-

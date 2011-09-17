@@ -5,22 +5,22 @@ Feature: Remember information between steps
 
   Background:
     Given you are a Step Free Cuker
-    And   you have created a role, named 'NewCustomer'
+    And you have created a role, named 'NewCustomer'
 
   Scenario: You can reuse information
-    Given you were able to create a task, called 'do something' containing
+    Given you have created a task, called 'do something' containing
       """
       in_order_to 'do something', remembering: :value do
         take_note_of :some_key, the( :value )
       end
       """
-    And you were able to create a task, called 'find that the thing remembered was' containing
+    And you have created a task, called 'find that the thing remembered was' containing
       """
       in_order_to 'find that the thing remembered was' do
         recall :some_key
       end
       """
-    When you attempt to run a scenario, containing
+    When you run a scenario, containing
       """
       Given I am a New Customer
       When I attempt to do something, remembering 'a value'
@@ -30,13 +30,13 @@ Feature: Remember information between steps
 
   Scenario: You'll get feedback if you ask for something that wasn't noted
     Given you did not previously take note of something
-    And you were able to create a task, called 'find that the thing remembered was' containing
+    And you have created a task, called 'find that the thing remembered was' containing
     """
     in_order_to 'find that the thing remembered was' do
       recall :some_key
     end
     """
-    When I attempt to run a scenario, containing
+    When I run a scenario, containing
       """
       Given I am a New Customer
       Then I should find that the thing remembered was 'a value'
@@ -46,4 +46,3 @@ Feature: Remember information between steps
       """
             You tried to recall ':some_key' but no previous step appears to have taken note of that information
       """
-
