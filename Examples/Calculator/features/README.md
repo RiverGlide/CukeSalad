@@ -13,4 +13,4 @@ You only need to write something like this:
       press :equals
     end
 
-You can find the code behind these [on Github](http://github.com/RiverGlide/CukeSalad/Examples/Calculator).
+You can find the code behind these [on Github](https://github.com/RiverGlide/CukeSalad/tree/master/Examples/Calculator).
