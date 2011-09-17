@@ -31,8 +31,8 @@ Feature: Creating a New Project
         end
       """
     * you can then run: the command 'cucumber'
-    Then you should see it has 'passed'
-    And you should see a reply that includes:
+    * you should see it has 'passed'
+    * you should also see a reply that includes:
       """
       CukeSalad says: Hello World!
       """

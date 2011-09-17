@@ -30,6 +30,6 @@ Then /^(?:I|you) should ([^'^":]+)$/ do | this_question |
   @actor.answer( this_question )
 end
 
-Then /^(?:I|you) should ([^']*) that includes:$/ do | this_question, expected_content |
+Then /^(?:I|you) should(?: also)? ([^']*) that includes:$/ do | this_question, expected_content |
   @actor.answer( this_question ).should include( expected_content )
 end
