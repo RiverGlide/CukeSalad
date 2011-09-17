@@ -6,7 +6,7 @@ Feature: Define a Task with arguments
 
   Background:
     Given you are a Step Free Cuker
-    And   you were able to create a role: called 'NewCustomer'
+    And   you have created a role, named 'NewCustomer'
     
   Scenario Outline: A task can accept arguments
     Given you were able to create a task, called 'do some task' containing

@@ -6,7 +6,7 @@ Feature: Define a Task
 
   Background:
     Given you are a Step Free Cuker
-    And   you were able to create a role: called 'NewCustomer'
+    And   you have created a role, named 'NewCustomer'
 
   Scenario: We'll tell you what you need to do to describe the task
     Given you did not create a task: called 'do something'

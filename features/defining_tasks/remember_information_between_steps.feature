@@ -5,7 +5,7 @@ Feature: Remember information between steps
 
   Background:
     Given you are a Step Free Cuker
-    And   you were able to create a role, called 'NewCustomer'
+    And   you have created a role, named 'NewCustomer'
 
   Scenario: You can reuse information
     Given you were able to create a task, called 'do something' containing
