@@ -4,7 +4,7 @@ Feature: Creating a New Project
   So that you can start writing scenarios without step definitions
 
   Background:
-    Given you are a Step Free Cuker
+    * you are a Step Free Cuker
 
   Scenario: Set up your project and verify that you can use CukeSalad
     * you start by interactively running, the command 'cukesalad' and answering 'y'
