@@ -1,5 +1,5 @@
 source :rubygems
-gem "cukesalad", ">=0.7"
+gem "cukesalad", ">=0.8.1"
 gem "rspec", ">=2.5.0", :require => 'spec'
 gem "capybara", ">=0.4.1.2"
 gem "sinatra", ">=1.2.0"
