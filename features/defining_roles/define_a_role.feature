@@ -29,8 +29,8 @@ Feature: Define the Role
     * you should see it has 'passed'
 
   Scenario: How to establish roles that grammatically require an 'an'
-    * you have created a role, named 'UnregisteredCustomer'
-    * you attempt to run a scenario: containing
+    * you start by creating a role, named 'UnregisteredCustomer'
+    * you then run a scenario, containing
       """
       Given I am an Unregistered Customer
       """
