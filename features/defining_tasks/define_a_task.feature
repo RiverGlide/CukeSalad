@@ -3,7 +3,6 @@ Feature: Define a Task
   You want to describe a task
   So that your steps that use that role are executed 
 
-
   Background:
     Given you are a Step Free Cuker
     And you have created a role, named 'NewCustomer'
@@ -53,8 +52,8 @@ Feature: Define a Task
     Then you should see it has 'passed'
 
   Scenario: Tasks can contain numbers
-    Given you have created a task: called 'do something for 123Company'
-    When you run a scenario: containing
+    Given you have created a task, called 'do something for 123Company'
+    When you run a scenario, containing
       """
       Given I am a New Customer
       When I do something for 123Company
@@ -63,7 +62,6 @@ Feature: Define a Task
 
   Scenario Outline: There are all sorts of ways you can say things
     Given you have created a task, called 'do something'
-    And you have created a task, called 'done something'
     When you run a scenario: containing
       """
       Given I am a New Customer
