@@ -19,7 +19,7 @@ module CalculatingIndividual
     if next_operator == :equals
       equals
     else
-      @calculator.get_ready_to @operate_with[next_operator.to_s]
+      @calculator.get_ready_to @operate_with[next_operator]
     end
   end
 

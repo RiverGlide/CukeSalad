@@ -1,8 +1,10 @@
-
 class Calculator
  
-  OPERATIONS = { 'plus' => '+', 'minus' => '-', 'equals' => '=' }
-  OPERATORS = OPERATIONS.invert 
+  OPERATIONS = { 
+    plus:   '+',
+    minus:  '-', 
+    equals: '=' 
+  }
 
   attr_reader :display
 

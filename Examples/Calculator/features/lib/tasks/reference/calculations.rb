@@ -1,4 +1,3 @@
-
 module Calculations
   
   def follow_the_steps_for sum
@@ -6,10 +5,10 @@ module Calculations
   end
   
   def enter_numbers_and_operators_for sum
-    operators = Calculator::OPERATORS
+    operators = Calculator::OPERATIONS.invert
     sum.each do | token |
       enter token.to_i if token =~ /\d+/
-      press operators[token].to_sym if operators.include? token
+      press operators[token] if operators.include? token
     end
   end
 end

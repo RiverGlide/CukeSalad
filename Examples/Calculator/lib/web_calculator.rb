@@ -17,8 +17,8 @@ class WebCalculator < Sinatra::Base
       Calculator::OPERATIONS
     end
 
-    def operate_with operator
-      available_operations[operator]
+    def operate_with operation
+      available_operations[operation.to_sym]
     end
 
     def persist calc
