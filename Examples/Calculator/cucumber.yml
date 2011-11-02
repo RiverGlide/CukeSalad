@@ -1,6 +1,6 @@
-default: -p side_door
-front_door: --exclude features/lib/roles/back_door --exclude features/lib/roles/side_door
-side_door: --exclude features/lib/roles/back_door --exclude features/lib/roles/front_door
-back_door: --exclude features/lib/roles/front_door --exclude features/lib/roles/side_door
+default: -p side_door -s
+front_door: --exclude features/lib/roles/back_door --exclude features/lib/roles/side_door -s
+side_door: --exclude features/lib/roles/back_door --exclude features/lib/roles/front_door -s
+back_door: --exclude features/lib/roles/front_door --exclude features/lib/roles/side_door -s
 autotest: --color
 autotest-all: --color
