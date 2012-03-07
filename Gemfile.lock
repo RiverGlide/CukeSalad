@@ -63,7 +63,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.0.0)
+  bundler (~> 1.1.0)
   cukesalad!
   rake (~> 0.9.2)
   rdoc (>= 2.4.0)

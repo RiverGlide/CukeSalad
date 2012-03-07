@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "rspec",    ">=2.5.0"
   s.add_runtime_dependency "aruba",    "0.4.3"
 
-  s.add_development_dependency "bundler", "~> 1.0.0"
+  s.add_development_dependency "bundler", "~> 1.1.0"
   s.add_development_dependency "rake", "~> 0.9.2"
   s.add_development_dependency "relish", "= 0.3.0"
   s.add_development_dependency "rdoc", ">= 2.4.0"
