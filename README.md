@@ -8,6 +8,8 @@ e-mail feedback to <talktous@riverglide.com>
 You can see our current list of intended features here:
 https://github.com/RiverGlide/CukeSalad/issues?labels=Feature
 
+[![Build Status](https://secure.travis-ci.org/RiverGlide/CukeSalad.png?branch=master)](http://travis-ci.org/RiverGlide/CukeSalad)
+
 ## This project has step-free access!
 
 CukeSalad allows you to focus on the task at hand - expressing examples, the roles involved in those examples and what those roles can do with the product under development.
