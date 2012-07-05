@@ -8,7 +8,7 @@ e-mail feedback to <talktous@riverglide.com>
 You can see our current list of intended features here:
 https://github.com/RiverGlide/CukeSalad/issues?labels=Feature
 
-[![Build Status](https://secure.travis-ci.org/RiverGlide/CukeSalad.png?branch=master)](http://travis-ci.org/RiverGlide/CukeSalad)
+[![Build Status](https://secure.travis-ci.org/RiverGlide/CukeSalad.png?branch=master)](http://travis-ci.org/RiverGlide/CukeSalad) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/RiverGlide/CukeSalad)
 
 ## This project has step-free access!
 
